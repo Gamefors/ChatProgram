@@ -84,8 +84,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
 		
-		elif requestId == "022":#send channel list
-			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022Channel: " + self.channelManager.channelList))
+		elif requestId == "022":#send channel listTODO:send more things like description acceslevel etc. but names work for now
+			channelNames = list()
+			for channelObject in self.channelManager.channelList:
+				channelNames.append(channelObject.name)
+			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022Channel: " + str(channelNames)))
 
 		else:
 			if len(requestId) == 0:
