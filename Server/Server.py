@@ -27,10 +27,10 @@ class Server:
 		self.port = Config.port
 		self.ipV4 = socket.gethostbyname(socket.gethostname())
 		#Channel initialization
-		self.welcomeChannel = Channel("Welcome Channel", "welcome to the server", "No", 0, list())
-		self.channel1 = Channel("Channel 1", "channel 1", "No", 0, list())
-		self.channel2 = Channel("Channel 2", "channel 2", "No", 0, list())
-		self.channel3 = Channel("Channel 3", "channel 3", "No", 0, list())
+		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
+		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
+		self.channel2 = Channel("Channel_2", "channel 2", "No", 0, list())
+		self.channel3 = Channel("Channel_3", "channel 3", "No", 0, list())
 		self.channelManager.addChannel(self.welcomeChannel)
 		self.channelManager.addChannel(self.channel1)
 		self.channelManager.addChannel(self.channel2)

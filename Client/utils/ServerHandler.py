@@ -46,6 +46,9 @@ class ServerHandler:
 			for ch in s:
 				print(ch)
 
+		elif requestId == "023":
+			print("[Client/Info] You succesfully changed channel.")
+
 		elif requestId == "405":
 			print(requestdata)
 			self.banned = True

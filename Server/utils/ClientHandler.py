@@ -62,7 +62,8 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.tryRecv = True	
 		if self.tryRecv:
 			try:
-				self.data = self.decEncHelper.bytesToString(self.clientObject.socketObject.recv(1024).strip())
+				self.data = self.decEncHelper.bytesToString(self.clientObject.socketObject.recv(1024))
+
 				self.handleRequest(self.data, self.clientObject)
 			except:
 				self.logHelper.printAndWriteServerLog("[Server/Error] " + str(self.clientObject.ip) + " Disconnected")
@@ -91,6 +92,16 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
+		elif requestId == "023":
+			print("trying to change channel")
+			for channelObject in self.channelManager.channelList:
+				if channelObject.name.lower() == requestdata:				
+					clientObject.channelObject = channelObject
+					self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
+					self.channelManager.addChannelMember(channelObject, clientObject)
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023Confirm"))
+					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
+					
 		else:
 			if len(requestId) == 0:
 				raise SystemExit()

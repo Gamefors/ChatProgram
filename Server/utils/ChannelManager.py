@@ -9,3 +9,6 @@ class ChannelManager:
 
 	def removeChannelMember(self, channelObject, ClientObject):
 		channelObject.clientList.remove(ClientObject)
+
+	def addChannelMember(self, channelObject, ClientObject):
+		channelObject.clientList.append(ClientObject)
