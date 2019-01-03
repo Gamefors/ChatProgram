@@ -1,0 +1,98 @@
+[16:17:36]:[Server/Info] Started on ip: 192.168.0.157 with port: 5000
+[16:17:38]:[Server/Info] Gracefully stopping server...
+[16:17:38]:[Server/Info] Gracefully stopped server
+[16:19:01]:[Server/Info] Started on ip: 192.168.0.157 with port: 5000
+[16:19:03]:[Server/Info] 192.168.0.234 connected to the server
+[16:19:03]:[Server/Info] 192.168.0.234 sent client informations
+[16:19:12]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:19:47]:[Server/Info] 192.168.0.234 connected to the server
+[16:19:47]:[Server/Info] 192.168.0.234 sent client informations
+[16:20:10]:[Server/Info] 192.168.0.157 connected to the server
+[16:20:10]:[Server/Info] 192.168.0.157 sent client informations
+[16:21:04]:[Server/Info] 192.168.0.234 : l got kicked
+[16:21:04]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:21:25]:[Server/Error] Unknown command: clientlist
+[16:21:25]:[Server/Error] type /help for a list of commands
+[16:21:30]:[Server/Info] Connected clients:
+[16:21:30]:[Server/Info] 192.168.0.157 with name Jan in Welcome Channel
+[16:21:45]:[Server/Info] 192.168.0.234 connected to the server
+[16:21:45]:[Server/Info] 192.168.0.234 sent client informations
+[16:22:02]:[Server/Info] Connected clients:
+[16:22:02]:[Server/Info] 192.168.0.157 with name Jan in Welcome Channel
+[16:22:02]:[Server/Info] 192.168.0.234 with name l in Welcome Channel
+[16:22:32]:[Server/Info] 192.168.0.234 : l got banned for 10minutes
+[16:22:32]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:22:45]:[Server/Info] 192.168.0.234 connected to the server
+[16:22:45]:[Server/Info] 192.168.0.234:59975 is temporary banned on the server. Remaining Time: 9Minutes
+[16:22:45]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:24:29]:[Server/Info] 192.168.0.234 connected to the server
+[16:24:29]:[Server/Info] 192.168.0.234:59981 is temporary banned on the server. Remaining Time: 8Minutes
+[16:24:29]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:24:44]:[Server/Info] 192.168.0.234 connected to the server
+[16:24:44]:[Server/Info] 192.168.0.234:59982 is temporary banned on the server. Remaining Time: 7Minutes
+[16:24:44]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:27:39]:[Server/Info] 192.168.0.234 connected to the server
+[16:27:39]:[Server/Info] 192.168.0.234:59986 is temporary banned on the server. Remaining Time: 4Minutes
+[16:27:39]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:28:08]:[Server/Info] 192.168.0.234 connected to the server
+[16:28:08]:[Server/Info] 192.168.0.234:59988 is temporary banned on the server. Remaining Time: 4Minutes
+[16:28:08]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:29:31]:[Server/Info] 192.168.0.234 connected to the server
+[16:29:31]:[Server/Info] 192.168.0.234 sent client informations
+[16:29:53]:[Server/Info] Commands:
+[16:29:53]:[Server/Info] /listClients : Lists all connected clients with their name, ip and channel their in.
+[16:29:53]:[Server/Info] /clear : Clears your interpreter console.
+[16:29:53]:[Server/Info] /help : Shows a list of available commands.
+[16:29:53]:[Server/Info] /kick <IP> : Kicks the given IP from the server.
+[16:29:53]:[Server/Info] /ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[16:29:53]:[Server/Info] /listChannel : Lists all channels with their belonging clients.
+[16:29:58]:[Server/Error] Unknown command: listchannels
+[16:29:58]:[Server/Error] type /help for a list of commands
+[16:30:04]:[Server/Info] Channels:
+[16:30:04]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[16:30:04]:[Server/Info]    Clients:
+[16:30:04]:[Server/Info]    -192.168.0.234 : L
+[16:30:04]:[Server/Info]    -192.168.0.234 : l
+[16:30:04]:[Server/Info]    -192.168.0.157 : Jan
+[16:30:04]:[Server/Info]    -192.168.0.234 : l
+[16:30:04]:[Server/Info]    -192.168.0.234 : *NONE*none*NONE+
+[16:30:04]:[Server/Info]    -192.168.0.234 : *NONE*none*NONE+
+[16:30:04]:[Server/Info]    -192.168.0.234 : *NONE*none*NONE+
+[16:30:04]:[Server/Info]    -192.168.0.234 : *NONE*none*NONE+
+[16:30:04]:[Server/Info]    -192.168.0.234 : *NONE*none*NONE+
+[16:30:04]:[Server/Info]    -192.168.0.234 : l
+[16:36:24]:[Server/Info] Gracefully stopping server...
+[16:36:24]:[Server/Info] Gracefully stopped server
+[16:36:37]:[Server/Info] Started on ip: 192.168.0.157 with port: 5000
+[16:36:42]:[Server/Info] 192.168.0.157 connected to the server
+[16:36:42]:[Server/Info] 192.168.0.157 sent client informations
+[16:36:46]:[Server/Error] Unknown command: listchannelö
+[16:36:46]:[Server/Error] type /help for a list of commands
+[16:36:48]:[Server/Info] 192.168.0.234 connected to the server
+[16:36:48]:[Server/Info] 192.168.0.234 sent client informations
+[16:36:51]:[Server/Error] Unknown command: l/listchannel
+[16:36:51]:[Server/Error] type /help for a list of commands
+[16:36:56]:[Server/Info] Channels:
+[16:36:56]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[16:36:56]:[Server/Info]    Clients:
+[16:36:56]:[Server/Info]    -192.168.0.157 : Jan
+[16:36:56]:[Server/Info]    -192.168.0.234 : l
+[16:37:01]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:37:05]:[Server/Info] Channels:
+[16:37:05]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[16:37:05]:[Server/Info]    Clients:
+[16:37:05]:[Server/Info]    -192.168.0.157 : Jan
+[16:37:09]:[Server/Info] 192.168.0.234 connected to the server
+[16:37:09]:[Server/Info] 192.168.0.234 sent client informations
+[16:37:18]:[Server/Error] Unknown command: l/listchannel
+[16:37:18]:[Server/Error] type /help for a list of commands
+[16:37:21]:[Server/Info] Channels:
+[16:37:21]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[16:37:21]:[Server/Info]    Clients:
+[16:37:21]:[Server/Info]    -192.168.0.157 : Jan
+[16:37:21]:[Server/Info]    -192.168.0.234 : l
+[16:37:27]:[Server/Error] 192.168.0.234 closed connection unexpectedly
+[16:37:33]:[Server/Info] 192.168.0.234 connected to the server
+[16:37:33]:[Server/Info] 192.168.0.234 sent client informations
+[16:39:58]:[Server/Info] Gracefully stopping server...
+[16:39:58]:[Server/Info] Gracefully stopped server

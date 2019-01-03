@@ -1,0 +1,72 @@
+[17:34:48]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[17:35:32]:[Server/Info] 192.168.0.105 connected to the server
+[17:35:32]:[Server/Info] 192.168.0.105 sent client informations
+[17:35:50]:[Server/Info] 192.168.0.100 connected to the server
+[17:35:50]:[Server/Info] 192.168.0.100 sent client informations
+[17:36:43]:[Server/Info] Channels:
+[17:36:43]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[17:36:43]:[Server/Info]    Clients:
+[17:36:43]:[Server/Info]    -192.168.0.105 : Jan
+[17:36:43]:[Server/Info]    -192.168.0.100 : Mac
+[17:36:49]:[Server/Info] Connected clients:
+[17:36:49]:[Server/Info] 192.168.0.105 with name Jan in Welcome Channel
+[17:36:49]:[Server/Info] 192.168.0.100 with name Mac in Welcome Channel
+[17:55:26]:[Server/Info] Gracefully stopping server...
+[17:55:26]:[Server/Info] Gracefully stopped server
+[17:57:55]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[17:57:59]:[Server/Info] Channels:
+[17:57:59]:[Server/Info]  -Welcome Channel : Description:welcome to the server
+[17:57:59]:[Server/Info]    Clients:
+[17:57:59]:[Server/Info]    -no clients present in this channel
+[17:57:59]:[Server/Info]  -Channel 1 : Description:channel 1
+[17:57:59]:[Server/Info]    Clients:
+[17:57:59]:[Server/Info]    -no clients present in this channel
+[17:57:59]:[Server/Info]  -Channel 2 : Description:channel 2
+[17:57:59]:[Server/Info]    Clients:
+[17:57:59]:[Server/Info]    -no clients present in this channel
+[17:57:59]:[Server/Info]  -Channel 3 : Description:channel 3
+[17:57:59]:[Server/Info]    Clients:
+[17:57:59]:[Server/Info]    -no clients present in this channel
+[18:28:33]:[Server/Info] Gracefully stopping server...
+[18:28:33]:[Server/Info] Gracefully stopped server
+[18:28:35]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[18:28:40]:[Server/Info] 192.168.0.100 connected to the server
+[18:28:40]:[Server/Info] 192.168.0.100 sent client informations
+[18:28:46]:[Server/Error] 192.168.0.100 Disconnected
+[18:28:52]:[Server/Info] 192.168.0.100 connected to the server
+[18:28:52]:[Server/Info] 192.168.0.100 sent client informations
+[18:29:33]:[Server/Info] Gracefully stopping server...
+[18:29:33]:[Server/Info] Gracefully stopped server
+[18:29:38]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[18:29:41]:[Server/Info] 192.168.0.100 connected to the server
+[18:29:41]:[Server/Info] 192.168.0.100 sent client informations
+[18:30:04]:[Server/Error] 192.168.0.100 Disconnected
+[18:30:05]:[Server/Info] Gracefully stopping server...
+[18:30:05]:[Server/Info] Gracefully stopped server
+[18:30:06]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[18:30:09]:[Server/Info] 192.168.0.100 connected to the server
+[18:30:09]:[Server/Info] 192.168.0.100 sent client informations
+[18:30:58]:[Server/Error] 192.168.0.100 Disconnected
+[18:31:14]:[Server/Info] 192.168.0.100 connected to the server
+[18:31:14]:[Server/Info] 192.168.0.100 sent client informations
+[18:33:27]:[Server/Error] 192.168.0.100 Disconnected
+[18:33:32]:[Server/Info] 192.168.0.100 connected to the server
+[18:33:32]:[Server/Info] 192.168.0.100 sent client informations
+[18:34:50]:[Server/Error] 192.168.0.100 Disconnected
+[18:34:54]:[Server/Info] 192.168.0.100 connected to the server
+[18:34:54]:[Server/Info] 192.168.0.100 sent client informations
+[18:35:02]:[Server/Error] 192.168.0.100 Disconnected
+[18:35:46]:[Server/Info] Gracefully stopping server...
+[18:35:46]:[Server/Info] Gracefully stopped server
+[18:36:42]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[18:36:46]:[Server/Info] 192.168.0.100 connected to the server
+[18:36:46]:[Server/Info] 192.168.0.100 sent client informations
+[18:36:54]:[Server/Error] 192.168.0.100 Disconnected
+[18:39:03]:[Server/Info] Gracefully stopping server...
+[18:39:03]:[Server/Info] Gracefully stopped server
+[18:39:04]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[18:39:08]:[Server/Info] 192.168.0.100 connected to the server
+[18:39:08]:[Server/Info] 192.168.0.100 sent client informations
+[18:39:11]:[Server/Error] 192.168.0.100 Disconnected
+[20:40:00]:[Server/Info] Gracefully stopping server...
+[20:40:00]:[Server/Info] Gracefully stopped server
