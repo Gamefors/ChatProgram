@@ -42,7 +42,9 @@ class ServerHandler:
 			print(requestdata)
 
 		elif requestId == "022":
-			print(requestdata)
+			s = requestdata.split(",")
+			for ch in s:
+				print(ch)
 
 		elif requestId == "405":
 			print(requestdata)
