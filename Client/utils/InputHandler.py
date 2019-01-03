@@ -13,11 +13,13 @@ class InputHandler:
 		#Create Commands
 		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")
 		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
+		self.cmdSetName = Command("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
 		self.cmdlistChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
 		self.cmdchangeChannel = Command("ChangeChannel", "/changeChannel <Channel Name>", "ChannelName", "Enter the specified channel.")
 		#Append Commands
 		self.commandList.append(self.cmdClear)
 		self.commandList.append(self.cmdHelp)
+		self.commandList.append(self.cmdSetName)
 		self.commandList.append(self.cmdlistChannel)
 		self.commandList.append(self.cmdchangeChannel)	
 
@@ -49,6 +51,15 @@ class InputHandler:
 					print("[Client/Error] Syntax: " + self.cmdchangeChannel.syntax)
 				if channelName != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + channelName))
+
+			elif command[0] == self.cmdSetName.name:
+				newName = None
+				try:
+					newName = command[1]
+				except IndexError:
+					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
+				if newName != None:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newName))
 
 			else:
 				print("[Client/Error] Unknown command: " + command[0])

@@ -101,7 +101,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					self.channelManager.addChannelMember(channelObject, clientObject)
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023Confirm"))
 					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
-					
+		
+		elif requestId == "031":
+			clientObject.username = requestdata
+			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
+
 		else:
 			if len(requestId) == 0:
 				raise SystemExit()

@@ -47,7 +47,11 @@ class ServerHandler:
 				print(ch)
 
 		elif requestId == "023":
-			print("[Client/Info] You succesfully changed channel.")
+			if requestdata == "Confirm":
+				print("[Client/Info] You succesfully changed channel.")
+
+		elif requestId == "031":
+			print(requestdata)
 
 		elif requestId == "405":
 			print(requestdata)
