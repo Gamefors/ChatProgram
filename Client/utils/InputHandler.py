@@ -44,22 +44,24 @@ class InputHandler:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022"))
 
 			elif command[0] == self.cmdchangeChannel.name:
-				channelName = None
+				newChannelName = None
 				try:
-					channelName = command[1]
+					newChannelName = command[1]
 				except IndexError:
 					print("[Client/Error] Syntax: " + self.cmdchangeChannel.syntax)
-				if channelName != None:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + channelName))
+				if newChannelName != None:
+					clientObject.channel = newChannelName
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
 
 			elif command[0] == self.cmdSetName.name:
-				newName = None
+				newUsername = None
 				try:
-					newName = command[1]
+					newUsername = command[1]
 				except IndexError:
 					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
-				if newName != None:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newName))
+				if newUsername != None:
+					clientObject.username = newUsername
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
 
 			else:
 				print("[Client/Error] Unknown command: " + command[0])

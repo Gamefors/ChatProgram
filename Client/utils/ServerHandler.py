@@ -47,8 +47,7 @@ class ServerHandler:
 				print(ch)
 
 		elif requestId == "023":
-			if requestdata == "Confirm":
-				print("[Client/Info] You succesfully changed channel.")
+			print(requestdata)
 
 		elif requestId == "031":
 			print(requestdata)
@@ -56,14 +55,7 @@ class ServerHandler:
 		elif requestId == "405":
 			print(requestdata)
 			self.banned = True
-		elif requestId == "201":#confirmation of username change
-			data = requestdata.split(":")
-			if requestdata[0] == "201True":				
-				self.username = requestdata[1]
-				print("succesfully changed name")
-				var = None	#if true then change username in client.py
-			else:
-				var = None # if false error or someting dont know		
+				
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:

@@ -99,7 +99,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					clientObject.channelObject = channelObject
 					self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
 					self.channelManager.addChannelMember(channelObject, clientObject)
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023Confirm"))
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
 					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
 		
 		elif requestId == "031":
