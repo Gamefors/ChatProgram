@@ -12,7 +12,7 @@ class Client:
 		self.inputHandler = InputHandler()
 		username = input("Username:")
 
-		self.clientObject = ClientObject(username, None, "192.168.0.100", 5000, "1_channel_is_managed_by_server") 
+		self.clientObject = ClientObject(username, None, "192.168.0.100", 5000, "first_channel_is_managed_by_server") 
 		self.connected = False
 
 		self.tryConnect()
