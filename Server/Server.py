@@ -25,7 +25,10 @@ class Server:
 		#Config
 		Config = self.fileHelper.getConfig()
 		self.port = Config.port
-		self.ipV4 = socket.gethostbyname(socket.gethostname())
+		try:
+			self.ipV4 = socket.gethostbyname(socket.gethostname())
+		except:
+			self.ipV4 = "localhost"
 		#Channel initialization
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
 		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
