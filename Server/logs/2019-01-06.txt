@@ -1,0 +1,8 @@
+[14:26:35]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000
+[14:27:20]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000
+[14:55:02]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000
+[14:55:42]:[Server/Info] 192.168.0.105 connected to the server
+[14:55:42]:[Server/Info] 192.168.0.105 sent client informations
+[14:55:49]:[Server/Info] 192.168.0.105 : Jan requested channel.
+[14:55:59]:[Server/Info] 192.168.0.105 : Jan changed channel to : channel_1
+[14:56:02]:[Server/Error] 192.168.0.105 Disconnected

@@ -7,12 +7,12 @@ from objects.Client import ClientObject#pylint: disable=E0611
 import threading, socket, time, sys, os
 class Client:
 
-	def __init__(self, Username):
+	def __init__(self):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.inputHandler = InputHandler()
-		#username = input("Username:")
+		username = input("Username:")
 
-		self.clientObject = ClientObject(Username, None, "192.168.0.100", 5000, "first_channel_is_managed_by_server") 
+		self.clientObject = ClientObject(username, None, "192.168.0.105", 5000, "first_channel_is_managed_by_server") 
 		self.connected = False
 
 		self.tryConnect()
@@ -45,4 +45,4 @@ class Client:
 				except:
 					self.connected = False
 
-#Client()
+Client()
