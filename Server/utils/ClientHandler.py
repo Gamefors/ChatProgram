@@ -93,7 +93,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
 		elif requestId == "023":
-			print("trying to change channel")
 			for channelObject in self.channelManager.channelList:
 				if channelObject.name.lower() == requestdata:				
 					clientObject.channelObject = channelObject
@@ -105,6 +104,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		elif requestId == "031":
 			clientObject.username = requestdata
 			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed names.")
 
 		else:
 			if len(requestId) == 0:

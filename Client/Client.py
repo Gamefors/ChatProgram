@@ -5,6 +5,7 @@ from utils.InputHandler import InputHandler#pylint: disable=E0611
 from objects.Client import ClientObject#pylint: disable=E0611
 
 import threading, socket, time, sys, os
+
 class Client:
 
 	def __init__(self):
@@ -12,7 +13,7 @@ class Client:
 		self.inputHandler = InputHandler()
 		username = input("Username:")
 
-		self.clientObject = ClientObject(username, None, "192.168.0.105", 5000, "first_channel_is_managed_by_server") 
+		self.clientObject = ClientObject(username, None, "192.168.0.100", 5000, "first_channel_is_managed_by_server") 
 		self.connected = False
 
 		self.tryConnect()

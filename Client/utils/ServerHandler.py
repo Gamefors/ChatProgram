@@ -40,12 +40,12 @@ class ServerHandler:
 			print(requestdata)
 		elif requestId == "411":
 			print(requestdata)
-
 		elif requestId == "022":
 			s = requestdata.split(",")
 			for ch in s:
-				print(ch)
-
+				t = ch.strip("[]")
+				t = t.strip("''")
+				print(t)
 		elif requestId == "023":
 			print(requestdata)
 
