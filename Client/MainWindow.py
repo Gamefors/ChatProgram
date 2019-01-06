@@ -11,7 +11,7 @@ class MainWindow:
         usernameLabel = Label(self.mainWindow, text="Username:")
         usernameLabel.pack()
         self.usernameEntry = Entry(self.mainWindow)
-        self.usernameEnt ry.pack()
+        self.usernameEntry.pack()
         LoginButton = Button(self.mainWindow, text = "Login", command=self.getUsername)
         LoginButton.pack()
         

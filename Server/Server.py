@@ -14,22 +14,15 @@ import socketserver, socket, threading
 
 class Server:
 
-	def __init__(self):
-		#Imports
+	def importScripts(self):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
 		self.inputHandler = InputHandler()
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
-		#Config
-		Config = self.fileHelper.getConfig()
-		self.port = Config.port
-		try:
-			self.ipV4 = socket.gethostbyname(socket.gethostname())
-		except:
-			self.ipV4 = "localhost"
-		#Channel initialization
+
+	def inizializeChannel(self):
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
 		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
 		self.channel2 = Channel("Channel_2", "channel 2", "No", 0, list())
@@ -38,12 +31,28 @@ class Server:
 		self.channelManager.addChannel(self.channel1)
 		self.channelManager.addChannel(self.channel2)
 		self.channelManager.addChannel(self.channel3)
-		#Server initializations
+
+	def inizializeServer(self):
 		self.server = ServerThread((self.ipV4, self.port), ClientHandler)
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
 		self.logHelper.printAndWriteServerLog("[Server/Info] Started on ip: " + self.ipV4 + " with port: " + str(self.port))
+
+	def __init__(self):
+		#Imports
+		self.importScripts()
+		#Config
+		Config = self.fileHelper.getConfig()
+		self.port = Config.port
+		try:
+			self.ipV4 = socket.gethostbyname(socket.gethostname())
+		except:
+			self.ipV4 = "localhost"
+		#Channel initialization
+		self.inizializeChannel()
+		#Server initializations
+		self.inizializeServer()
 		#Console Input
 		self.askForInput()
 
