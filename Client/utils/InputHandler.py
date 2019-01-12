@@ -32,18 +32,18 @@ class InputHandler:
 			isCommand = False
 			print("[Client/Error] type /help for a list of commands")
 		if isCommand:
-			if command[0] == self.cmdClear.name:
+			if str(command[0]).lower() == self.cmdClear.name:
 				os.system('cls' if os.name=='nt' else 'clear')
 
-			elif command[0] == self.cmdHelp.name:
+			elif str(command[0]).lower() == self.cmdHelp.name:
 				print("[Client/Info] Commands:")
 				for command in self.commandList:
 					print("[Client/Info] " + command.syntax + " : " + command.description)
 
-			elif command[0] == self.cmdlistChannel.name:
+			elif str(command[0]).lower() == self.cmdlistChannel.name:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022"))
 
-			elif command[0] == self.cmdchangeChannel.name:
+			elif str(command[0]).lower() == self.cmdchangeChannel.name:
 				newChannelName = None
 				try:
 					newChannelName = command[1]
@@ -53,10 +53,11 @@ class InputHandler:
 					clientObject.channel = newChannelName
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
 
-			elif command[0] == self.cmdSetName.name:
+			elif str(command[0]).lower() == self.cmdSetName.name:
 				newUsername = None
 				try:
 					newUsername = command[1]
+					print(newUsername)
 				except IndexError:
 					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
 				if newUsername != None:

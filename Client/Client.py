@@ -39,7 +39,7 @@ class Client:
 		while self.connected:			
 			message = input()
 			if str(message).startswith("/"):
-				self.inputHandler.handleInput(str(message[1:]).lower(), self.clientObject)
+				self.inputHandler.handleInput(str(message[1:]), self.clientObject)
 			else:
 				try:
 					self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))

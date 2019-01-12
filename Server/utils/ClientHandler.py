@@ -11,7 +11,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 	
 	appendClient = True
 	tryRecv = False
-
+	#overwrite
 	def handle(self):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.logHelper = LogHelper()
@@ -26,7 +26,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					try:
 						banTime = client.split(":")[1]
 					except IndexError:
-						var = None
+						var = None#pylint: disable=W0612
 					if self.clientObject.ip + "\n" == client:
 						self.logHelper.printAndWriteServerLog("[Server/Info] " + self.clientObject.ip + ":" + str(self.clientObject.port) + " is permanantly banned on the server")
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are permanantly banned on this server"))
@@ -94,7 +94,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 
 		elif requestId == "023":
 			for channelObject in self.channelManager.channelList:
-				if channelObject.name.lower() == requestdata:				
+				if channelObject.name == requestdata:				
 					clientObject.channelObject = channelObject
 					self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
 					self.channelManager.addChannelMember(channelObject, clientObject)
