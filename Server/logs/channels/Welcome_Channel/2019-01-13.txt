@@ -1,1 +1,7 @@
 [12:55:15]:[Server/Info][Welcome_Channel] 192.168.0.100 Jan : sd
+[14:42:13]:[Server/Info][Welcome_Channel] 192.168.0.105 Jan : fd
+[14:56:35]:[Server/Info][Welcome_Channel] 192.168.0.105 Jan : ds
+[15:02:27]:[Server/Info][Welcome_Channel] 192.168.0.105 /help : sd
+[15:04:37]:[Server/Info][Welcome_Channel] 192.168.0.105 Jan : sds
+[15:08:33]:[Server/Info][Welcome_Channel] 192.168.0.105 Jan : sd
+[15:10:15]:[Server/Info][Welcome_Channel] 192.168.0.105 Jan : print("[Client/Error] Syntax: " + self.cmdSetName.syntax

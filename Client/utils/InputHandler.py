@@ -2,7 +2,7 @@ from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=
 
 from objects.Command import Command#pylint: disable=E0611, E0401
 
-import os
+import os,time
 class InputHandler:
 	
 	commandList = list()
@@ -14,14 +14,16 @@ class InputHandler:
 		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")
 		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdSetName = Command("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
-		self.cmdlistChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
-		self.cmdchangeChannel = Command("ChangeChannel", "/changeChannel <Channel Name>", "ChannelName", "Enter the specified channel.")
+		self.cmdListChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
+		self.cmdChangeChannel = Command("ChangeChannel", "/changeChannel <Channel Name>", "ChannelName", "Enter the specified channel.")
+		self.cmdDisconnect = Command("Disconnect", "/disconnect", "None", "Disconnects you from the server.")
 		#Append Commands
 		self.commandList.append(self.cmdClear)
 		self.commandList.append(self.cmdHelp)
 		self.commandList.append(self.cmdSetName)
-		self.commandList.append(self.cmdlistChannel)
-		self.commandList.append(self.cmdchangeChannel)	
+		self.commandList.append(self.cmdListChannel)
+		self.commandList.append(self.cmdChangeChannel)	
+		self.commandList.append(self.cmdDisconnect)	
 
 	def handleInput(self, command, clientObject):
 		isCommand = True
@@ -42,10 +44,10 @@ class InputHandler:
 					print(command.syntax + " : " + command.description)
 				print("----------------------------------------------------------")
 
-			elif str(command[0]).lower() == self.cmdlistChannel.name:
+			elif str(command[0]).lower() == self.cmdListChannel.name:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022"))
 
-			elif str(command[0]).lower() == self.cmdchangeChannel.name:
+			elif str(command[0]).lower() == self.cmdChangeChannel.name:
 				newChannelName = None
 				try:
 					newChannelName = command[1]
@@ -65,7 +67,13 @@ class InputHandler:
 				if newUsername != None:
 					clientObject.username = newUsername
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
-#TODO:/quit /disconnect that kind of thing
+
+			elif str(command[0]).lower() == self.cmdDisconnect.name:
+				print("[Client/Info] You disconnected from the server.")
+				time.sleep(1.5)
+				clientObject.socketObject.shutdown(1)
+				clientObject.socketObject.close()
+				quit()
 			else:
 				print("[Client/Error] Unknown command: " + command[0])
 				print("[Client/Error] type /help for a list of commands")

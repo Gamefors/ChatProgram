@@ -272,3 +272,66 @@
 [13:20:24]:  Clients:
 [13:20:24]:  -channel is empty
 [13:20:24]:----------------------------------------------------------
+[14:42:03]:[Server/Info] 192.168.0.105 connected to the server
+[14:42:03]:[Server/Info] 192.168.0.105 sent client informations
+[14:42:15]:[Server/Error] 192.168.0.105 Disconnected
+[14:43:50]:[Server/Info] 192.168.0.105 connected to the server
+[14:43:50]:[Server/Info] 192.168.0.105 sent client informations
+[14:43:56]:[Server/Error] 192.168.0.105 Disconnected
+[14:44:21]:[Server/Info] 192.168.0.105 connected to the server
+[14:44:21]:[Server/Info] 192.168.0.105 sent client informations
+[14:49:11]:[Server/Error] 192.168.0.105 Disconnected
+[14:50:27]:[Server/Info] 192.168.0.105 connected to the server
+[14:50:27]:[Server/Info] 192.168.0.105 sent client informations
+[14:53:19]:[Server/Error] 192.168.0.105 Disconnected
+[14:56:34]:[Server/Info] 192.168.0.105 connected to the server
+[14:56:34]:[Server/Info] 192.168.0.105 sent client informations
+[14:57:12]:[Server/Error] 192.168.0.105 Disconnected
+[14:57:17]:[Server/Error] No clients connected
+[15:00:54]:[Server/Info] 192.168.0.105 connected to the server
+[15:00:54]:[Server/Info] 192.168.0.105 sent client informations
+[15:01:06]:[Server/Error] 192.168.0.105 Disconnected
+[15:01:38]:[Server/Info] 192.168.0.105 connected to the server
+[15:01:38]:[Server/Info] 192.168.0.105 sent client informations
+[15:01:59]:[Server/Error] 192.168.0.105 Disconnected
+[15:02:06]:[Server/Info] 192.168.0.105 connected to the server
+[15:02:06]:[Server/Info] 192.168.0.105 sent client informations
+[15:02:10]:[Server/Error] 192.168.0.105 Disconnected
+[15:02:24]:[Server/Info] 192.168.0.105 connected to the server
+[15:02:24]:[Server/Info] 192.168.0.105 sent client informations
+[15:02:39]:[Server/Error] 192.168.0.105 Disconnected
+[15:03:14]:[Server/Info] 192.168.0.105 connected to the server
+[15:03:14]:[Server/Info] 192.168.0.105 sent client informations
+[15:03:25]:[Server/Error] 192.168.0.105 Disconnected
+[15:03:37]:[Server/Info] 192.168.0.105 connected to the server
+[15:03:37]:[Server/Info] 192.168.0.105 sent client informations
+[15:03:42]:[Server/Error] 192.168.0.105 Disconnected
+[15:04:36]:[Server/Info] 192.168.0.105 connected to the server
+[15:04:36]:[Server/Info] 192.168.0.105 sent client informations
+[15:04:53]:[Server/Info] Connected clients:
+[15:04:53]:[Server/Info] 192.168.0.105 with name Jan in Welcome_Channel
+[15:04:59]:[Server/Error] 192.168.0.105 Disconnected
+[15:05:29]:[Server/Info] 192.168.0.105 connected to the server
+[15:05:29]:[Server/Info] 192.168.0.105 sent client informations
+[15:05:36]:[Server/Error] 192.168.0.105 Disconnected
+[15:05:44]:[Server/Info] 192.168.0.105 connected to the server
+[15:05:44]:[Server/Info] 192.168.0.105 sent client informations
+[15:05:49]:[Server/Error] 192.168.0.105 Disconnected
+[15:08:04]:[Server/Info] 192.168.0.105 connected to the server
+[15:08:04]:[Server/Info] 192.168.0.105 sent client informations
+[15:08:29]:[Server/Error] 192.168.0.105 Disconnected
+[15:08:32]:[Server/Info] 192.168.0.105 connected to the server
+[15:08:32]:[Server/Info] 192.168.0.105 sent client informations
+[15:08:47]:[Server/Error] 192.168.0.105 Disconnected
+[15:08:50]:[Server/Info] 192.168.0.105 connected to the server
+[15:08:50]:[Server/Info] 192.168.0.105 sent client informations
+[15:09:06]:[Server/Error] 192.168.0.105 Disconnected
+[15:09:10]:[Server/Info] 192.168.0.105 connected to the server
+[15:09:10]:[Server/Info] 192.168.0.105 sent client informations
+[15:09:11]:[Server/Error] 192.168.0.105 Disconnected
+[15:09:21]:[Server/Info] 192.168.0.105 connected to the server
+[15:09:21]:[Server/Info] 192.168.0.105 sent client informations
+[15:09:25]:[Server/Error] 192.168.0.105 Disconnected
+[15:10:12]:[Server/Info] 192.168.0.105 connected to the server
+[15:10:12]:[Server/Info] 192.168.0.105 sent client informations
+[15:10:21]:[Server/Error] 192.168.0.105 Disconnected
