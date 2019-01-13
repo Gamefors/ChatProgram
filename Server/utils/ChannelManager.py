@@ -12,3 +12,11 @@ class ChannelManager:
 
 	def addChannelMember(self, channelObject, ClientObject):
 		channelObject.clientList.append(ClientObject)
+
+	def channelExists(self, channel):
+		channelExists = False
+		for channelObject in self.channelList:
+			if channelObject.name == channel:
+				channelExists = True
+				break
+		return channelExists

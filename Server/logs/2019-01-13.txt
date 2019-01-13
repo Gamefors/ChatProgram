@@ -1,0 +1,274 @@
+[12:55:07]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[12:55:12]:[Server/Info] 192.168.0.100 connected to the server
+[12:55:12]:[Server/Info] 192.168.0.100 sent client informations
+[12:55:28]:[Server/Info] 192.168.0.100 : Jan requested channel.
+[13:00:28]:[Server/Info] Commands:
+[13:00:28]:[Server/Info] /listClients : Lists all connected clients with their name, ip and channel their in.
+[13:00:28]:[Server/Info] /clear : Clears your interpreter console.
+[13:00:28]:[Server/Info] /help : Shows a list of available commands.
+[13:00:28]:[Server/Info] /kick <IP> : Kicks the given IP from the server.
+[13:00:28]:[Server/Info] /ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:00:28]:[Server/Info] /listChannel : Lists all channels with their belonging clients.
+[13:01:16]:[Server/Info] Gracefully stopping server...
+[13:01:16]:[Server/Info] Gracefully stopped server
+[13:01:22]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:01:24]:[Server/Info] Commands:
+[13:01:24]: /listClients : Lists all connected clients with their name, ip and channel their in.
+[13:01:24]: /clear : Clears your interpreter console.
+[13:01:24]: /help : Shows a list of available commands.
+[13:01:24]: /kick <IP> : Kicks the given IP from the server.
+[13:01:24]: /ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:01:24]: /listChannel : Lists all channels with their belonging clients.
+[13:01:33]:[Server/Info] Gracefully stopping server...
+[13:01:33]:[Server/Info] Gracefully stopped server
+[13:01:35]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:01:36]:[Server/Info] Commands:
+[13:01:36]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:01:36]:/clear : Clears your interpreter console.
+[13:01:36]:/help : Shows a list of available commands.
+[13:01:36]:/kick <IP> : Kicks the given IP from the server.
+[13:01:36]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:01:36]:/listChannel : Lists all channels with their belonging clients.
+[13:01:42]:[Server/Info] Commands:
+[13:01:42]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:01:42]:/clear : Clears your interpreter console.
+[13:01:42]:/help : Shows a list of available commands.
+[13:01:42]:/kick <IP> : Kicks the given IP from the server.
+[13:01:42]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:01:42]:/listChannel : Lists all channels with their belonging clients.
+[13:02:16]:[Server/Info] Gracefully stopping server...
+[13:02:16]:[Server/Info] Gracefully stopped server
+[13:02:17]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:02:20]:[Server/Error] Unknown command: he
+[13:02:20]:[Server/Error] type /help for a list of commands
+[13:02:22]:[Server/Info] Commands:
+[13:02:22]:-----------------------
+[13:02:22]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:02:22]:/clear : Clears your interpreter console.
+[13:02:22]:/help : Shows a list of available commands.
+[13:02:22]:/kick <IP> : Kicks the given IP from the server.
+[13:02:22]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:02:22]:/listChannel : Lists all channels with their belonging clients.
+[13:02:36]:[Server/Info] Gracefully stopping server...
+[13:02:36]:[Server/Info] Gracefully stopped server
+[13:02:38]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:02:40]:[Server/Info] Commands:
+[13:02:40]:----------------------------------------------------------
+[13:02:40]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:02:40]:/clear : Clears your interpreter console.
+[13:02:40]:/help : Shows a list of available commands.
+[13:02:40]:/kick <IP> : Kicks the given IP from the server.
+[13:02:40]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:02:40]:/listChannel : Lists all channels with their belonging clients.
+[13:02:55]:[Server/Info] Gracefully stopping server...
+[13:02:55]:[Server/Info] Gracefully stopped server
+[13:02:56]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:02:59]:[Server/Info] Commands:
+[13:02:59]:----------------------------------------------------------
+[13:02:59]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:02:59]:/clear : Clears your interpreter console.
+[13:02:59]:/help : Shows a list of available commands.
+[13:02:59]:/kick <IP> : Kicks the given IP from the server.
+[13:02:59]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:02:59]:/listChannel : Lists all channels with their belonging clients.
+[13:02:59]:----------------------------------------------------------
+[13:03:11]:[Server/Info] Commands:
+[13:03:11]:----------------------------------------------------------
+[13:03:11]:/listClients : Lists all connected clients with their name, ip and channel their in.
+[13:03:11]:/clear : Clears your interpreter console.
+[13:03:11]:/help : Shows a list of available commands.
+[13:03:11]:/kick <IP> : Kicks the given IP from the server.
+[13:03:11]:/ban <IP> <TIME> : Bans the given IP for the given amount of time in Minutest.
+[13:03:11]:/listChannel : Lists all channels with their belonging clients.
+[13:03:11]:----------------------------------------------------------
+[13:04:01]:[Server/Info] 192.168.0.100 connected to the server
+[13:04:01]:[Server/Info] 192.168.0.100 sent client informations
+[13:11:36]:[Server/Error] 192.168.0.100 Disconnected
+[13:11:39]:[Server/Info] Gracefully stopping server...
+[13:11:39]:[Server/Info] Gracefully stopped server
+[13:11:41]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:11:45]:[Server/Info] 192.168.0.100 connected to the server
+[13:11:45]:[Server/Info] 192.168.0.100 sent client informations
+[13:11:49]:[Server/Info] 192.168.0.100 : jan tried to join channel that doesn't exists.
+[13:12:03]:[Server/Info] 192.168.0.100 : jan changed channel to : Channel_1
+[13:12:35]:[Server/Info] 192.168.0.100 : Jan changed names.
+[13:13:55]:[Server/Info] Channels:
+[13:13:55]:[Server/Info]  -Welcome_Channel : Description:welcome to the server
+[13:13:55]:[Server/Info]    Clients:
+[13:13:55]:[Server/Info]    -no clients present in this channel
+[13:13:55]:[Server/Info]  -Channel_1 : Description:channel 1
+[13:13:55]:[Server/Info]    Clients:
+[13:13:55]:[Server/Info]    -192.168.0.100 : Jan
+[13:13:55]:[Server/Info]  -Channel_2 : Description:channel 2
+[13:13:55]:[Server/Info]    Clients:
+[13:13:55]:[Server/Info]    -no clients present in this channel
+[13:13:55]:[Server/Info]  -Channel_3 : Description:channel 3
+[13:13:55]:[Server/Info]    Clients:
+[13:13:55]:[Server/Info]    -no clients present in this channel
+[13:14:12]:[Server/Error] 192.168.0.100 Disconnected
+[13:16:00]:[Server/Info] Gracefully stopping server...
+[13:16:00]:[Server/Info] Gracefully stopped server
+[13:16:01]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:16:04]:[Server/Info] Channels:
+[13:16:04]:----------------------------------------------------------
+[13:16:04]:  -Welcome_Channel : Description:welcome to the server
+[13:16:04]:    Clients:
+[13:16:04]:    -no clients present in this channel
+[13:16:04]:  -Channel_1 : Description:channel 1
+[13:16:04]:    Clients:
+[13:16:04]:    -no clients present in this channel
+[13:16:04]:  -Channel_2 : Description:channel 2
+[13:16:04]:    Clients:
+[13:16:04]:    -no clients present in this channel
+[13:16:04]:  -Channel_3 : Description:channel 3
+[13:16:04]:    Clients:
+[13:16:04]:    -no clients present in this channel
+[13:16:04]:----------------------------------------------------------
+[13:16:29]:[Server/Info] Gracefully stopping server...
+[13:16:29]:[Server/Info] Gracefully stopped server
+[13:16:29]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:16:35]:[Server/Info] Channels:
+[13:16:35]:----------------------------------------------------------
+[13:16:35]:-Welcome_Channel : Description:welcome to the server
+[13:16:35]:  Clients:
+[13:16:35]:  -no clients present in this channel
+[13:16:35]:-Channel_1 : Description:channel 1
+[13:16:35]:  Clients:
+[13:16:35]:  -no clients present in this channel
+[13:16:35]:-Channel_2 : Description:channel 2
+[13:16:35]:  Clients:
+[13:16:35]:  -no clients present in this channel
+[13:16:35]:-Channel_3 : Description:channel 3
+[13:16:35]:  Clients:
+[13:16:35]:  -no clients present in this channel
+[13:16:35]:----------------------------------------------------------
+[13:17:07]:[Server/Info] Gracefully stopping server...
+[13:17:07]:[Server/Info] Gracefully stopped server
+[13:17:08]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:17:10]:[Server/Info] Channels:
+[13:17:10]:----------------------------------------------------------
+[13:17:10]:-Welcome_Channel : Description:welcome to the server
+[13:17:10]:  Clients:
+[13:17:10]:  -channel is empty
+[13:17:10]:-Channel_1 : Description:channel 1
+[13:17:10]:  Clients:
+[13:17:10]:  -channel is empty
+[13:17:10]:-Channel_2 : Description:channel 2
+[13:17:10]:  Clients:
+[13:17:10]:  -channel is empty
+[13:17:10]:-Channel_3 : Description:channel 3
+[13:17:10]:  Clients:
+[13:17:10]:  -channel is empty
+[13:17:10]:----------------------------------------------------------
+[13:18:05]:[Server/Info] Gracefully stopping server...
+[13:18:05]:[Server/Info] Gracefully stopped server
+[13:18:06]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:18:09]:[Server/Info] Channels:
+[13:18:09]:----------------------------------------------------------
+[13:18:09]:-Welcome_Channel : Description:welcome to the server
+
+[13:18:09]:  Clients:
+[13:18:09]:  -channel is empty
+[13:18:09]:-Channel_1 : Description:channel 1
+
+[13:18:09]:  Clients:
+[13:18:09]:  -channel is empty
+[13:18:09]:-Channel_2 : Description:channel 2
+
+[13:18:09]:  Clients:
+[13:18:09]:  -channel is empty
+[13:18:09]:-Channel_3 : Description:channel 3
+
+[13:18:09]:  Clients:
+[13:18:09]:  -channel is empty
+[13:18:09]:----------------------------------------------------------
+[13:18:30]:[Server/Info] Gracefully stopping server...
+[13:18:30]:[Server/Info] Gracefully stopped server
+[13:18:31]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:18:34]:[Server/Info] Channels:
+[13:18:34]:----------------------------------------------------------
+[13:18:34]:-Welcome_Channel : Description:welcome to the server
+[13:18:34]:  Clients:
+[13:18:34]:  -channel is empty
+[13:18:34]:-Channel_1 : Description:channel 1
+[13:18:34]:  Clients:
+[13:18:34]:  -channel is empty
+[13:18:34]:-Channel_2 : Description:channel 2
+[13:18:34]:  Clients:
+[13:18:34]:  -channel is empty
+[13:18:34]:-Channel_3 : Description:channel 3
+[13:18:34]:  Clients:
+[13:18:34]:  -channel is empty
+[13:18:34]:----------------------------------------------------------
+[13:19:07]:[Server/Info] Gracefully stopping server...
+[13:19:07]:[Server/Info] Gracefully stopped server
+[13:19:08]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:19:11]:[Server/Info] Channels:
+[13:19:11]:----------------------------------------------------------
+[13:19:11]:-Welcome_Channel : Description:welcome to the server
+[13:19:11]:  Clients:
+[13:19:11]:  -channel is empty
+[13:19:11]:-Channel_1 : Description:channel 1
+[13:19:11]:  Clients:
+[13:19:11]:  -channel is empty
+[13:19:11]:-Channel_2 : Description:channel 2
+[13:19:11]:  Clients:
+[13:19:11]:  -channel is empty
+[13:19:11]:-Channel_3 : Description:channel 3
+[13:19:11]:  Clients:
+[13:19:11]:  -channel is empty
+[13:19:11]:----------------------------------------------------------
+[13:19:36]:[Server/Info] Gracefully stopping server...
+[13:19:36]:[Server/Info] Gracefully stopped server
+[13:19:38]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:19:40]:[Server/Info] Channels:
+[13:19:40]:----------------------------------------------------------
+[13:19:40]:-Welcome_Channel : Description:welcome to the server
+[13:19:40]:  Clients:
+[13:19:40]:  -channel is empty
+[13:19:40]:-Channel_1 : Description:channel 1
+[13:19:40]:  Clients:
+[13:19:40]:  -channel is empty
+[13:19:40]:-Channel_2 : Description:channel 2
+[13:19:40]:  Clients:
+[13:19:40]:  -channel is empty
+[13:19:40]:-Channel_3 : Description:channel 3
+[13:19:40]:  Clients:
+[13:19:40]:  -channel is empty
+[13:19:40]:----------------------------------------------------------
+[13:19:57]:[Server/Info] Gracefully stopping server...
+[13:19:57]:[Server/Info] Gracefully stopped server
+[13:19:57]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:20:00]:[Server/Info] Channels:
+[13:20:00]:----------------------------------------------------------
+[13:20:00]:-Welcome_Channel : Description:welcome to the server
+[13:20:00]:  Clients:
+[13:20:00]:  -channel is empty
+[13:20:00]:-Channel_1 : Description:channel 1
+[13:20:00]:  Clients:
+[13:20:00]:  -channel is empty
+[13:20:00]:-Channel_2 : Description:channel 2
+[13:20:00]:  Clients:
+[13:20:00]:  -channel is empty
+[13:20:00]:-Channel_3 : Description:channel 3
+[13:20:00]:  Clients:
+[13:20:00]:  -channel is empty
+[13:20:00]:----------------------------------------------------------
+[13:20:20]:[Server/Info] Gracefully stopping server...
+[13:20:20]:[Server/Info] Gracefully stopped server
+[13:20:21]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[13:20:24]:[Server/Info] Channels:
+[13:20:24]:----------------------------------------------------------
+[13:20:24]:-Welcome_Channel : Description:welcome to the server
+[13:20:24]:  Clients:
+[13:20:24]:  -channel is empty
+[13:20:24]:-Channel_1 : Description:channel 1
+[13:20:24]:  Clients:
+[13:20:24]:  -channel is empty
+[13:20:24]:-Channel_2 : Description:channel 2
+[13:20:24]:  Clients:
+[13:20:24]:  -channel is empty
+[13:20:24]:-Channel_3 : Description:channel 3
+[13:20:24]:  Clients:
+[13:20:24]:  -channel is empty
+[13:20:24]:----------------------------------------------------------

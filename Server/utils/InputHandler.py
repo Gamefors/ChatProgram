@@ -50,8 +50,10 @@ class InputHandler:
 		
 		elif command[0] == self.cmdHelp.name:
 			self.logHelper.printAndWriteServerLog("[Server/Info] Commands:")
+			self.logHelper.printAndWriteServerLog("----------------------------------------------------------")
 			for command in self.commandList:
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + command.syntax + " : " + command.description)
+				self.logHelper.printAndWriteServerLog(command.syntax + " : " + command.description)
+			self.logHelper.printAndWriteServerLog("----------------------------------------------------------")
 		
 		elif command[0] == self.cmdKick.name:
 			if len(self.clientManager.clientList) < 1:
@@ -110,14 +112,16 @@ class InputHandler:
 						
 		elif command[0] == self.cmdListChannel.name:
 			self.logHelper.printAndWriteServerLog("[Server/Info] Channels:")
+			self.logHelper.printAndWriteServerLog("----------------------------------------------------------")
 			for channel in self.channelManager.channelList:
-				self.logHelper.printAndWriteServerLog("[Server/Info]  -" + channel.name + " : Description:" + channel.description)
-				self.logHelper.printAndWriteServerLog("[Server/Info]    Clients:")
+				self.logHelper.printAndWriteServerLog("-" + channel.name + " : Description:" + channel.description)
+				self.logHelper.printAndWriteServerLog("  Clients:")
 				if len(channel.clientList) < 1:
-					self.logHelper.printAndWriteServerLog("[Server/Info]    -no clients present in this channel")
+					self.logHelper.printAndWriteServerLog("  -channel is empty")
 				else:
 					for client in channel.clientList:
-						self.logHelper.printAndWriteServerLog("[Server/Info]    -" + client.ip + " : " + client.username)
+						self.logHelper.printAndWriteServerLog("  -" + client.ip + " : " + client.username)
+			self.logHelper.printAndWriteServerLog("----------------------------------------------------------")
 
 		else:
 			self.logHelper.printAndWriteServerLog("[Server/Error] Unknown command: " + command[0])

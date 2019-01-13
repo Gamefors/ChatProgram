@@ -37,8 +37,10 @@ class InputHandler:
 
 			elif str(command[0]).lower() == self.cmdHelp.name:
 				print("[Client/Info] Commands:")
+				print("----------------------------------------------------------")
 				for command in self.commandList:
-					print("[Client/Info] " + command.syntax + " : " + command.description)
+					print(command.syntax + " : " + command.description)
+				print("----------------------------------------------------------")
 
 			elif str(command[0]).lower() == self.cmdlistChannel.name:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022"))
@@ -63,7 +65,7 @@ class InputHandler:
 				if newUsername != None:
 					clientObject.username = newUsername
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
-
+#TODO:/quit /disconnect that kind of thing
 			else:
 				print("[Client/Error] Unknown command: " + command[0])
 				print("[Client/Error] type /help for a list of commands")

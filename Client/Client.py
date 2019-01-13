@@ -32,7 +32,7 @@ class Client:
 			except:
 				trys = trys + 1
 				os.system('cls' if os.name=='nt' else 'clear')
-				print("[Client/Info] Attempting to connect to server. Attempts: " + str(trys))
+				print("[Client/Info] Attempting to connect to server with ip: " + self.clientObject.ip + ". Attempts: " + str(trys))
 				time.sleep(5)
 
 	def askForInput(self):
