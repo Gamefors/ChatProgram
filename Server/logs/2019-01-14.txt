@@ -1,0 +1,14 @@
+[20:44:01]:[Server/Error] Unknown command: listclient
+[20:44:01]:[Server/Error] type /help for a list of commands
+[20:44:01]:[Server/Error] Commands always start with (/)
+[22:32:24]:[Server/Info] 192.168.0.105 connected to the server
+[22:32:29]:[Server/Error] 192.168.0.105 Disconnected
+[22:33:06]:[Server/Info] 192.168.0.105 connected to the server
+[22:33:06]:[Server/Error] 192.168.0.105 Disconnected
+[22:34:08]:[Server/Info] 192.168.0.105 connected to the server
+[22:34:11]:[Server/Error] 192.168.0.105 Disconnected
+[22:35:37]:[Server/Info] 192.168.0.105 connected to the server
+[22:35:39]:[Server/Error] 192.168.0.105 Disconnected
+[22:38:12]:[Server/Info] 192.168.0.105 connected to the server
+[22:38:12]:[Server/Info] 192.168.0.105 sent client informations
+[22:38:13]:[Server/Error] 192.168.0.105 Disconnected

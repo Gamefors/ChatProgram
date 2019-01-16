@@ -335,3 +335,7 @@
 [15:10:12]:[Server/Info] 192.168.0.105 connected to the server
 [15:10:12]:[Server/Info] 192.168.0.105 sent client informations
 [15:10:21]:[Server/Error] 192.168.0.105 Disconnected
+[20:18:18]:[Server/Info] 192.168.0.105 connected to the server
+[20:18:18]:[Server/Info] 192.168.0.105 sent client informations
+[20:23:49]:[Server/Error] Unknown command: clearr
+[20:23:49]:[Server/Error] type /help for a list of commands

@@ -52,7 +52,7 @@ class InputHandler:
 				try:
 					newChannelName = command[1]
 				except IndexError:
-					print("[Client/Error] Syntax: " + self.cmdchangeChannel.syntax)
+					print("[Client/Error] Syntax: " + self.cmdChangeChannel.syntax)
 				if newChannelName != None:
 					clientObject.channel = newChannelName
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
