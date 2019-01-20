@@ -1,6 +1,7 @@
 from utils.ServerHandler import ServerHandler#pylint: disable=E0611
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611
 from utils.InputHandler import InputHandler#pylint: disable=E0611
+from utils.FileHelper import FileHelper#pylint: disable=E0611
 
 from objects.Client import ClientObject#pylint: disable=E0611
 
@@ -11,9 +12,10 @@ class Client:
 	def __init__(self):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.inputHandler = InputHandler()
+		self.fileHelper = FileHelper()
 		username = input("Username:")
-
-		self.clientObject = ClientObject(username, None, "192.168.0.100", 5000, "first_channel_is_managed_by_server") 
+		Config = self.fileHelper.getConfig()
+		self.clientObject = ClientObject(username, None, Config.ip, Config.port, "first_channel_is_managed_by_server") 
 		self.connected = False
 
 		self.tryConnect()
