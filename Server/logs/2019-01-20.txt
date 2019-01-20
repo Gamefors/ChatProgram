@@ -1,3 +1,8 @@
 [17:04:19]:[Server/Info] Started on ip: localhost with port: 5000
 [17:04:22]:[Server/Info] Gracefully stopping server...
 [17:04:22]:[Server/Info] Gracefully stopped server
+[17:26:49]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[17:27:05]:[Server/Info] 192.168.0.105 connected to the server
+[17:27:05]:[Server/Info] 192.168.0.105 sent client informations
+[17:27:50]:[Server/Info] Gracefully stopping server...
+[17:27:50]:[Server/Info] Gracefully stopped server
