@@ -1,0 +1,133 @@
+[13:38]:[Server] got connection from ('127.0.0.1', 55437)
+[13:38]:[Server] got connection from ('127.0.0.1', 55450)
+[13:41]:[Server] got connection from ('127.0.0.1', 55451)
+[13:42]:[Server] got connection from ('127.0.0.1', 55459)
+[13:43]:[Server] got connection from ('127.0.0.1', 55462)
+[13:44]:[Server] got connection from ('127.0.0.1', 55470)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55483)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55491)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55501)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55583)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55586)
+[13:44]:[Server] jan tried to login
+[13:44]:[Server] got connection from ('127.0.0.1', 55597)
+[13:44]:[Server] jan tried to login
+[13:56]:[Server] got connection from ('127.0.0.1', 55610)
+[13:56]:[Server] jan tried to login
+[13:57]:[Server] got connection from ('127.0.0.1', 55619)
+[13:57]:[Server] jan tried to login
+[13:57]:[Server] got connection from ('127.0.0.1', 55629)
+[13:57]:[Server] jan tried to login
+[14:02]:[Server] got connection from ('127.0.0.1', 55636)
+[14:02]:[Server] jan tried to login
+[14:02]:[Server] got connection from ('127.0.0.1', 55639)
+[14:02]:[Server] jan tried to login
+[14:03]:[Server] got connection from ('127.0.0.1', 55641)
+[14:03]:[Server] jan tried to login
+[14:03]:[Server] got connection from ('127.0.0.1', 55645)
+[14:03]:[Server] jan tried to login
+[14:03]:[Server] got connection from ('127.0.0.1', 55651)
+[14:03]:[Server] name tried to login
+[14:10]:[Server] got connection from ('127.0.0.1', 55665)
+[14:10]:[Server] jan tried to login
+[14:10]:[Server] got connection from ('127.0.0.1', 55670)
+[14:10]:[Server] jan tried to login
+[14:14]:[Server] got connection from ('127.0.0.1', 55676)
+[14:14]:[Server] jan tried to login
+[14:14]:[Server] got connection from ('127.0.0.1', 55681)
+[14:14]:[Server] name tried to login
+[14:16]:[Server] got connection from ('127.0.0.1', 55692)
+[14:16]:[Server] jan tried to login
+[14:16]:[Server] got connection from ('127.0.0.1', 55695)
+[14:16]:[Server] name tried to login
+[14:18]:[Server] got connection from ('127.0.0.1', 55698)
+[14:18]:[Server] jan tried to login
+[14:18]:[Server] got connection from ('127.0.0.1', 55701)
+[14:18]:[Server] name tried to login
+[14:19]:[Server] got connection from ('127.0.0.1', 55708)
+[14:19]:[Server] jan tried to login
+[14:19]:[Server] got connection from ('127.0.0.1', 55711)
+[14:19]:[Server] name tried to login
+[14:21]:[Server] got connection from ('127.0.0.1', 55716)
+[14:21]:[Server] jan tried to login
+[14:21]:[Server] got connection from ('127.0.0.1', 55719)
+[14:21]:[Server] name tried to login
+[14:23]:[Server] got connection from ('127.0.0.1', 55729)
+[14:23]:[Server] jan tried to login
+[14:24]:[Server] got connection from ('127.0.0.1', 55732)
+[14:24]:[Server] jan tried to login
+[14:24]:[Server] got connection from ('127.0.0.1', 55738)
+[14:24]:[Server] name tried to login
+[14:25]:[Server] got connection from ('127.0.0.1', 55745)
+[14:25]:[Server] jan tried to login
+[14:25]:[Server] got connection from ('127.0.0.1', 55748)
+[14:25]:[Server] name tried to login
+[16:54]:[Server] got connection from ('127.0.0.1', 50232)
+[16:54]:[Server] jan tried to login
+[16:54]:[Server] got connection from ('127.0.0.1', 50235)
+[16:54]:[Server] name tried to login
+[17:39]:[Server] got connection from ('127.0.0.1', 50421)
+[17:39]:[Server] jan tried to login
+[17:43]:[Server] got connection from ('127.0.0.1', 50447)
+[17:43]:[Server] jan tried to login
+[17:43]:jan requested rooms
+[17:44]:[Server] got connection from ('127.0.0.1', 50450)
+[17:44]:[Server] jan tried to login
+[17:44]:[Server] jan requested rooms
+[17:44]:[Server] jan changed room to defaultroom1
+[17:52]:[Server] got connection from ('127.0.0.1', 50472)
+[17:52]:[Server] jan tried to login
+[17:52]:[Server] jan requested rooms
+[17:58]:[Server] got connection from ('127.0.0.1', 50533)
+[17:58]:[Server] jan tried to login
+[17:58]:[Server] jan requested rooms
+[17:58]:[Server] jan changed room to defaultroom1
+[18:01]:[Server] got connection from ('127.0.0.1', 50541)
+[18:01]:[Server] jan tried to login
+[18:01]:[Server] jan requested rooms
+[18:02]:[Server] got connection from ('127.0.0.1', 50544)
+[18:02]:[Server] jan tried to login
+[18:02]:[Server] jan requested rooms
+[18:07]:[Server] got connection from ('127.0.0.1', 50553)
+[18:07]:[Server] jan tried to login
+[18:07]:[Server] jan requested rooms
+[18:07]:[Server] jan changed room to defaultroom1
+[18:09]:[Server] got connection from ('127.0.0.1', 50564)
+[18:09]:[Server] jan tried to login
+[18:09]:[Server] jan requested rooms
+[18:09]:[Server] jan changed room to defaultroom1
+[18:10]:[Server] got connection from ('127.0.0.1', 50575)
+[18:10]:[Server] jan tried to login
+[18:10]:[Server] jan requested rooms
+[18:10]:[Server] jan changed room to defaultroom1
+[18:39]:[Server] got connection from ('127.0.0.1', 50944)
+[18:41]:[Server] got connection from ('127.0.0.1', 50983)
+[18:42]:[Server] got connection from ('127.0.0.1', 51034)
+[18:42]:[Server] registered user testuser
+[19:10]:[Server] got connection from ('127.0.0.1', 51152)
+[19:11]:[Server] got connection from ('127.0.0.1', 51156)
+[19:12]:[Server] got connection from ('127.0.0.1', 51163)
+[19:13]:[Server] got connection from ('127.0.0.1', 51164)
+[19:16]:[Server] got connection from ('127.0.0.1', 51165)
+[19:17]:[Server] got connection from ('127.0.0.1', 51187)
+[20:12]:[Server] got connection from ('127.0.0.1', 51368)
+[20:12]:[Server] jan tried to login
+[20:12]:[Server] jan requested channels
+[20:12]:[Server] jan changed channel to defaultroom1
+[21:17]:[Server] got connection from ('127.0.0.1', 51507)
+[21:17]:[Server] jan tried to login
+[21:17]:[Server] jan requested channels
+[21:17]:[Server] jan changed channel to defaultchannel1
+[21:18]:[Server] got connection from ('127.0.0.1', 51511)
+[21:18]:[Server] jan tried to login
+[21:18]:[Server] jan requested channels
+[21:18]:[Server] jan changed channel to defaultchannel1
+[21:19]:[Server] got connection from ('127.0.0.1', 51514)
+[21:19]:[Server] jan tried to login
+[21:19]:[Server] jan requested channels
+[21:19]:[Server] jan changed channel to defaultchannel1

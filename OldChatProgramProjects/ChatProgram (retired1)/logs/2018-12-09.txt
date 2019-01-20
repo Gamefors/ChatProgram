@@ -1,0 +1,72 @@
+[04:21]:[Server] got connection from ('127.0.0.1', 60233) and started sending keep alive packages to him
+[04:21]:[Server] jan tried to login
+[04:21]:[Server] test tried to login
+[04:21]:No keep alive packet recieved from 127.0.0.1:60233. Closed connection!
+[04:24]:[Server] got connection from ('127.0.0.1', 60251) and started sending keep alive packages to him
+[04:24]:[Server] registered user gamefors
+[04:24]:[Server] gamefors tried to login
+[04:24]:[Server] gamefors requested channels
+[04:24]:No keep alive packet recieved from 127.0.0.1:60251. Closed connection!
+[04:27]:[Server] got connection from ('127.0.0.1', 60270) and started sending keep alive packages to him
+[04:27]:[Server] gamefors tried to login
+[04:27]:[Server] gamefors tried to login
+[04:27]:[Server] gamefors requested channels
+[04:27]:[Server] gamefors changed channel to channel1
+[04:27]:[Server] gamefors requested channels
+[04:27]:[Server] gamefors changed channel to channel1
+[04:27]:[Server] got connection from ('127.0.0.1', 60290) and started sending keep alive packages to him
+[04:27]:[Server] registered user tim
+[04:27]:[Server] tim tried to login
+[04:27]:[Server] tim requested channels
+[04:27]:[Server] tim changed channel to channel1
+[04:27]:[Server] tim requested channels
+[04:27]:[Server] gamefors requested channels
+[04:27]:No keep alive packet recieved from 127.0.0.1:60290. Closed connection!
+[04:27]:No keep alive packet recieved from 127.0.0.1:60270. Closed connection!
+[04:33]:[Server] got connection from ('192.168.0.105', 60324) and started sending keep alive packages to him
+[04:37]:[Server] got connection from ('192.168.0.1', 60387) and started sending keep alive packages to him
+[04:56]:[Server] got connection from ('192.168.0.1', 60429) and started sending keep alive packages to him
+[04:56]:[Server] gamefors tried to login
+[04:56]:[Server] gamefors requested channels
+[04:56]:[Server] gamefors changed channel to channel1
+[04:56]:[Server] got connection from ('109.91.38.132', 37032) and started sending keep alive packages to him
+[04:56]:No keep alive packet recieved from 109.91.38.132:37032. Closed connection!
+[04:56]:[Server] registered user Dragon707LP
+[04:58]:[Server] got connection from ('109.91.38.132', 37030) and started sending keep alive packages to him
+[04:58]:[Server] got connection from ('192.168.0.1', 60455) and started sending keep alive packages to him
+[04:58]:[Server] gamefors tried to login
+[04:58]:[Server] gamefors requested channels
+[05:00]:[Server] got connection from ('192.168.0.1', 60462) and started sending keep alive packages to him
+[05:00]:[Server] got connection from ('109.91.38.132', 37085) and started sending keep alive packages to him
+[05:00]:[Server] gamefors tried to login
+[05:00]:[Server] gamefors requested channels
+[05:00]:[Server] Tim tried to login
+[05:00]:[Server] Tim requested channels
+[05:00]:[Server] got connection from ('109.91.38.132', 37114) and started sending keep alive packages to him
+[05:00]:[Server] Tim tried to login
+[05:00]:[Server] got connection from ('192.168.0.1', 60474) and started sending keep alive packages to him
+[05:00]:[Server] tim tried to login
+[05:00]:[Server] tim tried to login
+[05:00]:[Server] tim requested channels
+[05:00]:[Server] got connection from ('192.168.0.1', 60479) and started sending keep alive packages to him
+[05:00]:[Server] tim tried to login
+[05:00]:[Server] tim requested channels
+[12:32]:[Server] got connection from ('192.168.0.100', 54871) and started sending keep alive packages to him
+[12:32]:[Server] gamefors tried to login
+[12:32]:[Server] gamefors requested channels
+[12:32]:[Server] gamefors changed channel to channel1
+[12:32]:No keep alive packet recieved from 192.168.0.100:54871. Closed connection!
+[12:32]:[Server] got connection from ('192.168.0.1', 51262) and started sending keep alive packages to him
+[12:32]:[Server] tim tried to login
+[12:32]:[Server] tim requested channels
+[12:32]:[Server] tim changed channel to channel1
+[12:32]:No keep alive packet recieved from 192.168.0.1:51262. Closed connection!
+[12:34]:[Server] got connection from ('192.168.0.100', 54877) and started sending keep alive packages to him
+[12:34]:[Server] gamefors tried to login
+[12:34]:[Server] gamefors requested channels
+[12:34]:[Server] gamefors changed channel to channel1
+[12:34]:[Server] got connection from ('192.168.0.1', 51324) and started sending keep alive packages to him
+[12:34]:[Server] tim  tried to login
+[12:34]:[Server] tim  requested channels
+[12:34]:[Server] tim  changed channel to channel1
+[12:34]:No keep alive packet recieved from 192.168.0.100:54877. Closed connection!

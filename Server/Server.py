@@ -65,7 +65,7 @@ class Server:
 		Config = self.fileHelper.getConfig()
 		self.port = Config.port
 		try:
-			self.ipV4 = socket.gethostbyname(socket.gethostname())
+			self.ipV4 = "192.168.0.105" #socket.gethostbyname(socket.gethostname())
 		except:
 			self.ipV4 = "localhost"
 		#Channel initialization

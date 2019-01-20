@@ -1,0 +1,380 @@
+[09:57]:[Server] got connection from ('127.0.0.1', 56725)
+[09:57]:[Server] jan tried to login
+[09:57]:[Server] jan requested channels
+[09:57]:[Server] jan changed channel to defaultchannel1
+[09:58]:[Server] got connection from ('127.0.0.1', 56731)
+[09:58]:[Server] jan tried to login
+[09:58]:[Server] jan requested channels
+[09:58]:[Server] jan changed channel to defaultchannel1
+[09:58]:[Server] got connection from ('127.0.0.1', 56734)
+[09:58]:[Server] jan tried to login
+[09:58]:[Server] jan requested channels
+[10:00]:[Server] got connection from ('127.0.0.1', 56737)
+[10:00]:[Server] jan tried to login
+[10:00]:[Server] jan requested channels
+[10:00]:[Server] jan changed channel to defaultchannel1
+[10:01]:[Server] got connection from ('127.0.0.1', 56740)
+[10:01]:[Server] jan tried to login
+[10:01]:[Server] jan requested channels
+[10:01]:[Server] jan changed channel to defaultchannel1
+[10:02]:[Server] got connection from ('127.0.0.1', 56744)
+[10:03]:[Server] got connection from ('127.0.0.1', 56745)
+[10:03]:[Server] jan tried to login
+[10:03]:[Server] jan requested channels
+[10:04]:[Server] got connection from ('127.0.0.1', 56749)
+[10:05]:[Server] got connection from ('127.0.0.1', 56750)
+[10:05]:[Server] jan tried to login
+[10:06]:[Server] got connection from ('127.0.0.1', 56752)
+[10:06]:[Server] jan tried to login
+[10:06]:No keep alive packet recieved from 127.0.0.1:56752. Closed connection!
+[10:06]:[Server] jan tried to login
+[10:06]:[Server] jan tried to login
+[10:09]:[Server] got connection from ('127.0.0.1', 56764)
+[10:09]:No keep alive packet recieved from 127.0.0.1:56764. Closed connection!
+[10:12]:[Server] got connection from ('127.0.0.1', 56770)
+[10:12]:No keep alive packet recieved from 127.0.0.1:56770. Closed connection!
+[10:13]:[Server] got connection from ('127.0.0.1', 56771)
+[10:19]:[Server] got connection from ('127.0.0.1', 56819)
+[10:19]:No keep alive packet recieved from 127.0.0.1:56819. Closed connection!
+[10:21]:[Server] got connection from ('127.0.0.1', 56824)
+[10:21]:[Server] got connection from ('127.0.0.1', 56829)
+[10:21]:No keep alive packet recieved from 127.0.0.1:56829. Closed connection!
+[10:24]:[Server] got connection from ('127.0.0.1', 56834)
+[16:39]:[Server] got connection from ('127.0.0.1', 50239)
+[16:39]:[Server] jan tried to login
+[16:39]:[Server] jan requested channels
+[16:39]:[Server] jan changed channel to defaultchannel1
+[16:39]:No keep alive packet recieved from 127.0.0.1:50239. Closed connection!
+[18:47]:[Server] got connection from ('127.0.0.1', 52466)
+[18:47]:No keep alive packet recieved from 127.0.0.1:52466. Closed connection!
+[18:56]:[Server] got connection from ('127.0.0.1', 52520) and started sending keep alive packages to him
+[18:56]:No keep alive packet recieved from 127.0.0.1:52520. Closed connection!
+[19:00]:[Server] got connection from ('127.0.0.1', 52562) and started sending keep alive packages to him
+[19:00]:No keep alive packet recieved from 127.0.0.1:52562. Closed connection!
+[19:02]:[Server] got connection from ('127.0.0.1', 52573) and started sending keep alive packages to him
+[19:02]:No keep alive packet recieved from 127.0.0.1:52573. Closed connection!
+[19:03]:[Server] got connection from ('127.0.0.1', 52580) and started sending keep alive packages to him
+[19:03]:No keep alive packet recieved from 127.0.0.1:52580. Closed connection!
+[19:04]:[Server] got connection from ('127.0.0.1', 52582) and started sending keep alive packages to him
+[19:04]:[Server] jan tried to login
+[19:04]:[Server] jan requested channels
+[19:04]:No keep alive packet recieved from 127.0.0.1:52582. Closed connection!
+[19:12]:[Server] got connection from ('127.0.0.1', 52660) and started sending keep alive packages to him
+[19:12]:[Server] jan tried to login
+[19:12]:[Server] jan requested channels
+[19:12]:No keep alive packet recieved from 127.0.0.1:52660. Closed connection!
+[19:12]:[Server] No clients connected
+[19:12]:[Server] got connection from ('127.0.0.1', 52674) and started sending keep alive packages to him
+[19:12]:[Server] jan tried to login
+[19:12]:[Server] jan requested channels
+[19:12]:[Server] jan changed channel to defaultchannel1
+[19:12]:[Server] got connection from ('127.0.0.1', 52678) and started sending keep alive packages to him
+[19:12]:[Server] name tried to login
+[19:12]:[Server] name requested channels
+[19:12]:[Server] name changed channel to defaultchannel1
+[19:12]:127.0.0.1:52674 as user jan in channel defaultchannel1
+[19:12]:127.0.0.1:52678 as user name in channel defaultchannel1
+[21:12]:[Server] got connection from ('127.0.0.1', 50098) and started sending keep alive packages to him
+[21:12]:[Server] jan tried to login
+[21:12]:[Server] jan requested channels
+[21:12]:[Server] jan changed channel to defaultchannel1
+[21:12]:No keep alive packet recieved from 127.0.0.1:50098. Closed connection!
+[21:12]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50107) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:No keep alive packet recieved from 127.0.0.1:50107. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50112) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50112. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50117) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50117. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50120) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:No keep alive packet recieved from 127.0.0.1:50120. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50123) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50123. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50128) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50128. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50163) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50163. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50168) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50168. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50179) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50179. Closed connection!
+[21:14]:[Server] got connection from ('127.0.0.1', 50182) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50182. Closed connection!
+[21:14]:[Server] got connection from ('127.0.0.1', 50185) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50185. Closed connection!
+[21:14]:[Server] No clients connected
+[21:14]:[Server] got connection from ('127.0.0.1', 50197) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50197. Closed connection!
+[21:14]:[Server] got connection from ('127.0.0.1', 50236) and started sending keep alive packages to him
+[21:14]:[Server] jan tried to login
+[21:14]:[Server] jan requested channels
+[21:14]:[Server] jan changed channel to defaultchannel1
+[21:14]:No keep alive packet recieved from 127.0.0.1:50236. Closed connection!
+[21:28]:[Server] got connection from ('127.0.0.1', 50281) and started sending keep alive packages to him
+[21:28]:[Server] jan tried to login
+[21:28]:[Server] jan requested channels
+[21:28]:[Server] jan changed channel to defaultchannel1
+[21:28]:No keep alive packet recieved from 127.0.0.1:50281. Closed connection!
+[21:28]:[Server] got connection from ('127.0.0.1', 50295) and started sending keep alive packages to him
+[21:28]:[Server] jan tried to login
+[21:28]:[Server] jan requested channels
+[21:28]:[Server] jan changed channel to defaultchannel1
+[21:28]:No keep alive packet recieved from 127.0.0.1:50295. Closed connection!
+[21:28]:[Server] got connection from ('127.0.0.1', 50304) and started sending keep alive packages to him
+[21:28]:[Server] jan tried to login
+[21:28]:[Server] jan requested channels
+[21:28]:No keep alive packet recieved from 127.0.0.1:50304. Closed connection!
+[21:28]:[Server] got connection from ('127.0.0.1', 50307) and started sending keep alive packages to him
+[21:28]:[Server] jan tried to login
+[21:28]:[Server] jan requested channels
+[21:28]:[Server] jan requested channels
+[21:28]:[Server] jan changed channel to defaultchannel1
+[21:28]:No keep alive packet recieved from 127.0.0.1:50307. Closed connection!
+[21:28]:[Server] got connection from ('127.0.0.1', 50311) and started sending keep alive packages to him
+[21:28]:[Server] jan tried to login
+[21:28]:[Server] jan requested channels
+[21:28]:[Server] jan changed channel to defaultchannel1
+[21:28]:Typo in Client Request Command:  *end_server_request~8374351~activeUsersInChannel*
+[21:41]:[Server] got connection from ('127.0.0.1', 50326) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~9556863~listCurrentChannelClients*
+[21:41]:No keep alive packet recieved from 127.0.0.1:50326. Closed connection!
+[21:41]:[Server] No clients connected
+[21:41]:[Server] got connection from ('127.0.0.1', 50342) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~8692941~listCurrentChannelClients*
+[21:41]:No keep alive packet recieved from 127.0.0.1:50342. Closed connection!
+[21:41]:[Server] No clients connected
+[21:41]:[Server] got connection from ('127.0.0.1', 50350) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~3600426~listCurrentChannelClients*
+[21:41]:No keep alive packet recieved from 127.0.0.1:50350. Closed connection!
+[21:41]:[Server] got connection from ('127.0.0.1', 50360) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~3558152~listCurrentChannelClients*
+[21:41]:No keep alive packet recieved from 127.0.0.1:50360. Closed connection!
+[21:41]:[Server] No clients connected
+[21:41]:[Server] got connection from ('127.0.0.1', 50391) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~1014377~listCurrentChannelClients*
+[21:41]:No keep alive packet recieved from 127.0.0.1:50391. Closed connection!
+[21:41]:[Server] No clients connected
+[21:41]:[Server] got connection from ('127.0.0.1', 50395) and started sending keep alive packages to him
+[21:41]:[Server] jan tried to login
+[21:41]:[Server] jan requested channels
+[21:41]:[Server] jan changed channel to defaultchannel1
+[21:41]:Typo in Client Request Command:  *end_server_request~5773305~listCurrentChannelClients*
+[21:54]:[Server] got connection from ('127.0.0.1', 50399) and started sending keep alive packages to him
+[21:54]:[Server] jan tried to login
+[21:54]:[Server] jan requested channels
+[21:54]:[Server] jan changed channel to defaultchannel1
+[21:57]:[Server] got connection from ('127.0.0.1', 50412) and started sending keep alive packages to him
+[21:57]:[Server] jan tried to login
+[21:57]:No keep alive packet recieved from 127.0.0.1:50412. Closed connection!
+[21:57]:[Server] got connection from ('127.0.0.1', 50414) and started sending keep alive packages to him
+[21:57]:[Server] jan tried to login
+[21:57]:[Server] jan requested channels
+[21:57]:No keep alive packet recieved from 127.0.0.1:50414. Closed connection!
+[21:58]:[Server] got connection from ('127.0.0.1', 50417) and started sending keep alive packages to him
+[21:58]:[Server] jan tried to login
+[21:58]:[Server] jan requested channels
+[21:58]:[Server] jan changed channel to defaultchannel1
+[21:58]:No keep alive packet recieved from 127.0.0.1:50417. Closed connection!
+[22:01]:[Server] got connection from ('127.0.0.1', 50443) and started sending keep alive packages to him
+[22:01]:[Server] jan tried to login
+[22:01]:[Server] jan requested channels
+[22:01]:[Server] jan changed channel to defaultchannel1
+[22:09]:[Server] got connection from ('127.0.0.1', 50480) and started sending keep alive packages to him
+[22:09]:[Server] jan tried to login
+[22:09]:[Server] jan requested channels
+[22:09]:[Server] jan requested channels
+[22:09]:[Server] jan changed channel to defaultchannel1
+[22:09]:No keep alive packet recieved from 127.0.0.1:50480. Closed connection!
+[22:10]:[Server] got connection from ('127.0.0.1', 50487) and started sending keep alive packages to him
+[22:10]:[Server] jan tried to login
+[22:10]:[Server] jan requested channels
+[22:10]:[Server] jan changed channel to defaultchannel1
+[22:10]:[Server] got connection from ('127.0.0.1', 50490) and started sending keep alive packages to him
+[22:10]:[Server] name tried to login
+[22:10]:[Server] name requested channels
+[22:10]:[Server] name changed channel to defaultchannel1
+[22:10]:No keep alive packet recieved from 127.0.0.1:50487. Closed connection!
+[22:10]:No keep alive packet recieved from 127.0.0.1:50490. Closed connection!
+[22:10]:[Server] No clients connected
+[22:10]:[Server] got connection from ('127.0.0.1', 50493) and started sending keep alive packages to him
+[22:10]:[Server] jan tried to login
+[22:10]:[Server] jan requested channels
+[22:10]:[Server] jan changed channel to defaultchannel1
+[22:10]:[Server] got connection from ('127.0.0.1', 50498) and started sending keep alive packages to him
+[22:10]:[Server] name tried to login
+[22:10]:No keep alive packet recieved from 127.0.0.1:50498. Closed connection!
+[22:10]:[Server] got connection from ('127.0.0.1', 50500) and started sending keep alive packages to him
+[22:10]:[Server] name tried to login
+[22:10]:[Server] name requested channels
+[22:10]:[Server] name changed channel to defaultchannel1
+[22:22]:[Server] got connection from ('127.0.0.1', 50550) and started sending keep alive packages to him
+[22:22]:[Server] jan tried to login
+[22:22]:[Server] jan requested channels
+[22:22]:No keep alive packet recieved from 127.0.0.1:50550. Closed connection!
+[22:24]:[Server] got connection from ('127.0.0.1', 50572) and started sending keep alive packages to him
+[22:24]:[Server] jan tried to login
+[22:24]:[Server] jan requested channels
+[22:24]:[Server] jan changed channel to defaultchannel1
+[22:24]:No keep alive packet recieved from 127.0.0.1:50572. Closed connection!
+[22:24]:[Server] got connection from ('127.0.0.1', 50575) and started sending keep alive packages to him
+[22:24]:[Server] jan tried to login
+[22:24]:[Server] jan requested channels
+[22:24]:[Server] jan changed channel to defaultchannel1
+[22:24]:[Server] got connection from ('127.0.0.1', 50582) and started sending keep alive packages to him
+[22:24]:[Server] name tried to login
+[22:24]:[Server] name requested channels
+[22:24]:[Server] name changed channel to defaultchannel1
+[22:24]:No keep alive packet recieved from 127.0.0.1:50575. Closed connection!
+[22:26]:[Server] got connection from ('127.0.0.1', 50590) and started sending keep alive packages to him
+[22:26]:[Server] jan tried to login
+[22:26]:[Server] jan requested channels
+[22:26]:[Server] jan changed channel to defaultchannel1
+[22:26]:[Server] got connection from ('127.0.0.1', 50594) and started sending keep alive packages to him
+[22:26]:[Server] name tried to login
+[22:26]:No keep alive packet recieved from 127.0.0.1:50594. Closed connection!
+[22:26]:127.0.0.1:50590 as user jan in channel defaultchannel1
+[22:26]:[Server] got connection from ('127.0.0.1', 50596) and started sending keep alive packages to him
+[22:26]:[Server] jan tried to login
+[22:26]:[Server] jan requested channels
+[22:26]:[Server] jan changed channel to defaultchannel1
+[22:26]:No keep alive packet recieved from 127.0.0.1:50596. Closed connection!
+[22:26]:127.0.0.1:50590 as user jan in channel defaultchannel1
+[22:26]:No keep alive packet recieved from 127.0.0.1:50590. Closed connection!
+[22:28]:[Server] got connection from ('127.0.0.1', 50602) and started sending keep alive packages to him
+[22:28]:[Server] jan tried to login
+[22:28]:[Server] jan requested channels
+[22:28]:[Server] jan changed channel to defaultchannel1
+[22:28]:[Server] got connection from ('127.0.0.1', 50605) and started sending keep alive packages to him
+[22:28]:[Server] name tried to login
+[22:28]:No keep alive packet recieved from 127.0.0.1:50605. Closed connection!
+[22:28]:[Server] got connection from ('127.0.0.1', 50607) and started sending keep alive packages to him
+[22:28]:[Server] name tried to login
+[22:28]:[Server] name requested channels
+[22:28]:[Server] name changed channel to defaultchannel1
+[22:32]:[Server] got connection from ('127.0.0.1', 50634) and started sending keep alive packages to him
+[22:32]:[Server] jan tried to login
+[22:32]:[Server] jan requested channels
+[22:32]:[Server] jan changed channel to defaultchannel1
+[22:32]:No keep alive packet recieved from 127.0.0.1:50634. Closed connection!
+[22:32]:[Server] No clients connected
+[22:32]:[Server] got connection from ('127.0.0.1', 50639) and started sending keep alive packages to him
+[22:32]:[Server] jan tried to login
+[22:32]:[Server] jan requested channels
+[22:32]:[Server] jan changed channel to defaultchannel1
+[22:32]:No keep alive packet recieved from 127.0.0.1:50639. Closed connection!
+[22:32]:[Server] No clients connected
+[22:33]:[Server] got connection from ('127.0.0.1', 50651) and started sending keep alive packages to him
+[22:33]:[Server] jan tried to login
+[22:33]:[Server] jan requested channels
+[22:33]:[Server] jan changed channel to defaultchannel1
+[22:33]:No keep alive packet recieved from 127.0.0.1:50651. Closed connection!
+[22:35]:[Server] got connection from ('127.0.0.1', 50654) and started sending keep alive packages to him
+[22:35]:[Server] jan tried to login
+[22:35]:[Server] jan requested channels
+[22:35]:[Server] jan changed channel to defaultchannel1
+[22:35]:No keep alive packet recieved from 127.0.0.1:50654. Closed connection!
+[22:37]:[Server] got connection from ('127.0.0.1', 50658) and started sending keep alive packages to him
+[22:37]:[Server] jan tried to login
+[22:37]:[Server] jan requested channels
+[22:37]:[Server] jan changed channel to defaultchannel1
+[22:37]:[Server] jan requested channels
+[22:37]:[Server] jan requested channels
+[22:37]:127.0.0.1:50658 as user jan in channel None
+[22:44]:[Server] got connection from ('127.0.0.1', 50711) and started sending keep alive packages to him
+[22:44]:[Server] jan tried to login
+[22:44]:[Server] got connection from ('127.0.0.1', 50713) and started sending keep alive packages to him
+[22:44]:No keep alive packet recieved from 127.0.0.1:50713. Closed connection!
+[22:45]:[Server] got connection from ('127.0.0.1', 50715) and started sending keep alive packages to him
+[22:45]:[Server] jan tried to login
+[22:45]:[Server] jan requested channels
+[22:45]:No keep alive packet recieved from 127.0.0.1:50715. Closed connection!
+[22:45]:[Server] No clients connected
+[22:45]:[Server] got connection from ('127.0.0.1', 50733) and started sending keep alive packages to him
+[22:45]:[Server] jan tried to login
+[22:45]:[Server] jan requested channels
+[22:45]:[Server] jan changed channel to defaultchannel1
+[22:50]:[Server] got connection from ('127.0.0.1', 50736) and started sending keep alive packages to him
+[22:50]:[Server] jan tried to login
+[22:50]:[Server] jan requested channels
+[22:50]:[Server] jan changed channel to defaultchannel1
+[22:50]:[Server] jan requested channels
+[22:50]:No keep alive packet recieved from 127.0.0.1:50736. Closed connection!
+[22:50]:[Server] got connection from ('127.0.0.1', 50749) and started sending keep alive packages to him
+[22:50]:[Server] jan tried to login
+[22:50]:[Server] jan requested channels
+[22:50]:[Server] jan changed channel to defaultchannel1
+[22:50]:[Server] jan requested channels
+[22:55]:[Server] got connection from ('127.0.0.1', 50782) and started sending keep alive packages to him
+[22:55]:[Server] jan tried to login
+[22:55]:[Server] jan requested channels
+[22:55]:[Server] jan changed channel to defaultchannel1
+[22:55]:[Server] jan requested channels
+[22:55]:No keep alive packet recieved from 127.0.0.1:50782. Closed connection!
+[22:55]:[Server] No clients connected
+[23:08]:[Server] got connection from ('127.0.0.1', 50859) and started sending keep alive packages to him
+[23:08]:[Server] jan tried to login
+[23:08]:[Server] jan requested channels
+[23:08]:[Server] jan changed channel to defaultchannel1
+[23:08]:No keep alive packet recieved from 127.0.0.1:50859. Closed connection!
+[23:08]:[Server] got connection from ('127.0.0.1', 50867) and started sending keep alive packages to him
+[23:08]:[Server] jan tried to login
+[23:08]:[Server] jan requested channels
+[23:08]:[Server] jan changed channel to defaultchannel1
+[23:08]:No keep alive packet recieved from 127.0.0.1:50867. Closed connection!

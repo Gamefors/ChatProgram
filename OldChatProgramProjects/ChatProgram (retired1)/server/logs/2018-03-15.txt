@@ -1,0 +1,49 @@
+[12:18]:[Server] got connection from ('127.0.0.1', 59712)
+[12:18]:[Server] jan tried to login
+[12:19]:[Server] got connection from ('127.0.0.1', 59727)
+[12:19]:[Server] jan tried to login
+[12:19]:[Server] jan requested channels
+[12:19]:[Server] jan changed channel to defaultchannel1
+[12:20]:[Server] got connection from ('127.0.0.1', 59736)
+[12:20]:[Server] jan tried to login
+[12:20]:[Server] jan requested channels
+[12:20]:[Server] jan changed channel to defaultchannel1
+[12:20]:127.0.0.1:59736 as user jan in channel defaultchannel1
+[12:20]:[Server] got connection from ('127.0.0.1', 59740)
+[12:20]:[Server] name tried to login
+[12:20]:[Server] name requested channels
+[12:20]:[Server] name changed channel to defaultchannel1
+[12:23]:[Server] got connection from ('127.0.0.1', 59755)
+[12:23]:[Server] jan tried to login
+[12:23]:[Server] jan requested channels
+[12:23]:[Server] jan changed channel to defaultchannel1
+[12:23]:[Server] got connection from ('127.0.0.1', 59758)
+[12:23]:[Server] name tried to login
+[12:23]:[Server] name requested channels
+[12:23]:[Server] name changed channel to defaultchannel1
+[13:19]:[Server] got connection from ('127.0.0.1', 65132)
+[13:19]:[Server] jan tried to login
+[13:19]:[Server] jan requested channels
+[13:19]:[Server] jan changed channel to defaultchannel1
+[13:19]:[Server] got connection from ('127.0.0.1', 65146)
+[13:19]:[Server] name tried to login
+[13:19]:[Server] name requested channels
+[13:19]:[Server] name changed channel to defaultchannel1
+[14:24]:[Server] got connection from ('127.0.0.1', 54708)
+[14:24]:[Server] jan tried to login
+[14:24]:[Server] jan requested channels
+[14:24]:[Server] jan changed channel to defaultchannel1
+[14:26]:[Server] got connection from ('127.0.0.1', 54712)
+[14:26]:[Server] jan tried to login
+[14:26]:[Server] jan requested channels
+[14:26]:[Server] jan changed channel to defaultchannel1
+[14:27]:[Server] got connection from ('127.0.0.1', 54727)
+[14:27]:[Server] jan tried to login
+[14:27]:[Server] jan requested channels
+[14:27]:[Server] jan changed channel to defaultchannel1
+[14:28]:[Server] got connection from ('127.0.0.1', 54731)
+[14:28]:[Server] jan  tried to login
+[14:28]:[Server] jan  requested channels
+[14:28]:[Server] jan  changed channel to defaultchannel1
+[20:56]:[Server] got connection from ('127.0.0.1', 52170)
+[20:56]:[Server] jan tried to login

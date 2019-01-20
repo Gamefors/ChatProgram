@@ -1,0 +1,11 @@
+[12:19]:[Server] jan joined channel defaultchannel1
+[12:20]:[Server] jan joined channel defaultchannel1
+[12:20]:[Server] name joined channel defaultchannel1
+[12:23]:[Server] jan joined channel defaultchannel1
+[12:23]:[Server] name joined channel defaultchannel1
+[13:19]:[Server] jan joined channel defaultchannel1
+[13:19]:[Server] name joined channel defaultchannel1
+[14:24]:[Server] jan joined channel defaultchannel1
+[14:26]:[Server] jan joined channel defaultchannel1
+[14:27]:[Server] jan joined channel defaultchannel1
+[14:28]:[Server] jan  joined channel defaultchannel1

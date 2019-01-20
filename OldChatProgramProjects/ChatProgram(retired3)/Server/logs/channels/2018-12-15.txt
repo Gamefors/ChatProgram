@@ -1,0 +1,39 @@
+[17:16:11]:[Server/Channel/Info] 192.168.0.105:64384 Jan
+[17:16:38]:[Server/Channel/Info] 192.168.0.105:64401 Jan
+[17:20:33]:[Server/Channel/Info] 192.168.0.105:64550 Jan
+[17:20:54]:[Server/Channel/Info] 192.168.0.105:64550 Jan :
+[17:20:55]:[Server/Channel/Info] 192.168.0.105:64550 Jan :
+[17:20:55]:[Server/Channel/Info] 192.168.0.105:64550 Jan :
+[17:34:56]:[Server/Channel/Info] 192.168.0.105:65194 Jan
+[17:35:01]:[Server/Channel/Info] 192.168.0.105:65194 Jan : sdsd
+[17:35:02]:[Server/Channel/Info] 192.168.0.105:65194 Jan : sd
+[17:35:02]:[Server/Channel/Info] 192.168.0.105:65194 Jan : ds
+[17:35:03]:[Server/Channel/Info] 192.168.0.105:65194 Jan : ds
+[17:36:25]:[Server/Channel/Info] 192.168.0.105:65252 Jan
+[17:36:26]:[Server/Channel/Info] 192.168.0.105:65252 Jan : hallo
+[17:36:29]:[Server/Channel/Info] 192.168.0.105:65252 Jan : dsd
+[17:36:30]:[Server/Channel/Info] 192.168.0.105:65252 Jan : sds
+[17:36:34]:[Server/Channel/Info] 192.168.0.105:65257 Tim
+[17:36:35]:[Server/Channel/Info] 192.168.0.105:65257 Tim : sds
+[17:36:39]:[Server/Channel/Info] 192.168.0.105:65257 Tim : dsd
+[17:36:39]:[Server/Channel/Info] 192.168.0.105:65257 Tim : ds
+[17:36:41]:[Server/Channel/Info] 192.168.0.105:65252 Jan : dsd
+[17:37:26]:[Server/Channel/Info] 192.168.0.105:65290 Jan
+[17:37:27]:[Server/Channel/Info] 192.168.0.105:65290 Jan : hallo
+[17:38:49]:[Server/Channel/Info] 192.168.0.105:65338 Jan
+[17:38:50]:[Server/Channel/Info] 192.168.0.105:65338 Jan : halo
+[17:39:41]:[Server/Channel/Info] 192.168.0.105:65371 Jan
+[17:39:42]:[Server/Channel/Info] 192.168.0.105:65371 Jan : hallo
+[17:41:31]:[Server/Info] 192.168.0.105:65441 sent client informations
+[17:41:32]:[Server/Channel/Info] 192.168.0.105:65441 Jan : hallo
+[17:41:44]:[Server/Info] 192.168.0.105:65448 sent client informations
+[17:41:46]:[Server/Channel/Info] 192.168.0.105:65448 Tim : hallo
+[17:58:58]:[Server/Info] 192.168.0.100:53194 sent client informations
+[17:58:59]:[Server/Channel/Info] 192.168.0.100:53194 Jan : hallo
+[17:59:15]:[Server/Channel/Info] 192.168.0.100:53194 Jan : sds
+[17:59:17]:[Server/Channel/Info] 192.168.0.100:53194 Jan : ds
+[17:59:18]:[Server/Channel/Info] 192.168.0.100:53194 Jan : ds
+[17:59:26]:[Server/Channel/Info] 192.168.0.100:53194 Jan : sds
+[18:05:41]:[Server/Channel/Info] 192.168.0.100:53194 Jan : dsd
+[18:05:47]:[Server/Channel/Info] 192.168.0.100:53194 Jan : s
+[18:05:47]:[Server/Channel/Info] 192.168.0.100:53194 Jan :

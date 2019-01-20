@@ -1,0 +1,168 @@
+[16:48:23]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[16:59:44]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[16:59:47]:[Server/Error] Unknown command: (kci)
+[16:59:47]:[Server/Error] type /help for a list of commands
+[16:59:49]:[Server/Info] /kick <client>
+[16:59:49]:[Server/Error] No clients connected
+[17:01:17]:[Server/Info] Gracefully stopping server...
+[17:01:17]:[Server/Info] Gracefully stopped server
+[17:01:18]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:01:21]:[Server/Info] /kick <client>
+[17:01:22]:[Server/Error] No clients connected
+[17:01:26]:[Server/Error] No clients connected
+[17:01:37]:[Server/Error] Unknown command: (['listCLients'])
+[17:01:37]:[Server/Error] type /help for a list of commands
+[17:01:42]:[Server/Error] No clients connected
+[17:01:44]:[Server/Info] /ban <client> <time>
+[17:02:21]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:02:23]:[Server/Info] /ban <client> <time>
+[17:02:24]:[Server/Info] /ban <client> <time>
+[17:02:25]:[Server/Info] /ban <client> <time>
+[17:03:55]:[Server/Info] Gracefully stopping server...
+[17:03:55]:[Server/Info] Gracefully stopped server
+[17:03:56]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:05:16]:[Server/Info] Gracefully stopping server...
+[17:05:16]:[Server/Info] Gracefully stopped server
+[17:05:17]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:05:18]:[Server/Info] /ban <client> <time>
+[17:06:06]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:06:07]:[Server/Info] /ban <client> <time>
+[17:06:14]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:06:16]:[Server/Error] No clients connected
+[17:06:30]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:06:32]:[Server/Error] No clients connected
+[17:06:33]:[Server/Error] No clients connected
+[17:14:48]:[Server/Info] Gracefully stopping server...
+[17:14:48]:[Server/Info] Gracefully stopped server
+[17:14:49]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:14:56]:[Server/Info] 192.168.0.105:64331 connected to the server
+[17:15:55]:[Server/Info] Gracefully stopping server...
+[17:15:55]:[Server/Info] Gracefully stopped server
+[17:15:56]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:16:11]:[Server/Info] 192.168.0.105:64384 connected to the server
+[17:16:30]:[Server/Info] 192.168.0.105 : Jan got permanantly banned
+[17:16:30]:[Server/Error] 192.168.0.105:64384 closed connection unexpectedly
+[17:16:38]:[Server/Info] 192.168.0.105:64401 connected to the server
+[17:19:57]:[Server/Info] Gracefully stopping server...
+[17:19:57]:[Server/Info] Gracefully stopped server
+[17:20:21]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:20:25]:[Server/Error] No clients connected
+[17:20:33]:[Server/Info] 192.168.0.105:64550 connected to the server
+[17:20:33]:[Server/Info] 192.168.0.105:64550is permanantly banned on the server
+[17:20:45]:[Server/Error] Unknown command: ()
+[17:20:45]:[Server/Error] type /help for a list of commands
+[17:20:46]:[Server/Error] Unknown command: ()
+[17:20:46]:[Server/Error] type /help for a list of commands
+[17:22:17]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:22:27]:[Server/Info] 192.168.0.105:64640 connected to the server
+[17:22:27]:[Server/Info] 192.168.0.105:64640 is permanantly banned on the server
+[17:22:27]:[Server/Error] 192.168.0.105:64640 closed connection unexpectedly
+[17:22:59]:[Server/Info] Gracefully stopping server...
+[17:23:00]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:23:05]:[Server/Info] 192.168.0.105:64656 connected to the server
+[17:23:05]:[Server/Info] 192.168.0.105:64656 is permanantly banned on the server
+[17:23:05]:[Server/Error] 192.168.0.105:64656 closed connection unexpectedly
+[17:23:58]:[Server/Info] Gracefully stopping server...
+[17:23:59]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:24:01]:[Server/Info] 192.168.0.105:64690 connected to the server
+[17:24:01]:[Server/Info] 192.168.0.105:64690 is permanantly banned on the server
+[17:24:01]:[Server/Error] 192.168.0.105:64690 closed connection unexpectedly
+[17:24:04]:[Server/Info] Gracefully stopping server...
+[17:24:06]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:24:09]:[Server/Info] 192.168.0.105:64694 connected to the server
+[17:24:09]:[Server/Info] 192.168.0.105:64694 is permanantly banned on the server
+[17:24:09]:[Server/Error] 192.168.0.105:64694 closed connection unexpectedly
+[17:26:59]:[Server/Info] Gracefully stopping server...
+[17:27:02]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:27:06]:[Server/Info] 192.168.0.105:64807 connected to the server
+[17:27:06]:[Server/Info] 192.168.0.105:64807 is permanantly banned on the server
+[17:27:06]:[Server/Error] 192.168.0.105:64807 closed connection unexpectedly
+[17:28:28]:[Server/Info] Gracefully stopping server...
+[17:28:29]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:28:32]:[Server/Info] 192.168.0.105:64866 connected to the server
+[17:28:32]:[Server/Info] 192.168.0.105:64866 is permanantly banned on the server
+[17:28:32]:[Server/Error] 192.168.0.105:64866 closed connection unexpectedly
+[17:28:41]:[Server/Info] Connected clients:
+[17:29:56]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:29:58]:[Server/Info] 192.168.0.105:64917 connected to the server
+[17:29:58]:[Server/Info] 192.168.0.105:64917 is permanantly banned on the server
+[17:29:58]:[Server/Error] 192.168.0.105:64917 closed connection unexpectedly
+[17:30:02]:[Server/Error] No clients connected
+[17:30:34]:[Server/Info] Gracefully stopping server...
+[17:30:34]:[Server/Info] Gracefully stopped server
+[17:30:36]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:30:37]:[Server/Info] 192.168.0.105:64945 connected to the server
+[17:30:37]:[Server/Info] 192.168.0.105:64945 is permanantly banned on the server
+[17:30:37]:[Server/Error] 192.168.0.105:64945 closed connection unexpectedly
+[17:30:50]:[Server/Info] Gracefully stopping server...
+[17:30:50]:[Server/Info] Gracefully stopped server
+[17:30:51]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:30:54]:[Server/Info] Gracefully stopping server...
+[17:30:54]:[Server/Info] Gracefully stopped server
+[17:31:00]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:31:00]:[Server/Info] 192.168.0.105:64961 connected to the server
+[17:31:00]:[Server/Info] 192.168.0.105:64961 is permanantly banned on the server
+[17:31:00]:[Server/Error] 192.168.0.105:64961 closed connection unexpectedly
+[17:31:04]:[Server/Error] Unknown command: ()
+[17:31:04]:[Server/Error] type /help for a list of commands
+[17:33:00]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:34:37]:[Server/Info] Gracefully stopping server...
+[17:34:37]:[Server/Info] Gracefully stopped server
+[17:34:38]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:34:43]:[Server/Info] Gracefully stopping server...
+[17:34:43]:[Server/Info] Gracefully stopped server
+[17:34:44]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:34:56]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:34:56]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:35:01]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:35:02]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:35:02]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:35:03]:[Server/Info] 192.168.0.105:65194 connected to the server
+[17:36:00]:[Server/Info] Gracefully stopping server...
+[17:36:00]:[Server/Info] Gracefully stopped server
+[17:36:08]:[Server/Error] 192.168.0.105:65194 closed connection unexpectedly
+[17:36:19]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:36:25]:[Server/Info] 192.168.0.105:65252 connected to the server
+[17:36:34]:[Server/Info] 192.168.0.105:65257 connected to the server
+[17:36:54]:[Server/Error] No clients connected
+[17:37:20]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:37:26]:[Server/Info] 192.168.0.105:65290 connected to the server
+[17:38:43]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:38:49]:[Server/Info] 192.168.0.105:65338 connected to the server
+[17:39:24]:[Server/Error] 192.168.0.105:65338 closed connection unexpectedly
+[17:39:27]:[Server/Error] Unknown command: ()
+[17:39:27]:[Server/Error] type /help for a list of commands
+[17:39:36]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:39:41]:[Server/Info] 192.168.0.105:65371 connected to the server
+[17:41:25]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
+[17:41:31]:[Server/Info] 192.168.0.105:65441 connected to the server
+[17:41:44]:[Server/Info] 192.168.0.105:65448 connected to the server
+[17:49:38]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[17:51:21]:[Server/Error] No clients connected
+[17:51:23]:[Server/Error] Unknown command: (['help'])
+[17:51:23]:[Server/Error] type /help for a list of commands
+[17:51:27]:[Server/Error] Unknown command: (['help'])
+[17:51:27]:[Server/Error] type /help for a list of commands
+[17:54:35]:[Server/Error] Unknown command: (s)
+[17:54:35]:[Server/Error] type /help for a list of commands
+[17:54:41]:[Server/Info] Gracefully stopping server...
+[17:54:41]:[Server/Info] Gracefully stopped server
+[17:58:03]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[17:58:58]:[Server/Info] 192.168.0.100:53194 connected to the server
+[17:59:22]:[Server/Info] Connected clients:
+[17:59:22]:[Server/Info] ('192.168.0.100', 53194) : Jan
+[18:05:44]:[Server/Info] Gracefully stopping server...
+[18:05:44]:[Server/Info] Gracefully stopped server
+[18:06:54]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[18:12:34]:[Server/Info] Gracefully stopping server...
+[18:12:34]:[Server/Info] Gracefully stopped server
+[18:13:08]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[18:13:27]:[Server/Info] Gracefully stopping server...
+[18:13:27]:[Server/Info] Gracefully stopped server
+[18:13:32]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[18:13:44]:[Server/Info] Gracefully stopping server...
+[18:13:44]:[Server/Info] Gracefully stopped server
+[18:13:52]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000 in Thread-1
+[18:18:57]:[Server/Info] Gracefully stopping server...
+[18:18:57]:[Server/Info] Gracefully stopped server
+[21:13:30]:[Server/Info] Started on ip: 192.168.0.105 with port: 5000 in Thread-1
