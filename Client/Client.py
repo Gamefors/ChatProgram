@@ -9,17 +9,20 @@ import threading, socket, time, sys, os
 
 class Client:
 
-	def __init__(self):
+	def importScripts(self):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.inputHandler = InputHandler()
 		self.fileHelper = FileHelper()
-		username = input("Username:")
-		Config = self.fileHelper.getConfig()
-		self.clientObject = ClientObject(username, None, Config.ip, Config.port, "first_channel_is_managed_by_server") 
-		self.connected = False
 
-		self.tryConnect()
-		self.askForInput()
+	def setConfig(self):
+		Config = self.fileHelper.getConfig()
+		self.ipV4 = Config.ip
+		self.port = Config.port
+
+	def inizializeClient(self):
+		username = input("Username:")
+		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "first_channel_is_managed_by_server") 
+		self.connected = False
 
 	def tryConnect(self):
 		trys = 0
@@ -47,5 +50,17 @@ class Client:
 					self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
 				except:
 					self.connected = False
+
+	def __init__(self):
+		#Imports
+		self.importScripts()
+		#Config
+		self.setConfig()
+		#Client initializations
+		self.inizializeClient()
+		#Client trying to establish a connection
+		self.tryConnect()
+		#Client Input
+		self.askForInput()
 
 Client()

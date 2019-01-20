@@ -22,6 +22,11 @@ class Server:
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
+	def setConfig(self):
+		Config = self.fileHelper.getConfig()
+		self.port = Config.port
+		self.ipV4 = Config.ip
+
 	def inizializeChannel(self):
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
 		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
@@ -62,9 +67,7 @@ class Server:
 		#Imports
 		self.importScripts()
 		#Config
-		Config = self.fileHelper.getConfig()
-		self.port = Config.port
-		self.ipV4 = Config.ip
+		self.setConfig()
 		#Channel initialization
 		self.inizializeChannel()
 		#Server initializations
