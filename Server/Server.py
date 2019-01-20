@@ -64,12 +64,7 @@ class Server:
 		#Config
 		Config = self.fileHelper.getConfig()
 		self.port = Config.port
-		try:
-			socket.gethostbyname(socket.gethostname())
-		except:
-			self.logHelper.printAndWriteServerLog("[Server/Error] Couldn't get ip by hostname setting ip to default: localhost.")			
-			#self.ipV4 = Config.ip
-			self.ipV4 = "localhost"#fallback
+		self.ipV4 = Config.ip
 		#Channel initialization
 		self.inizializeChannel()
 		#Server initializations

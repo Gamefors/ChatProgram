@@ -34,6 +34,6 @@ class FileHelper:
 	def getConfig(self):
 		config = open("config/config.txt", "r")
 		configs = config.readlines()
-		return Config(int(configs[3][5:]), str(configs[2][3:]))
+		return Config(int(configs[3][5:]), str(configs[2][3:]).replace("\n",""))
 
 FileHelper()

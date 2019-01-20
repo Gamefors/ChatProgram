@@ -13,13 +13,16 @@ class FileHelper:
 		if not os.path.isfile("config/config.txt"):
 			self.appendToTXTFile("config/" , "config", "Config:")
 			self.appendToTXTFile("config/" , "config", "-")
+			self.appendToTXTFile("config/" , "config", "ip:localhost")
 			self.appendToTXTFile("config/" , "config", "port:5000")
 		if os.path.isfile("config/config.txt"):
 			configs = self.readTXTFile("config/", "config")
 			fileToWrite = open("config/config.txt", "w")
 			for config in configs:
 				if config == "port:\n":
-				  fileToWrite.write("port:" + "5000" + "\n")
+					fileToWrite.write("port:" + "5000" + "\n")
+				elif config == "ip:\n":
+					fileToWrite.write("ip:" + "localhost" + "\n")
 				else:
 					fileToWrite.write(config)									
 			fileToWrite.close()		
@@ -48,6 +51,6 @@ class FileHelper:
 	def getConfig(self):
 		config = open("config/config.txt", "r")
 		configs = config.readlines()
-		return Config(int(configs[2][5:]))
+		return Config(int(configs[3][5:]), str(configs[2][3:]).replace("\n",""))
 
 FileHelper()
