@@ -11,7 +11,6 @@ class InputHandler:
 		#Imports
 		self.decEncHelper = DecodingEncodingHelper()
 		#Create Commands
-		#TODO: add command to list clients in your channel eg. /listClients <channelName>
 		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")
 		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdSetName = Command("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
