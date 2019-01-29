@@ -1,0 +1,36 @@
+[19:29:14]:[Server/Info] Started on ip: localhost with port: 5000
+[19:29:34]:[Server/Info] 127.0.0.1 connected to the server.
+[19:29:34]:[Server/Info] 127.0.0.1 sent client informations.
+[19:29:34]:[Server/Info] 127.0.0.1 : Jan requested the clients from channel Welcome_Channel.
+[19:29:44]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:30:37]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:30:49]:[Server/Info] 127.0.0.1 : Jan tried to join a channel that doesn't exists.
+[19:30:56]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_1
+[19:30:57]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:30:59]:[Server/Error] 127.0.0.1 Disconnected
+[19:32:07]:[Server/Info] Started on ip: localhost with port: 5000
+[19:32:27]:[Server/Info] 127.0.0.1 connected to the server.
+[19:32:27]:[Server/Info] 127.0.0.1 sent client informations.
+[19:32:27]:[Server/Info] 127.0.0.1 : Jan requested the clients from channel Welcome_Channel.
+[19:36:22]:[Server/Info] Started on ip: localhost with port: 5000
+[19:36:25]:[Server/Info] 127.0.0.1 connected to the server.
+[19:36:25]:[Server/Info] 127.0.0.1 sent client informations.
+[19:36:25]:[Server/Info] 127.0.0.1 : Jan requested the clients from channel Welcome_Channel.
+[19:36:33]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:36:37]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_1
+[19:36:38]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:36:40]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_2
+[19:36:41]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:36:42]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_3
+[19:36:43]:[Server/Info] 127.0.0.1 : Jan tried to join a channel that doesn't exists.
+[19:36:45]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_1
+[19:36:46]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_2
+[19:36:48]:[Server/Info] 127.0.0.1 : Jan tried to join a channel which he is already part of.
+[19:36:51]:[Server/Info] 127.0.0.1 : Jan changed channel to : Channel_3

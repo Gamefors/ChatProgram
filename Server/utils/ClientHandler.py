@@ -106,15 +106,14 @@ class ClientHandler(socketserver.BaseRequestHandler):
 
 		elif requestId == "023":#changing channels		
 			if self.channelManager.channelExists(requestdata):
-				print(self.channelManager.channelContains(self.clientObject, requestdata))
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
 					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel which he is already part of.")					
 				else:
 					for channelObject in self.channelManager.channelList:
 						if channelObject.name == requestdata:				
+							self.channelManager.removeChannelMember(clientObject.channelObject, clientObject)
 							clientObject.channelObject = channelObject
-							self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
 							self.channelManager.addChannelMember(channelObject, clientObject)
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
 							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
