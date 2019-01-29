@@ -21,8 +21,12 @@ class Client:
 
 	def inizializeClient(self):
 		username = input("Username:")
-		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "Welcome_Channel") 
-		self.connected = False
+		if "exists" in username:
+			print("[Client/Error] blacklisted word in username.")
+			self.inizializeClient()
+		else:
+			self.clientObject = ClientObject(username, None, self.ipV4, self.port, "Welcome_Channel") 
+			self.connected = False
 
 	def tryConnect(self):
 		trys = 0

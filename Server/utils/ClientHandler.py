@@ -85,7 +85,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations.")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
 		
-		elif requestId == "611":#sent current clients in give channel
+		elif requestId == "611":#sent current clients in given channel
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested the clients from channel " + requestdata+ ".")
 			for channel in self.channelManager.channelList:
 				if channel.name == requestdata:
@@ -96,7 +96,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						for client in channel.clientList:
 							clientsInChannel.append(client.username)
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
-							
+						break
+				else:
+					#send something that client can filter out as "that channel doesnt exits"
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611[Client/Info] The channel doesn't exists."))
+					break
+		
 		elif requestId == "022":#send channel list  TODO: send more things like description acceslevel etc. but names work for now
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested channel.")
 			channelNames = list()
@@ -124,7 +129,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		elif requestId == "031":#changing names
 			clientObject.username = requestdata
 			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed names.")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : changed names.")
 
 		else: #any other requesId
 			if len(requestId) == 0:

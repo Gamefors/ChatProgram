@@ -18,23 +18,26 @@ class InputHandler:
 		self.cmdListChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
 		self.cmdChangeChannel = Command("ChangeChannel", "/changeChannel <Channel Name>", "ChannelName", "Enter the specified channel.")
 		self.cmdDisconnect = Command("Disconnect", "/disconnect", "None", "Disconnects you from the server.")
+		self.cmdListClients = Command("ListClients", "/listClients <Channel Name>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
 		#Append Commands
 		self.commandList.append(self.cmdClear)
 		self.commandList.append(self.cmdHelp)
 		self.commandList.append(self.cmdSetName)
 		self.commandList.append(self.cmdListChannel)
 		self.commandList.append(self.cmdChangeChannel)	
-		self.commandList.append(self.cmdDisconnect)	
+		self.commandList.append(self.cmdDisconnect)
+		self.commandList.append(self.cmdListClients)	
 
 	def handleInput(self, command, clientObject):
 		isCommand = True
 		command = command.split()
 		try:
-			var = command[0]
+			var = command[0]#pylint: disable=W0612
 		except IndexError:
 			isCommand = False
 			print("[Client/Error] type /help for a list of commands")
 		if isCommand:
+
 			if str(command[0]).lower() == self.cmdClear.name:
 				os.system('cls' if os.name=='nt' else 'clear')
 
@@ -62,12 +65,14 @@ class InputHandler:
 				newUsername = None
 				try:
 					newUsername = command[1]
-					print(newUsername)
 				except IndexError:
 					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
 				if newUsername != None:
-					clientObject.username = newUsername
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
+					if "exists" in newUsername:
+						print("[Client/Error] blacklisted word in username.")
+					else:
+						clientObject.username = newUsername
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
 
 			elif str(command[0]).lower() == self.cmdDisconnect.name:
 				print("[Client/Info] You disconnected from the server.")
@@ -75,6 +80,16 @@ class InputHandler:
 				clientObject.socketObject.shutdown(1)
 				clientObject.socketObject.close()
 				quit()
+			
+			elif str(command[0]).lower() == self.cmdListClients.name:
+				channel = None
+				try:
+					channel = command[1]
+				except:
+					print("[Client/Error] Syntax: " + self.cmdListClients.syntax)
+				if channel != None:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + channel))
+
 			else:
 				print("[Client/Error] Unknown command: " + command[0])
 				print("[Client/Error] type /help for a list of commands")

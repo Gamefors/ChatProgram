@@ -40,7 +40,6 @@ class ServerHandler:
 			print(requestdata)
 		elif requestId == "411":
 			print(requestdata)
-
 		elif requestId == "022":
 			tempList = requestdata.split(",")
 			print("[Client/Info] Channels: ")
@@ -49,27 +48,26 @@ class ServerHandler:
 				if self.clientObject.channel in obj:
 					print(obj + "(you)")
 				else:
-					print(obj)
+					print(obj)		
 		elif requestId == "611":
-
-			print("[Client/Info] clients in this channel: ")
-			tempList = requestdata.split(",")
-			for obj in tempList:
-				obj = obj.replace("'"," ").strip("[]").strip()
-				if self.clientObject.username in obj:
-					print(obj + "(you)")
-				else:
-					print(obj)
+			if "exists" in requestdata:
+				print(requestdata)
+			else:
+				print("[Client/Info] clients in this channel: ")
+				tempList = requestdata.split(",")
+				for obj in tempList:
+					obj = obj.replace("'"," ").strip("[]").strip()
+					if self.clientObject.username in obj:
+						print(obj + "(you)")
+					else:
+						print(obj)	
 		elif requestId == "023":
 			print(requestdata)
-
 		elif requestId == "031":
 			print(requestdata)
-
 		elif requestId == "405":
 			print(requestdata)
-			self.banned = True
-				
+			self.banned = True			
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:
