@@ -1,7 +1,7 @@
 from utils.LoggingHelper import LoggingHelper#pylint: disable=E0611,E0401
 from utils.FileHelper import FileHelper#pylint: disable=E0611,E0401
 import socketserver, threading
-class Clients:#TODO:put in own file maybe : clientAdministrationHelper.py?
+class Clients:#TO_DO_DEPLETED:put in own file maybe : clientAdministrationHelper.py?
 
 	clientList = list()
 
@@ -48,7 +48,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
 					self.client.sendall(self.StringToBytes("405[Client/Info] You are permanantly banned on this server"))
 					self.client.close()
 					self.appendClient = False
-				elif self.client_address[0] + ":" + banTime in clientInList:#FIXME:decrease banntime overtime
+				elif self.client_address[0] + ":" + banTime in clientInList:#FIX_ME_DEPLETED:decrease banntime overtime
 					logHelper.printAndWriteServerLog("[Server/Info] " + str(self.client_address[0])+ ":" + str(self.client_address[1]) + " is temporary banned on the server. Remaining Time: " + clientInListString[1] + "Minutes")
 					self.client.sendall(self.StringToBytes("405[Client/Info] You are temporary banned on this server. Remaining Time: " + str(int(clientInListString[1])) + "Minutes"))
 					self.client.close()

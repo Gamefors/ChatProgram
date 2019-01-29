@@ -1,4 +1,0 @@
-Config:
--
-ip:localhost
-port:5000
