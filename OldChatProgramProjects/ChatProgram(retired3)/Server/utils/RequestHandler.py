@@ -9,7 +9,7 @@ class Clients:#TO_DO_DEPLETED:put in own file maybe : clientAdministrationHelper
 		try:
 			self.clientList.remove(dict({client : username}))
 		except ValueError:
-			var = None
+			var = None#pylint: disable=W0612
 
 	def addClient(self, client, username):
 		self.clientList.append(dict({client : username}))
@@ -42,7 +42,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
 				try:
 					banTime = clientInListString[1]
 				except IndexError:
-					var = None
+					var = None#pylint: disable=W0612
 				if self.client_address[0] + "\n" in clientInList:
 					logHelper.printAndWriteServerLog("[Server/Info] " + str(self.client_address[0])+ ":" + str(self.client_address[1]) + " is permanantly banned on the server")
 					self.client.sendall(self.StringToBytes("405[Client/Info] You are permanantly banned on this server"))

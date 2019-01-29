@@ -3,8 +3,7 @@ import os
 class CommandHandler:
 	CommandList = dict()
 	def __init__(self):
-		var = None
-
+		var = None#pylint: disable=W0612
 	def handleCommand(self, command):
 		if command == "/clear":
 			os.system('cls' if os.name=='nt' else 'clear')
