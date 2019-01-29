@@ -21,7 +21,7 @@ class Client:
 
 	def inizializeClient(self):
 		username = input("Username:")
-		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "first_channel_is_managed_by_server") 
+		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "Welcome_Channel") 
 		self.connected = False
 
 	def tryConnect(self):
@@ -32,8 +32,10 @@ class Client:
 				self.clientObject.socketObject.connect((self.clientObject.ip, self.clientObject.port))
 				threading.Thread(target=ServerHandler,args=[self.clientObject]).start()
 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username))
+				time.sleep(0.1)
+				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611Welcome_Channel"))#FIXME:try moving this to another point in program
 				self.connected = True
-				print("[Client/Info] You are now connected to the server.")
+				print("[Client/Info] You are now connected to the server.")	
 			except:
 				trys = trys + 1
 				os.system('cls' if os.name=='nt' else 'clear')

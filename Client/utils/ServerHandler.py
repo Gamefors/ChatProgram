@@ -40,12 +40,26 @@ class ServerHandler:
 			print(requestdata)
 		elif requestId == "411":
 			print(requestdata)
+
 		elif requestId == "022":
-			s = requestdata.split(",")
-			for ch in s:
-				t = ch.strip("[]")
-				t = t.strip("''")
-				print(t)
+			tempList = requestdata.split(",")
+			print("[Client/Info] Channels: ")
+			for obj in tempList:
+				obj = obj.replace("'"," ").strip("[]").strip()
+				if self.clientObject.channel in obj:
+					print(obj + "(you)")
+				else:
+					print(obj)
+		elif requestId == "611":
+
+			print("[Client/Info] clients in this channel: ")
+			tempList = requestdata.split(",")
+			for obj in tempList:
+				obj = obj.replace("'"," ").strip("[]").strip()
+				if self.clientObject.username in obj:
+					print(obj + "(you)")
+				else:
+					print(obj)
 		elif requestId == "023":
 			print(requestdata)
 

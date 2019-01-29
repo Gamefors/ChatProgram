@@ -52,18 +52,17 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						var = None
 					else:
 						self.clientManager.addClient(self.clientObject)
-						self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server")
+						self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server.")
 						self.appendClient = False
 						self.tryRecv = True
 			else:
 				self.clientManager.addClient(self.clientObject)
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server")
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server.")
 				self.appendClient = False
 				self.tryRecv = True	
 		if self.tryRecv:
 			try:
 				self.data = self.decEncHelper.bytesToString(self.clientObject.socketObject.recv(1024))
-
 				self.handleRequest(self.data, self.clientObject)
 			except:
 				self.logHelper.printAndWriteServerLog("[Server/Error] " + str(self.clientObject.ip) + " Disconnected")
@@ -71,6 +70,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
 	def handleRequest(self, request, clientObject):
+		
 		requestId = request[:3]
 		requestdata = request[3:]
 
@@ -82,36 +82,52 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001" + clientObject.username + " : " + requestdata))
 
 		elif requestId == "011":#get client informations
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations.")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
 		
-		elif requestId == "022":#send channel listTODO:send more things like description acceslevel etc. but names work for now
+		elif requestId == "611":#sent current clients in give channel
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested the clients from channel " + requestdata+ ".")
+			for channel in self.channelManager.channelList:
+				if channel.name == requestdata:
+					if len(channel.clientList) < 1:
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611No clients are connected in this channel."))
+					else:
+						clientsInChannel = list()
+						for client in channel.clientList:
+							clientsInChannel.append(client.username)
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
+							
+		elif requestId == "022":#send channel list  TODO: send more things like description acceslevel etc. but names work for now
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested channel.")
 			channelNames = list()
 			for channelObject in self.channelManager.channelList:
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
-		elif requestId == "023":
+		elif requestId == "023":#changing channels		
 			if self.channelManager.channelExists(requestdata):
-				for channelObject in self.channelManager.channelList:
-					if channelObject.name == requestdata:				
-						clientObject.channelObject = channelObject
-						self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
-						self.channelManager.addChannelMember(channelObject, clientObject)
-						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
-						self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
+				print(self.channelManager.channelContains(self.clientObject, requestdata))
+				if self.channelManager.channelContains(self.clientObject, requestdata):
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
+					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel which he is already part of.")					
+				else:
+					for channelObject in self.channelManager.channelList:
+						if channelObject.name == requestdata:				
+							clientObject.channelObject = channelObject
+							self.channelManager.removeChannelMember(self.channelManager.channelList[0], clientObject)
+							self.channelManager.addChannelMember(channelObject, clientObject)
+							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
+							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] The channel you wanted to join doesn't exists."))
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join channel that doesn't exists.")
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
 			
-
-		elif requestId == "031":
+		elif requestId == "031":#changing names
 			clientObject.username = requestdata
 			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed names.")
 
-		else:
+		else: #any other requesId
 			if len(requestId) == 0:
 				raise SystemExit()
 			else:

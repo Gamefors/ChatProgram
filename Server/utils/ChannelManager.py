@@ -20,3 +20,13 @@ class ChannelManager:
 				channelExists = True
 				break
 		return channelExists
+
+	def channelContains(self, clientObject, channel):
+		channelContains = False
+		for channelObject in self.channelList:
+			if channelObject.name == channel:
+				for client in channelObject.clientList:
+					if client == clientObject:
+						channelContains = True
+						break
+		return channelContains
