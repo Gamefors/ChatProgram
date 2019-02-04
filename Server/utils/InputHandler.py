@@ -20,11 +20,13 @@ class InputHandler:
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 		#Create Commands
+		#TODO: add to command kick: kick <ip/name>
+		#TODO: add to command ban: ban <ip/name>
 		self.cmdListClients = Command("listClients", "/listClients", "NONE", "Lists all connected clients with their name, ip and channel their in.")
 		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")	
 		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdKick = Command("Kick", "/kick <IP>", "IP", "Kicks the given IP from the server.")
-		self.cmdBan = Command("Ban", "/ban <IP> <TIME>", "IP:TIME", "Bans the given IP for the given amount of time in Minutest.")
+		self.cmdBan = Command("Ban", "/ban <IP> <TIME>", "IP:TIME", "Bans the specified client for the given amount of time in minutes.")
 		self.cmdListChannel = Command("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 		#Append Commands
 		self.commandList.append(self.cmdListClients)

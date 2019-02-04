@@ -11,13 +11,17 @@ class InputHandler:
 		#Imports
 		self.decEncHelper = DecodingEncodingHelper()
 		#Create Commands
+		#TODO: add command to kick eg. kick <name/ip>
+		#TODO: add command to ban eg. ban <name/ip>
 		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")
 		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdSetName = Command("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
 		self.cmdListChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
-		self.cmdChangeChannel = Command("ChangeChannel", "/changeChannel <Channel Name>", "ChannelName", "Enter the specified channel.")
-		self.cmdDisconnect = Command("Disconnect", "/disconnect", "None", "Disconnects you from the server.")
-		self.cmdListClients = Command("ListClients", "/listClients <Channel Name>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
+		self.cmdChangeChannel = Command("ChangeChannel", "/changeChannel <CHANNEL NAME>", "ChannelName", "Enter the specified channel.")
+		self.cmdDisconnect = Command("Disconnect", "/disconnect", "NONE", "Disconnects you from the server.")
+		self.cmdListClients = Command("ListClients", "/listClients <CHANNEL NAME>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
+		self.cmdKick = Command("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")
+		self.cmdBan = Command("Ban", "/ban <name/ip>", "<NAME/IP>", "Bans the specified client for the given amount of time in minutes.")
 		#Append Commands
 		self.commandList.append(self.cmdClear)
 		self.commandList.append(self.cmdHelp)
@@ -25,7 +29,9 @@ class InputHandler:
 		self.commandList.append(self.cmdListChannel)
 		self.commandList.append(self.cmdChangeChannel)	
 		self.commandList.append(self.cmdDisconnect)
-		self.commandList.append(self.cmdListClients)	
+		self.commandList.append(self.cmdListClients)
+		self.commandList.append(self.cmdKick)	
+		self.commandList.append(self.cmdBan)
 
 	def handleInput(self, command, clientObject):
 		isCommand = True
@@ -88,6 +94,15 @@ class InputHandler:
 					print("[Client/Error] Syntax: " + self.cmdListClients.syntax)
 				if channel != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + channel))
+
+			elif str(command[0]).lower() == self.cmdKick.name:
+				client = None
+				try:
+					client = command[1]
+				except:
+					print("[Client/Error] Syntax: " + self.cmdKick.syntax)
+				if client != None:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411" + client))
 
 			else:
 				print("[Client/Error] Unknown command: " + command[0])

@@ -18,5 +18,11 @@ class ClientManager:
 		for clientObject in self.clientList:
 			if clientObject.ip == ip:
 				ipExists = True
-				break
 		return ipExists
+	
+	def usernameExists(self, username):
+		usernameExists = False
+		for clientObject in self.clientList:
+			if clientObject.username == username:
+				usernameExists = True
+		return usernameExists

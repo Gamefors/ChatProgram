@@ -6,7 +6,7 @@ from utils.ChannelManager import ChannelManager#pylint: disable=E0611,E0401
 
 from objects.Client import Client#pylint: disable=E0611,E0401
 
-import socketserver, datetime
+import socketserver, datetime, time
 class ClientHandler(socketserver.BaseRequestHandler):
 	
 	appendClient = True
@@ -98,7 +98,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
 						break
 				else:
-					#send something that client can filter out as "that channel doesnt exits"
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611[Client/Info] The channel doesn't exists."))
 					break
 		
@@ -131,7 +130,36 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : changed names.")
 
-		else: #any other requesId
+		elif requestId == "411":#kicking clients
+			if self.clientManager.usernameExists(requestdata):
+				if requestdata == self.clientObject.username:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
+				else:
+					for clientObjectInList in self.clientManager.clientList:
+							if clientObjectInList.username == requestdata:
+								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
+								clientObjectInList.socketObject.close()
+								time.sleep(0.1)
+								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
+								break
+					
+			elif self.clientManager.ipExists(requestdata):
+				if requestdata == self.clientObject.ip:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
+				else:
+					for clientObjectInList in self.clientManager.clientList:
+							if clientObjectInList.ip == requestdata:
+								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
+								clientObjectInList.socketObject.close()
+								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
+								break
+			
+			else:
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] Username or ip doesnt exists on the server."))
+
+		else: #any other requestId
 			if len(requestId) == 0:
 				raise SystemExit()
 			else:

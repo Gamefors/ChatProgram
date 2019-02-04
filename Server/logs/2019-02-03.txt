@@ -1,0 +1,35 @@
+[10:57:02]:[Server/Info] Started on ip: localhost with port: 5000
+[10:57:07]:[Server/Info] Gracefully stopping server...
+[10:57:07]:[Server/Info] Gracefully stopped server
+[10:57:39]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[10:58:21]:[Server/Info] 192.168.0.105 connected to the server.
+[10:58:21]:[Server/Info] 192.168.0.105 sent client informations.
+[10:58:21]:[Server/Info] 192.168.0.105 : tim requested the clients from channel Welcome_Channel.
+[10:58:54]:[Server/Info] 192.168.0.100 connected to the server.
+[10:58:54]:[Server/Info] 192.168.0.100 sent client informations.
+[10:58:54]:[Server/Info] 192.168.0.100 : Jan requested the clients from channel Welcome_Channel.
+[10:59:00]:[Server/Info] 192.168.0.100 : Jan tried to kick : Tim
+[10:59:05]:[Server/Info] 192.168.0.100 : Jan tried to kick : tim
+[10:59:05]:[Server/Info] 192.168.0.100 : Jan kicked : tim
+[11:02:18]:[Server/Info] Gracefully stopping server...
+[11:02:18]:[Server/Info] Gracefully stopped server
+[11:02:20]:[Server/Error] 192.168.0.100 Disconnected
+[11:02:39]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[11:02:42]:[Server/Info] 192.168.0.105 connected to the server.
+[11:02:42]:[Server/Info] 192.168.0.105 sent client informations.
+[11:02:42]:[Server/Info] 192.168.0.105 : Tim requested the clients from channel Welcome_Channel.
+[11:02:47]:[Server/Info] 192.168.0.100 connected to the server.
+[11:02:47]:[Server/Info] 192.168.0.100 sent client informations.
+[11:02:47]:[Server/Info] 192.168.0.100 : Jan requested the clients from channel Welcome_Channel.
+[11:03:47]:[Server/Error] 192.168.0.100 Disconnected
+[11:03:48]:[Server/Info] Gracefully stopping server...
+[11:03:48]:[Server/Info] Gracefully stopped server
+[11:09:13]:[Server/Info] Started on ip: 192.168.0.100 with port: 5000
+[11:09:40]:[Server/Info] 192.168.0.105 connected to the server.
+[11:09:40]:[Server/Info] 192.168.0.105 sent client informations.
+[11:09:40]:[Server/Info] 192.168.0.105 : Tim requested the clients from channel Welcome_Channel.
+[11:10:08]:[Server/Info] 192.168.0.100 connected to the server.
+[11:10:08]:[Server/Info] 192.168.0.100 sent client informations.
+[11:10:08]:[Server/Info] 192.168.0.100 : Jan requested the clients from channel Welcome_Channel.
+[11:12:25]:[Server/Info] Gracefully stopping server...
+[11:12:25]:[Server/Info] Gracefully stopped server
