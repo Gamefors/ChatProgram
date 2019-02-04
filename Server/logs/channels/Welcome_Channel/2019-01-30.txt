@@ -1,4 +1,0 @@
-[18:33:33]:[Server/Info][Welcome_Channel] 127.0.0.1 Jan : hi
-[22:54:42]:[Server/Info][Welcome_Channel] 127.0.0.1 Tim : sd
-[22:54:43]:[Server/Info][Welcome_Channel] 127.0.0.1 Tim : ds
-[22:54:49]:[Server/Info][Welcome_Channel] 127.0.0.1 Jan : ds
