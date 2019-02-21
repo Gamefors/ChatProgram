@@ -30,7 +30,7 @@ class InputHandler:
 		self.cmdClear = self.createCommand("Clear", "/clear", "NONE", "Clears your interpreter console.")	
 		self.cmdHelp = self.createCommand("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdKick = self.createCommand("Kick", "/kick <IP>", "IP", "Kicks the given IP from the server.")
-		self.cmdBan = self.createCommand("Ban", "/ban <IP> <TIME>", "IP:TIME", "Bans the specified client for the given amount of time in minutes.")             #TODO: add to command ban: banning with name and ip
+		self.cmdBan = self.createCommand("Ban", "/ban <IP> <TIME>", "IP:TIME", "Bans the specified client for the given amount of time in minutes.")
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 
 	def __init__(self):
