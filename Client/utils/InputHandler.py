@@ -63,6 +63,8 @@ class InputHandler:
 				if newChannelName != None:
 					clientObject.channel = newChannelName
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
+					time.sleep(0.1)
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + newChannelName))
 
 			elif str(command[0]).lower() == self.cmdSetName.name:
 				newUsername = None
@@ -71,11 +73,8 @@ class InputHandler:
 				except IndexError:
 					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
 				if newUsername != None:
-					if "exists" in newUsername:
-						print("[Client/Error] blacklisted word in username.")
-					else:
-						clientObject.username = newUsername
-						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
+					clientObject.username = newUsername
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
 
 			elif str(command[0]).lower() == self.cmdDisconnect.name:
 				print("[Client/Info] You disconnected from the server.")

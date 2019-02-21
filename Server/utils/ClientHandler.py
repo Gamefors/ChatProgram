@@ -105,9 +105,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							clientsInChannel.append(client.username)
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
 						break
-				else:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611[Client/Info] The channel doesn't exists."))
-					break
 		
 		elif requestId == "022":#send channel list  TODO: send more things like description acceslevel etc. but names work for now
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested channel.")
@@ -116,7 +113,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
-		elif requestId == "023":#changing channels TODO: send every other client a message that you joined the channel e.g: [Client/Info] (name) joined your channel.
+		elif requestId == "023":#changing channels TODO: send every other client a message that you joined the channel e.g: [Client/Info] (name) joined your channel. and show current users in channel
 			if self.channelManager.channelExists(requestdata):
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
@@ -130,9 +127,9 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							for clientObjectInList in self.clientManager.clientList:
 								if self.channelManager.channelContains(clientObject, requestdata):
 									print("this was sent to " + clientObjectInList.username)
-									print("[Client/Info] " + clientObject.username + " joined your channel.")
+									print("[Client/Info] " + clientObject.username + " joined your channel.")#TODO: implement showing other users that you joined here
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
-							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
+							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata + ".")
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] The channel you wanted to join doesn't exists."))
 				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
