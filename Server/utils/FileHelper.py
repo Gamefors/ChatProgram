@@ -1,13 +1,16 @@
- #Server
 from objects.Config import Config#pylint: disable=E0611, E0401
+
 import os, sys
+
 class FileHelper:
 
-	def __init__(self):
+	def createDefaultPaths(self):
 		if not os.path.exists("config/"):
 			os.makedirs("config/")
 		if not os.path.exists("data/"):
 			os.makedirs("data/")
+
+	def createDefaultFiles(self):
 		if not os.path.isfile("data/banList.txt"):
 			self.appendToTXTFile("data/" , "banList", "BanList:")
 		if not os.path.isfile("config/config.txt"):
@@ -25,8 +28,14 @@ class FileHelper:
 					fileToWrite.write("ip:" + "localhost" + "\n")
 				else:
 					fileToWrite.write(config)									
-			fileToWrite.close()		
+			fileToWrite.close()	
 
+	def __init__(self):
+		#create default paths
+		self.createDefaultPaths()
+		#create default files
+		self.createDefaultFiles()
+			
 	def readTXTFile(self, path, fileName):
 		fileToRead = open(path + fileName + ".txt", "r")
 		return fileToRead.readlines()
@@ -52,5 +61,3 @@ class FileHelper:
 		config = open("config/config.txt", "r")
 		configs = config.readlines()
 		return Config(int(configs[3][5:]), str(configs[2][3:]).replace("\n",""))
-
-FileHelper()

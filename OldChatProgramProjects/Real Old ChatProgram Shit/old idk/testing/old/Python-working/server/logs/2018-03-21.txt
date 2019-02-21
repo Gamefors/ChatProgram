@@ -1,0 +1,21 @@
+[19:03]:No keep alive packet recieved from 192.168.2.109:56038. Closed connection!
+[19:35]:[Server] got connection from ('192.168.2.109', 56155) and started sending keep alive packages to him
+[19:44]:[Server] got connection from ('192.168.2.109', 56217) and started sending keep alive packages to him
+[19:44]:[Server] jan tried to login
+[19:44]:[Server] got connection from ('192.168.2.109', 56221) and started sending keep alive packages to him
+[19:44]:[Server] Client tried to login with an account that is already logged in
+[19:44]:[Server] 123 tried to login
+[19:44]:[Server] Client tried to login with an account that is already logged in
+[19:44]:No keep alive packet recieved from 192.168.2.109:56221. Closed connection!
+[19:45]:[Server] got connection from ('192.168.2.109', 56225) and started sending keep alive packages to him
+[19:45]:[Server] jan tried to login
+[19:45]:[Server] jan requested channels
+[19:48]:[Server] got connection from ('192.168.2.109', 56238) and started sending keep alive packages to him
+[19:48]:[Server] janj tried to login
+[19:48]:[Server] jan tried to login
+[19:48]:[Server] jan requested channels
+[19:48]:[Server] jan changed channel to defaultchannel1
+[19:48]:[Server] jan requested channels
+[19:48]:[Server] jan changed channel to defaultchannel1
+[19:48]:[Server] jan requested channels
+[19:48]:[Server] jan changed channel to defaultchannel1

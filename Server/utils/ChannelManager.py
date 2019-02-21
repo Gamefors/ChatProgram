@@ -1,4 +1,5 @@
 class ChannelManager:
+	
 	channelList = list()
 		
 	def addChannel(self, channelObject):
@@ -18,7 +19,6 @@ class ChannelManager:
 		for channelObject in self.channelList:
 			if channelObject.name == channel:
 				channelExists = True
-				break
 		return channelExists
 
 	def channelContains(self, clientObject, channel):
@@ -28,5 +28,4 @@ class ChannelManager:
 				for client in channelObject.clientList:
 					if client == clientObject:
 						channelContains = True
-						break
 		return channelContains

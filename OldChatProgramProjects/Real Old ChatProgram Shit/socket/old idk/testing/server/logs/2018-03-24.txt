@@ -1,0 +1,5 @@
+[01:55]:[Server] Started server on ip: localhost:5000
+[01:55]:[Server] 127.0.0.1:57592 connected
+[01:55]:[Server] 127.0.0.1:57592 registered a new User: jan
+[01:55]:[Server] 127.0.0.1:57592 logged in as: jan
+[01:55]:[Server] 127.0.0.1:57592 requested channels

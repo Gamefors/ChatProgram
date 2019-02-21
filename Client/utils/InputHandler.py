@@ -3,36 +3,34 @@ from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=
 from objects.Command import Command#pylint: disable=E0611, E0401
 
 import os,time
+
 class InputHandler:
 	
 	commandList = list()
 	
+	def initializeCommands(self):
+		self.cmdClear = self.createCommand("Clear", "/clear", "NONE", "Clears your interpreter console.")
+		self.cmdHelp = self.createCommand("Help", "/help", "NONE", "Shows a list of available commands.")
+		self.cmdSetName = self.createCommand("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
+		self.cmdListChannel = self.createCommand("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
+		self.cmdChangeChannel = self.createCommand("ChangeChannel", "/changeChannel <CHANNEL NAME>", "ChannelName", "Enter the specified channel.")
+		self.cmdDisconnect = self.createCommand("Disconnect", "/disconnect", "NONE", "Disconnects you from the server.")
+		self.cmdListClients = self.createCommand("ListClients", "/listClients <CHANNEL NAME>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
+		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")
+		self.cmdBan = self.createCommand("Ban", "/ban <name/ip>", "<NAME/IP>", "Bans the specified client for the given amount of time in minutes.")                             #TODO: add function to command ban
+
+
+	def createCommand(self, name, syntax, arguments, description):
+		command = Command(name, syntax, arguments, description)
+		self.commandList.append(command)
+		return command
+
 	def __init__(self):
 		#Imports
 		self.decEncHelper = DecodingEncodingHelper()
 		#Create Commands
-		#TODO: add command to kick eg. kick <name/ip>
-		#TODO: add command to ban eg. ban <name/ip>
-		self.cmdClear = Command("Clear", "/clear", "NONE", "Clears your interpreter console.")
-		self.cmdHelp = Command("Help", "/help", "NONE", "Shows a list of available commands.")
-		self.cmdSetName = Command("SetName", "/setName <Name>", "NAME", "Changes your name to the specified one.")
-		self.cmdListChannel = Command("ListChannel", "/listChannel", "NONE", "Lists all Channel.")
-		self.cmdChangeChannel = Command("ChangeChannel", "/changeChannel <CHANNEL NAME>", "ChannelName", "Enter the specified channel.")
-		self.cmdDisconnect = Command("Disconnect", "/disconnect", "NONE", "Disconnects you from the server.")
-		self.cmdListClients = Command("ListClients", "/listClients <CHANNEL NAME>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
-		self.cmdKick = Command("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")
-		self.cmdBan = Command("Ban", "/ban <name/ip>", "<NAME/IP>", "Bans the specified client for the given amount of time in minutes.")
-		#Append Commands
-		self.commandList.append(self.cmdClear)
-		self.commandList.append(self.cmdHelp)
-		self.commandList.append(self.cmdSetName)
-		self.commandList.append(self.cmdListChannel)
-		self.commandList.append(self.cmdChangeChannel)	
-		self.commandList.append(self.cmdDisconnect)
-		self.commandList.append(self.cmdListClients)
-		self.commandList.append(self.cmdKick)	
-		self.commandList.append(self.cmdBan)
-
+		self.initializeCommands()
+	
 	def handleInput(self, command, clientObject):
 		isCommand = True
 		command = command.split()

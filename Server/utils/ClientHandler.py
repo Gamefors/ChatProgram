@@ -1,23 +1,30 @@
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611,E0401
-from utils.ClientManager import ClientManager#pylint: disable=E0611,E0401
-from utils.LogHelper import LogHelper#pylint: disable=E0611,E0401
-from utils.FileHelper import FileHelper#pylint: disable=E0611,E0401
 from utils.ChannelManager import ChannelManager#pylint: disable=E0611,E0401
+from utils.ClientManager import ClientManager#pylint: disable=E0611,E0401
+from utils.FileHelper import FileHelper#pylint: disable=E0611,E0401
+from utils.LogHelper import LogHelper#pylint: disable=E0611,E0401
 
 from objects.Client import Client#pylint: disable=E0611,E0401
 
 import socketserver, datetime, time
+
 class ClientHandler(socketserver.BaseRequestHandler):
 	
 	appendClient = True
 	tryRecv = False
-	#overwrite
-	def handle(self):
+	
+	def importScripts(self):
 		self.decEncHelper = DecodingEncodingHelper()
-		self.logHelper = LogHelper()
+		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
 		self.fileHelper = FileHelper()
-		self.channelManager = ChannelManager()
+		self.logHelper = LogHelper()
+	
+	#overwrite handle method	
+	def handle(self):
+		#imports
+		self.importScripts()
+
 		if self.appendClient:
 			self.clientObject = Client(self.request, "*NONE*none*NONE+", self.channelManager.channelList[0], 0)
 			self.clientObject.channelObject.clientList.append(self.clientObject)
@@ -60,6 +67,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server.")
 				self.appendClient = False
 				self.tryRecv = True	
+		
 		if self.tryRecv:
 			try:
 				self.data = self.decEncHelper.bytesToString(self.clientObject.socketObject.recv(1024))
@@ -108,7 +116,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
-		elif requestId == "023":#changing channels		
+		elif requestId == "023":#changing channels TODO: send every other client a message that you joined the channel e.g: [Client/Info] (name) joined your channel.
 			if self.channelManager.channelExists(requestdata):
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
@@ -119,6 +127,10 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.channelManager.removeChannelMember(clientObject.channelObject, clientObject)
 							clientObject.channelObject = channelObject
 							self.channelManager.addChannelMember(channelObject, clientObject)
+							for clientObjectInList in self.clientManager.clientList:
+								if self.channelManager.channelContains(clientObject, requestdata):
+									print("this was sent to " + clientObjectInList.username)
+									print("[Client/Info] " + clientObject.username + " joined your channel.")
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
 							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata)
 			else:

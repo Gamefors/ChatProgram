@@ -1,4 +1,5 @@
 class ClientManager:
+	
 	clientList = list()
 		
 	def addClient(self, clientObject):

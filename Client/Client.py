@@ -1,5 +1,5 @@
-from utils.ServerHandler import ServerHandler#pylint: disable=E0611
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611
+from utils.ServerHandler import ServerHandler#pylint: disable=E0611
 from utils.InputHandler import InputHandler#pylint: disable=E0611
 from utils.FileHelper import FileHelper#pylint: disable=E0611
 

@@ -1,0 +1,233 @@
+[17:23]:[Server] Started server on ip: localhost:5000
+[17:23]:[Server] 127.0.0.1:54268 connected
+[17:23]:[Server] 127.0.0.1:54268 logged in as: jan
+[17:23]:[Server] 127.0.0.1:54268 requested channels
+[17:23]:[Server] 127.0.0.1:54268 changed channel to defaultchannel1
+[17:23]:[Server] 127.0.0.1:54268 lost connection to server unexpectedly
+[17:23]:[Server] 127.0.0.1:54320 connected
+[17:23]:[Server] 127.0.0.1:54325 connected
+[17:23]:[Server] 127.0.0.1:54320 logged in as: jan
+[17:39]:[Server] Started server on ip: localhost:5000
+[17:39]:[Server] 127.0.0.1:54452 connected
+[17:39]:[Server] 127.0.0.1:54454 connected
+[17:39]:[Server] 127.0.0.1:54454 logged in as: jan
+[17:39]:[Server] 127.0.0.1:54454 lost connection to server unexpectedly
+[17:55]:[Server] Started server on ip: localhost:5000
+[17:55]:[Server] 127.0.0.1:54682 connected
+[17:55]:[Server] 127.0.0.1:54685 connected
+[17:55]:[Server] 127.0.0.1:54682 logged in as: jan
+[17:55]:[Server] 127.0.0.1:54682 lost connection to server unexpectedly
+[20:36]:[Server] Started server on ip: localhost:5000
+[20:36]:[Server] 127.0.0.1:55898 connected
+[20:39]:[Server] Started server on ip: localhost:5000
+[20:39]:[Server] 127.0.0.1:55970 connected
+[20:39]:[Server] 127.0.0.1:55970 logged in as: jan
+[20:39]:[Server] 127.0.0.1:55970 requested channels
+[20:39]:[Server] 127.0.0.1:55989 connected
+[20:39]:[Server] 127.0.0.1:55989 logged in as: leo
+[20:39]:[Server] 127.0.0.1:55989 lost connection to server unexpectedly
+[21:06]:[Server] Started server on ip: localhost:5000
+[21:06]:[Server] 127.0.0.1:56225 connected
+[21:06]:[Server] 127.0.0.1:56227 connected
+[21:06]:[Server] 127.0.0.1:56227 logged in as: jan
+[21:06]:[Server] 127.0.0.1:56227 lost connection to server unexpectedly
+[21:15]:[Server] Started server on ip: localhost:5000
+[21:15]:[Server] 127.0.0.1:56284 connected
+[21:15]:[Server] 127.0.0.1:56284 logged in as: jan
+[21:15]:[Server] 127.0.0.1:56284 requested channels
+[21:15]:[Server] 127.0.0.1:56284 lost connection to server unexpectedly
+[21:16]:[Server] Started server on ip: localhost:5000
+[21:16]:[Server] 127.0.0.1:56303 connected
+[21:16]:[Server] 127.0.0.1:56305 connected
+[21:16]:[Server] 127.0.0.1:56303 logged in as: jan
+[21:16]:[Server] 127.0.0.1:56303 lost connection to server unexpectedly
+[21:32]:[Server] Started server on ip: localhost:5000
+[21:32]:[Server] 127.0.0.1:56444 connected
+[21:32]:[Server] Started server on ip: localhost:5000
+[21:32]:[Server] 127.0.0.1:56447 connected
+[21:32]:[Server] 127.0.0.1:56451 connected
+[21:34]:[Server] Started server on ip: localhost:5000
+[21:34]:[Server] 127.0.0.1:56475 connected
+[21:35]:[Server] Started server on ip: localhost:5000
+[21:35]:[Server] 127.0.0.1:56488 connected
+[21:35]:[Server] 127.0.0.1:56488 logged in as: jan
+[21:35]:[Server] 127.0.0.1:56488 requested channels
+[21:35]:[Server] 127.0.0.1:56488 lost connection to server unexpectedly
+[21:36]:[Server] Started server on ip: localhost:5000
+[21:36]:[Server] 127.0.0.1:56508 connected
+[21:36]:[Server] 127.0.0.1:56508 logged in as: jan
+[21:36]:[Server] 127.0.0.1:56508 requested channels
+[21:36]:[Server] 127.0.0.1:56508 lost connection to server unexpectedly
+[21:36]:[Server] Started server on ip: localhost:5000
+[21:36]:[Server] 127.0.0.1:56515 connected
+[21:36]:[Server] 127.0.0.1:56517 connected
+[21:36]:[Server] 127.0.0.1:56517 lost connection to server unexpectedly
+[21:36]:[Server] 127.0.0.1:56515 lost connection to server unexpectedly
+[21:37]:[Server] Started server on ip: localhost:5000
+[21:37]:[Server] 127.0.0.1:56526 connected
+[21:37]:[Server] 127.0.0.1:56526 lost connection to server unexpectedly
+[21:37]:[Server] 127.0.0.1:56533 connected
+[21:37]:[Server] 127.0.0.1:56533 lost connection to server unexpectedly
+[21:37]:[Server] 127.0.0.1:56535 connected
+[21:37]:[Server] 127.0.0.1:56537 connected
+[21:37]:[Server] 127.0.0.1:56535 lost connection to server unexpectedly
+[21:37]:[Server] 127.0.0.1:56537 lost connection to server unexpectedly
+[21:41]:[Server] Started server on ip: localhost:5000
+[21:41]:[Server] 127.0.0.1:56568 connected
+[21:41]:[Server] 127.0.0.1:56568 logged in as: jan
+[21:41]:[Server] 127.0.0.1:56568 requested channels
+[21:41]:[Server] 127.0.0.1:56577 connected
+[21:41]:[Server] 127.0.0.1:56577 logged in as: jan
+[21:41]:[Server] 127.0.0.1:56577 lost connection to server unexpectedly
+[21:47]:[Server] Started server on ip: localhost:5000
+[21:47]:[Server] 127.0.0.1:56619 connected
+[21:47]:[Server] 127.0.0.1:56619 timed out
+[21:48]:[Server] Started server on ip: localhost:5000
+[21:48]:[Server] 127.0.0.1:56632 connected
+[21:48]:[Server] 127.0.0.1:56632 timed out
+[21:49]:[Server] Started server on ip: localhost:5000
+[21:49]:[Server] 127.0.0.1:56640 connected
+[21:49]:[Server] 127.0.0.1:56640 timed out
+[21:50]:[Server] Started server on ip: localhost:5000
+[21:50]:[Server] 127.0.0.1:56653 connected
+[21:50]:[Server] 127.0.0.1:56653 logged in as: jan
+[21:50]:[Server] 127.0.0.1:56653 requested channels
+[21:50]:[Server] 127.0.0.1:56658 connected
+[21:50]:[Server] 127.0.0.1:56658 logged in as: jan
+[21:50]:[Server] 127.0.0.1:56658 lost connection to server unexpectedly
+[21:51]:[Server] Started server on ip: localhost:5000
+[21:51]:[Server] 127.0.0.1:56675 connected
+[21:51]:[Server] 127.0.0.1:56675 timed out
+[21:52]:[Server] Started server on ip: localhost:5000
+[21:52]:[Server] 127.0.0.1:56680 connected
+[21:52]:[Server] 127.0.0.1:56680 timed out
+[21:54]:[Server] Started server on ip: localhost:5000
+[21:54]:[Server] 127.0.0.1:56694 connected
+[21:54]:[Server] 127.0.0.1:56694 logged in as: jan
+[21:54]:[Server] 127.0.0.1:56694 requested channels
+[22:00]:[Server] Started server on ip: localhost:5000
+[22:00]:[Server] 127.0.0.1:56752 connected
+[22:00]:[Server] 127.0.0.1:56752 logged in as: jan
+[22:00]:[Server] 127.0.0.1:56752 requested channels
+[22:00]:[Server] 127.0.0.1:56759 connected
+[22:00]:[Server] 127.0.0.1:56759 lost connection to server unexpectedly
+[22:02]:[Server] Started server on ip: localhost:5000
+[22:02]:[Server] 127.0.0.1:56774 connected
+[22:02]:[Server] 127.0.0.1:56774 logged in as: jan
+[22:02]:[Server] 127.0.0.1:56774 requested channels
+[22:02]:[Server] 127.0.0.1:56779 connected
+[22:02]:[Server] 127.0.0.1:56779 timed out
+[22:03]:[Server] Started server on ip: localhost:5000
+[22:03]:[Server] 127.0.0.1:56787 connected
+[22:03]:[Server] 127.0.0.1:56787 logged in as: jan
+[22:03]:[Server] 127.0.0.1:56787 requested channels
+[22:03]:[Server] 127.0.0.1:56794 connected
+[22:03]:[Server] 127.0.0.1:56794 timed out
+[22:04]:[Server] Started server on ip: localhost:5000
+[22:04]:[Server] 127.0.0.1:56798 connected
+[22:04]:[Server] 127.0.0.1:56798 logged in as: jan
+[22:04]:[Server] 127.0.0.1:56798 requested channels
+[22:04]:[Server] 127.0.0.1:56804 connected
+[22:04]:[Server] 127.0.0.1:56798 timed out
+[22:15]:[Server] Started server on ip: localhost:5000
+[22:15]:[Server] 127.0.0.1:56916 connected
+[22:15]:[Server] 127.0.0.1:56916 logged in as: jan
+[22:15]:[Server] 127.0.0.1:56916 requested channels
+[22:15]:[Server] 127.0.0.1:56923 connected
+[22:15]:[Server] 127.0.0.1:56916 timed out
+[22:17]:[Server] Started server on ip: localhost:5000
+[22:17]:[Server] 127.0.0.1:56931 connected
+[22:17]:[Server] 127.0.0.1:56931 logged in as: jan
+[22:17]:[Server] 127.0.0.1:56931 requested channels
+[22:17]:[Server] 127.0.0.1:56938 connected
+[22:17]:[Server] 127.0.0.1:56938 timed out
+[22:18]:[Server] Started server on ip: localhost:5000
+[22:18]:[Server] 127.0.0.1:56942 connected
+[22:18]:[Server] 127.0.0.1:56942 logged in as: jan
+[22:18]:[Server] 127.0.0.1:56942 requested channels
+[22:18]:[Server] 127.0.0.1:56949 connected
+[22:18]:[Server] 127.0.0.1:56949 timed out
+[22:21]:[Server] Started server on ip: localhost:5000
+[22:21]:[Server] 127.0.0.1:56959 connected
+[22:21]:[Server] 127.0.0.1:56959 logged in as: jan
+[22:21]:[Server] 127.0.0.1:56959 requested channels
+[22:21]:[Server] 127.0.0.1:56964 connected
+[22:21]:[Server] 127.0.0.1:56964 lost connection to server unexpectedly
+[22:21]:[Server] 127.0.0.1:56966 connected
+[22:25]:[Server] Started server on ip: localhost:5000
+[22:25]:[Server] 127.0.0.1:57031 connected
+[22:25]:[Server] 127.0.0.1:57031 logged in as: jan
+[22:25]:[Server] 127.0.0.1:57031 requested channels
+[22:25]:[Server] 127.0.0.1:57040 connected
+[22:25]:[Server] 127.0.0.1:57040 timed out
+[22:27]:[Server] Started server on ip: localhost:5000
+[22:27]:[Server] 127.0.0.1:57047 connected
+[22:27]:[Server] 127.0.0.1:57047 logged in as: jan
+[22:27]:[Server] 127.0.0.1:57047 requested channels
+[22:27]:[Server] 127.0.0.1:57052 connected
+[22:27]:[Server] Started server on ip: localhost:5000
+[22:27]:[Server] 127.0.0.1:57056 connected
+[22:27]:[Server] 127.0.0.1:57056 logged in as: jan
+[22:27]:[Server] 127.0.0.1:57056 requested channels
+[22:27]:[Server] 127.0.0.1:57062 connected
+[22:30]:[Server] Started server on ip: localhost:5000
+[22:30]:[Server] 127.0.0.1:57092 connected
+[22:30]:[Server] 127.0.0.1:57092 lost connection to server unexpectedly
+[22:30]:[Server] 127.0.0.1:57101 connected
+[22:32]:[Server] Started server on ip: localhost:5000
+[22:32]:[Server] 127.0.0.1:57113 connected
+[22:32]:[Server] Started server on ip: localhost:5000
+[22:32]:[Server] 127.0.0.1:57115 connected
+[22:34]:[Server] Started server on ip: localhost:5000
+[22:34]:[Server] 127.0.0.1:57124 connected
+[22:35]:[Server] Started server on ip: localhost:5000
+[22:35]:[Server] 127.0.0.1:57129 connected
+[22:38]:[Server] Started server on ip: localhost:5000
+[22:38]:[Server] 127.0.0.1:57147 connected
+[22:38]:[Server] 127.0.0.1:57147 logged in as: jan
+[22:38]:[Server] 127.0.0.1:57147 requested channels
+[22:38]:[Server] 127.0.0.1:57152 connected
+[22:38]:[Server] 127.0.0.1:57152 logged in as: jan
+[22:38]:[Server] 127.0.0.1:57152 lost connection to server unexpectedly
+[23:31]:[Server] Started server on ip: localhost:5000
+[23:31]:[Server] 127.0.0.1:57628 connected
+[23:31]:[Server] 127.0.0.1:57628 logged in as: jan
+[23:31]:[Server] 127.0.0.1:57628 requested channels
+[23:31]:[Server] 127.0.0.1:57633 connected
+[23:31]:[Server] 127.0.0.1:57633 logged in as: jan
+[23:31]:[Server] 127.0.0.1:57633 lost connection to server unexpectedly
+[23:34]:[Server] Started server on ip: localhost:5000
+[23:34]:[Server] 127.0.0.1:57659 connected
+[23:34]:[Server] 127.0.0.1:57659 logged in as: jan
+[23:34]:[Server] 127.0.0.1:57659 requested channels
+[23:34]:[Server] 127.0.0.1:57664 connected
+[23:34]:[Server] 127.0.0.1:57664 logged in as: jan
+[23:34]:[Server] 127.0.0.1:57664 lost connection to server unexpectedly
+[23:41]:[Server] Started server on ip: localhost:5000
+[23:41]:[Server] 127.0.0.1:57717 connected
+[23:41]:[Server] 127.0.0.1:57717 logged in as: jan
+[23:41]:[Server] 127.0.0.1:57717 requested channels
+[23:41]:[Server] 127.0.0.1:57722 connected
+[23:41]:[Server] 127.0.0.1:57722 logged in as: jan
+[23:41]:[Server] 127.0.0.1:57722 lost connection to server unexpectedly
+[23:46]:[Server] Started server on ip: localhost:5000
+[23:46]:[Server] 127.0.0.1:57786 connected
+[23:46]:[Server] 127.0.0.1:57786 logged in as: jan
+[23:46]:[Server] 127.0.0.1:57786 requested channels
+[23:46]:[Server] 127.0.0.1:57791 connected
+[23:46]:[Server] 127.0.0.1:57791 logged in as: jan
+[23:46]:[Server] 127.0.0.1:57791 lost connection to server unexpectedly
+[23:53]:[Server] Started server on ip: localhost:5000
+[23:53]:[Server] 127.0.0.1:57842 connected
+[23:53]:[Server] Started server on ip: localhost:5000
+[23:53]:[Server] 127.0.0.1:57846 connected
+[23:53]:[Server] 127.0.0.1:57846 timed out
+[23:54]:[Server] Started server on ip: localhost:5000
+[23:54]:[Server] 127.0.0.1:57855 connected
+[23:55]:[Server] Started server on ip: localhost:5000
+[23:55]:[Server] 127.0.0.1:57861 connected
+[23:55]:[Server] 127.0.0.1:57861 logged in as: jan
+[23:55]:[Server] 127.0.0.1:57861 requested channels
+[23:55]:[Server] 127.0.0.1:57868 connected
+[23:55]:[Server] 127.0.0.1:57868 lost connection to server unexpectedly
+[23:55]:[Server] 127.0.0.1:57872 connected

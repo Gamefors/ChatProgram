@@ -1,5 +1,7 @@
 class ServerHandler:
+	
 	def __init__(self, clientObject):
+		
 		self.clientObject = clientObject
 
 		self.kicked = False
