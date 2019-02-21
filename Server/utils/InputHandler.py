@@ -29,7 +29,7 @@ class InputHandler:
 		self.cmdListClients = self.createCommand("listClients", "/listClients", "NONE", "Lists all connected clients with their name, ip and channel their in.")
 		self.cmdClear = self.createCommand("Clear", "/clear", "NONE", "Clears your interpreter console.")	
 		self.cmdHelp = self.createCommand("Help", "/help", "NONE", "Shows a list of available commands.")
-		self.cmdKick = self.createCommand("Kick", "/kick <IP>", "IP", "Kicks the given IP from the server.")                                                     #TODO: add to command kick: kicking with name and ip
+		self.cmdKick = self.createCommand("Kick", "/kick <IP>", "IP", "Kicks the given IP from the server.")
 		self.cmdBan = self.createCommand("Ban", "/ban <IP> <TIME>", "IP:TIME", "Bans the specified client for the given amount of time in minutes.")             #TODO: add to command ban: banning with name and ip
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 
@@ -64,37 +64,43 @@ class InputHandler:
 			if len(self.clientManager.clientList) < 1:
 				self.logHelper.printAndWriteServerLog("[Server/Error] No clients connected")
 			else:
-				ip = None
+				client = None
 				try:
-					ip = command[1]
+					client = command[1]
 				except IndexError:
 					self.logHelper.printAndWriteServerLog("[Server/Error] Syntax: " + self.cmdKick.syntax)
-				if ip != None:
-					if self.clientManager.ipExists(ip):
+				if client != None:
+					if self.clientManager.ipExists(client):
 						for clientObject in self.clientManager.clientList:
-							if clientObject.ip == ip:
+							if clientObject.ip == client:
+								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got kicked")						
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
+								clientObject.socketObject.close()
+					elif self.clientManager.usernameExists(client):
+						for clientObject in self.clientManager.clientList:
+							if clientObject.username.lower() == client:
 								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got kicked")						
 								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
 								clientObject.socketObject.close()
 					else:
-						print("[Server/Error] Your given Ip doesn't exist.")
+						print("[Server/Error] Your given Ip/Name doesn't exist.")
 						
 		elif command[0] == self.cmdBan.name:
 			if len(self.clientManager.clientList) < 1:
 				self.logHelper.printAndWriteServerLog("[Server/Error] No clients connected")
 			else:
-				ip = None
+				client = None
 				time = None
 				try:
-					ip = command[1]
+					client = command[1]
 					time = int(command[2])
 				except IndexError:
-					if ip == None:
+					if client == None:
 						self.logHelper.printAndWriteServerLog("[Server/Error] Syntax: " + self.cmdBan.syntax)
-				if ip != None:
-					if self.clientManager.ipExists(ip):
+				if client != None:
+					if self.clientManager.ipExists(client):
 						for clientObject in self.clientManager.clientList:
-							if clientObject.ip == ip:
+							if clientObject.ip == client:
 								if time != None:
 									if time == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
@@ -113,7 +119,7 @@ class InputHandler:
 									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 									clientObject.socketObject.close()
 					else:
-						print("[Server/Error] Your given Ip doesn't exist.")
+						print("[Server/Error] Your given Ip/Name doesn't exist.")
 						
 		elif command[0] == self.cmdListChannel.name:
 			self.logHelper.printAndWriteServerLog("[Server/Info] Channels:")

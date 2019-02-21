@@ -24,6 +24,6 @@ class ClientManager:
 	def usernameExists(self, username):
 		usernameExists = False
 		for clientObject in self.clientList:
-			if clientObject.username == username:
+			if clientObject.username.lower() == username.lower():
 				usernameExists = True
 		return usernameExists
