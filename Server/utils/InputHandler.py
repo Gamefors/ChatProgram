@@ -118,6 +118,26 @@ class InputHandler:
 									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 									clientObject.socketObject.close()
+					elif self.clientManager.usernameExists(client):
+						for clientObject in self.clientManager.clientList:
+							if clientObject.username.lower() == client:
+								if time != None:
+									if time == 0:
+										self.fileHelper.addClientToBanList(clientObject.ip)
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+										clientObject.socketObject.close()
+									else:
+										currentTimeStamp = datetime.datetime.now().timestamp()
+										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(time)*60))
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got banned for " + str(time) + "minutes")						
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(time) + "Minutes by the console"))
+										clientObject.socketObject.close()
+								else:
+									self.fileHelper.addClientToBanList(clientObject.ip)
+									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+									clientObject.socketObject.close()
 					else:
 						print("[Server/Error] Your given Ip/Name doesn't exist.")
 						
