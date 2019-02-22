@@ -63,6 +63,8 @@ class ServerHandler:
 						print(obj + "(you)")
 					else:
 						print(obj)	
+		elif requestId == "811":
+			print(requestdata)
 		elif requestId == "023":
 			print(requestdata)
 		elif requestId == "031":
