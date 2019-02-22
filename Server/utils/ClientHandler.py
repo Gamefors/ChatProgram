@@ -73,8 +73,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.data = self.decEncHelper.bytesToString(self.clientObject.socketObject.recv(1024))
 				self.handleRequest(self.data, self.clientObject)
 			except:
+				for clientObjectInList in self.clientManager.clientList:
+								if clientObjectInList != self.clientObject:
+									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
+										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
 				self.logHelper.printAndWriteServerLog("[Server/Error] " + str(self.clientObject.ip) + " Disconnected")
-				#TODO: implement that other users in that channel get notified that the user quit ;not left < implement this on channelchange
+				#TODO: implement that other users in that channel get notified that the user quit
 				self.clientManager.removeClient(self.clientObject)
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
@@ -93,7 +97,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		elif requestId == "011":#get client informations
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations.")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
-			#TODO:maybe do this at another point of program but works for now
 			for clientObjectInList in self.clientManager.clientList:
 								if clientObjectInList != clientObject:
 									if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
@@ -119,7 +122,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
-		elif requestId == "023":#changing channels TODO: send every other client a message that you joined the channel e.g: [Client/Info] (name) joined your channel
+		elif requestId == "023":#changing channels TODO: send every client a message when you leave a channel
 			if self.channelManager.channelExists(requestdata):
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
