@@ -78,7 +78,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
 				self.logHelper.printAndWriteServerLog("[Server/Error] " + str(self.clientObject.ip) + " Disconnected")
-				#TODO: implement that other users in that channel get notified that the user quit
 				self.clientManager.removeClient(self.clientObject)
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
@@ -122,14 +121,15 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				channelNames.append(channelObject.name)
 			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
 
-		elif requestId == "023":#changing channels TODO: send every client a message when you leave a channel
+		elif requestId == "023":#changing channels
 			if self.channelManager.channelExists(requestdata):
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
 					self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel which he is already part of.")					
 				else:
 					for channelObject in self.channelManager.channelList:
-						if channelObject.name == requestdata:				
+						if channelObject.name == requestdata:
+							oldChannel = clientObject.channelObject.name
 							self.channelManager.removeChannelMember(clientObject.channelObject, clientObject)
 							clientObject.channelObject = channelObject
 							self.channelManager.addChannelMember(channelObject, clientObject)
@@ -138,9 +138,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 									if clientObjectInList != clientObject:
 										if clientObjectInList.channelObject.name == clientObject.channelObject.name:
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " joined your channel."))
-											#print("[Client/Info] " + clientObject.username + " joined your channel. DEBUG: this was sent to " + clientObjectInList.username)#TODO: implement showing other users that you joined, here
+										elif clientObjectInList.channelObject.name == oldChannel:
+											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " left your channel."))
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
 							self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " changed channel to : " + requestdata + ".")
+							#print("oldchannel was " + oldChannel)
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] The channel you wanted to join doesn't exists."))
 				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
