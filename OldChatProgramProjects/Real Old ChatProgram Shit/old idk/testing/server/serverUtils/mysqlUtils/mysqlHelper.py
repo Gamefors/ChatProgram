@@ -25,7 +25,7 @@ class mysqlHelper:
 									database = 'python');
 			return cnx
 		except:
-			print("Mysql server not Online TODO: SEND A PACKET TO CLIENT")
+			print("Mysql server not Online  SEND A PACKET TO CLIENT")
 			#stop everything after here
 	#end of helper
 

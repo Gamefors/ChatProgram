@@ -46,7 +46,7 @@ class Client:
 					self.client.sendall(self.StringToBytes("001" + self.username + " : " + message))
 				except:
 					self.connected = False
-					#self.tryConnect():TODO:reconnect when not kicked or banned	ask on first connection if banend
+					#self.tryConnect():reconnect when not kicked or banned	ask on first connection if banend
 Client()
 
 	

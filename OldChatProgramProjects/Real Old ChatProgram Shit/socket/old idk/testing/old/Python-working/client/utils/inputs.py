@@ -21,7 +21,7 @@ class inputs:
 			elif "help" in msg:
 				self._user.commandsUtil.help()
 			else:
-				print("Command " + msg.replace("/", "") + "not found please type /help for a list of command") # sepereate commands from users with permissions and withut add it to todo if not done here
+				print("Command " + msg.replace("/", "") + "not found please type /help for a list of command") # sepereate commands from users with permissions and withut add it to do if not done here
 				self.waitForMessage()
 		
 		else:
