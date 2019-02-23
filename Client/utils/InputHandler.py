@@ -16,7 +16,7 @@ class InputHandler:
 		self.cmdChangeChannel = self.createCommand("ChangeChannel", "/changeChannel <CHANNEL NAME>", "ChannelName", "Enter the specified channel.")
 		self.cmdDisconnect = self.createCommand("Disconnect", "/disconnect", "NONE", "Disconnects you from the server.")
 		self.cmdListClients = self.createCommand("ListClients", "/listClients <CHANNEL NAME>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
-		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")												 #FIXME:kicking another client works but client can still write in channels can only be reproduced with 2 indivduel clients
+		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")
 
 
 	def createCommand(self, name, syntax, arguments, description):

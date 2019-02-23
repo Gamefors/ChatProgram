@@ -77,5 +77,4 @@ class ServerHandler:
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:
-			print("[Client/Error] Unknown RequestID: " + requestId)
-			raise SystemExit()
+			print("[Client/Error] Unknown RequestID: " + requestId + " contained data: " + requestdata)
