@@ -1,4 +1,4 @@
 class Config:
-    def __init__(self, port, ip):
-        self.port = port
+    def __init__(self, ip, port):
         self.ip = ip
+        self.port = port
