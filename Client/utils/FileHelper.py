@@ -9,16 +9,30 @@ class FileHelper:
 		json.dump(dataToBeWritten, fileToWrite, indent=4)
 
 	def createDefaultConfig(self):
-		config = {
-  				"Server Config": [
-    				{"ip": "localhost"},
-    				{"port": 5000}
-				 	],
-		#		"Other Config": [
-		#			{"None": "None"}
-		#		]
-				}
-		self.writeJsonFile("config/", "config", config)
+		if self.generateNew:
+			print("[Client/Error] Removin old one and generating the default one.")	
+			os.remove("config/config.json")
+			config = {
+  					"Server Config": [
+    					{"ip": "localhost"},
+							{"port": 5000}
+						],
+			#		"Other Config": [
+			#			{"None": "None"}
+			#		]
+					}
+			self.writeJsonFile("config/", "config", config)
+		else:	
+			config = {
+  					"Server Config": [
+    					{"ip": "localhost"},
+							{"port": 5000}
+						],
+			#		"Other Config": [
+			#			{"None": "None"}
+			#		]
+					}
+			self.writeJsonFile("config/", "config", config)
 
 	def createDefaultPaths(self):
 		if not os.path.exists("config/"):
@@ -29,6 +43,8 @@ class FileHelper:
 			self.createDefaultConfig()
 		#TODO:add some layer 8 problem solvers eg removing a "(" or "["
 	def __init__(self):
+		#default boolean
+		self.generateNew = False
 		#create default paths
 		self.createDefaultPaths()
 		#create default files
@@ -36,11 +52,21 @@ class FileHelper:
 			
 	def readJsonFile(self, path, fileName):
 		fileToRead = open(path + fileName + ".json", "r")
-		return json.load(fileToRead)
+		try:
+			return json.load(fileToRead)
+		except json.decoder.JSONDecodeError:
+			print("[Client/Error] Config file couldn't be read.")
+			self.generateNew = True
+			self.createDefaultConfig()
 
 	def getConfig(self):
-		config = self.readJsonFile("config/", "config")
-		serverConfig = config["Server Config"]
-		return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
+		try:
+			config = self.readJsonFile("config/", "config")
+			serverConfig = config["Server Config"]
+			return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
+		except TypeError:
+			print("[Client/Error] Please restart your client.")	
+			raise SystemExit()
+			
 
 FileHelper()
