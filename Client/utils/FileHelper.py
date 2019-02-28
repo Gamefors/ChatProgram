@@ -21,7 +21,6 @@ class FileHelper:
 			#			{"None": "None"}
 			#		]
 					}
-			self.writeJsonFile("config/", "config", config)
 		else:	
 			config = {
   					"Server Config": [
@@ -32,7 +31,7 @@ class FileHelper:
 			#			{"None": "None"}
 			#		]
 					}
-			self.writeJsonFile("config/", "config", config)
+		self.writeJsonFile("config/", "config", config)
 
 	def createDefaultPaths(self):
 		if not os.path.exists("config/"):
@@ -41,7 +40,6 @@ class FileHelper:
 	def createDefaultFiles(self):
 		if not os.path.isfile("config/config.json"):
 			self.createDefaultConfig()
-		#TODO:add some layer 8 problem solvers eg removing a "(" or "["
 	def __init__(self):
 		#default boolean
 		self.generateNew = False

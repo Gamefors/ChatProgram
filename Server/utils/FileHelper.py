@@ -1,8 +1,37 @@
 from objects.Config import Config#pylint: disable=E0611, E0401
 
-import os, sys
+import os, sys, json
 
 class FileHelper:
+
+	def writeJsonFile(self, path, fileName, dataToBeWritten):
+		fileToWrite = open(path + fileName + ".json", "w")
+		json.dump(dataToBeWritten, fileToWrite, indent=4)
+
+	def createDefaultConfig(self):
+		if self.generateNew:
+			print("[Client/Error] Removin old one and generating the default one.")	
+			os.remove("config/config.json")
+			config = {
+  					"Server Config": [
+    					{"ip": "localhost"},
+							{"port": 5000}
+						],
+			#		"Other Config": [
+			#			{"None": "None"}
+			#		]
+					}
+		else:
+			config = {
+  					"Server Config": [
+    					{"ip": "localhost"},
+							{"port": 5000}
+						],
+			#		"Other Config": [
+			#			{"None": "None"}
+			#		]
+					}
+		self.writeJsonFile("config/", "config", config)
 
 	def createDefaultPaths(self):
 		if not os.path.exists("config/"):
@@ -11,26 +40,13 @@ class FileHelper:
 			os.makedirs("data/")
 
 	def createDefaultFiles(self):
+		self.createDefaultConfig()
 		if not os.path.isfile("data/banList.txt"):
 			self.appendToTXTFile("data/" , "banList", "BanList:")
-		if not os.path.isfile("config/config.txt"):
-			self.appendToTXTFile("config/" , "config", "Config:")
-			self.appendToTXTFile("config/" , "config", "-")
-			self.appendToTXTFile("config/" , "config", "ip:localhost")
-			self.appendToTXTFile("config/" , "config", "port:5000")
-		if os.path.isfile("config/config.txt"):
-			configs = self.readTXTFile("config/", "config")
-			fileToWrite = open("config/config.txt", "w")
-			for config in configs:
-				if config == "port:\n":
-					fileToWrite.write("port:" + "5000" + "\n")
-				elif config == "ip:\n":
-					fileToWrite.write("ip:" + "localhost" + "\n")
-				else:
-					fileToWrite.write(config)									
-			fileToWrite.close()	
-
+		
 	def __init__(self):
+		#default booleam
+		self.generateNew = False
 		#create default paths
 		self.createDefaultPaths()
 		#create default files
@@ -57,7 +73,20 @@ class FileHelper:
 				  fileToWrite.write(clientInList)
 		fileToWrite.close()		
 
+	def readJsonFile(self, path, fileName):
+		fileToRead = open(path + fileName + ".json", "r")
+		try:
+			return json.load(fileToRead)
+		except json.decoder.JSONDecodeError:
+			print("[Client/Error] Config file couldn't be read.")
+			self.generateNew = True
+			self.createDefaultConfig()
+
 	def getConfig(self):
-		config = open("config/config.txt", "r")
-		configs = config.readlines()
-		return Config(int(configs[3][5:]), str(configs[2][3:]).replace("\n",""))
+		try:
+			config = self.readJsonFile("config/", "config")
+			serverConfig = config["Server Config"]
+			return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
+		except TypeError:
+			print("[Client/Error] Please restart the server.")	
+			raise SystemExit()
