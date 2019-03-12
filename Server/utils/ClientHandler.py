@@ -77,7 +77,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 								if clientObjectInList != self.clientObject:
 									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
-				self.logHelper.printAndWriteServerLog("[Server/Error] " + str(self.clientObject.ip) + " Disconnected")
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " Disconnected")
 				self.clientManager.removeClient(self.clientObject)
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
