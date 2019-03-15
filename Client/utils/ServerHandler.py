@@ -71,6 +71,8 @@ class ServerHandler:
 			print(requestdata)
 		elif requestId == "411":
 			print(requestdata)
+		elif requestId == "711":
+			print(requestdata)
 		elif requestId == "405":
 			print(requestdata)
 			self.banned = True			

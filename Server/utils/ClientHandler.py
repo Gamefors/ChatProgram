@@ -114,7 +114,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
 						break
 		
-		elif requestId == "022":#send channel list  TODO: send more things like description acceslevel etc. but names work for now
+		elif requestId == "022":#send channel list  #TODO: send more things like description acceslevel etc. but names work for now
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested channel.")
 			channelNames = list()
 			for channelObject in self.channelManager.channelList:
@@ -180,6 +180,10 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] Username or ip doesnt exists on the server."))
+
+		elif requestId == "711":#banning clients
+			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Error] not yet implemented")) #TODO: implement banning of clients from clients
+
 
 		else: #any other requestId
 			if len(requestId) == 0:

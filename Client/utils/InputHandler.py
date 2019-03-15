@@ -17,6 +17,7 @@ class InputHandler:
 		self.cmdDisconnect = self.createCommand("Disconnect", "/disconnect", "NONE", "Disconnects you from the server.")              											#TODO: BUG when executing command client shows "server closed connection uexpecedly
 		self.cmdListClients = self.createCommand("ListClients", "/listClients <CHANNEL NAME>", "Channel Name", "Shows you a list of clients connected to the specified channel.")
 		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the specified client from the server.")
+		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <TIME>", "Bans the specified client for the given amount of time in minutes.")
 
 
 	def createCommand(self, name, syntax, arguments, description):
@@ -99,6 +100,15 @@ class InputHandler:
 					print("[Client/Error] Syntax: " + self.cmdKick.syntax)
 				if client != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411" + client))
+
+			elif str(command[0]).lower() == self.cmdBan.name:
+				client = None
+				try:
+					client = command[1]
+				except:
+					print("[Client/Error] Syntax: " + self.cmdBan.syntax)
+				if client != None:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711" + client))
 
 			else:
 				print("[Client/Error] Unknown command: " + command[0])
