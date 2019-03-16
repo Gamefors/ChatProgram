@@ -1,2 +1,0 @@
-[23:11]:[Server] Started server on ip: 192.168.2.109:5000
-[23:11]:[Server] 192.168.2.109:54583 connected

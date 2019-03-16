@@ -1,6 +1,0 @@
-[17:16]:[Server] Started server on ip: 192.168.2.109:5000
-[17:16]:[Server] 192.168.2.109:51069 connected
-[17:16]:[Server] Started server on ip: 192.168.2.109:5000
-[17:16]:[Server] 192.168.2.109:51590 connected
-[17:17]:[Server] Started server on ip: 192.168.2.109:5000
-[17:17]:[Server] 192.168.2.109:52036 got kicked due to ban

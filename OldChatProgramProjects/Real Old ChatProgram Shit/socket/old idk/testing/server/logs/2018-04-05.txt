@@ -1,3 +1,0 @@
-[21:18]:[Server] Started server on ip: localhost:5000
-[21:18]:[Server] 127.0.0.1:50118 connected
-[21:18]:[Server] 127.0.0.1:50118 timed out

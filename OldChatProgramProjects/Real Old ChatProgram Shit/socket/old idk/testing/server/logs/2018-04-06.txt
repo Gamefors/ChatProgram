@@ -1,9 +1,0 @@
-[16:23]:[Server] Started server on ip: localhost:5000
-[16:23]:[Server] 127.0.0.1:57977 connected
-[16:24]:[Server] Started server on ip: localhost:5000
-[16:24]:[Server] 127.0.0.1:58001 connected
-[16:24]:[Server] 127.0.0.1:58001 logged in as: jan
-[16:24]:[Server] 127.0.0.1:58001 requested channels
-[16:24]:[Server] 127.0.0.1:58001 changed channel to defaultchannel1
-[16:24]:[Server] 127.0.0.1:58009 connected
-[16:24]:[Server] 127.0.0.1:58009 lost connection to server unexpectedly

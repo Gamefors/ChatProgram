@@ -1,7 +1,0 @@
-[19:48]:[Server] jan joined channel
-[19:48]:jan used command /listClients
-[19:48]:jan left channel
-[19:48]:[Server] jan joined channel
-[19:48]:jan used command /listClients
-[19:48]:jan left channel
-[19:48]:[Server] jan joined channel

@@ -1,5 +1,0 @@
-[08:55:57]:[Server/Info] Started on ip: 172.16.7.12 with port: 5000 in Thread-6
-[08:56:15]:[Server/Info] 172.16.7.12:50787 connected to the server
-[08:56:15]:[Server/Info] 172.16.7.12:50787 sent client informations
-[08:57:16]:[Server/Info] Started on ip: 172.16.7.12 with port: 5000 in Thread-6
-[08:57:28]:[Server/Error] No clients connected
