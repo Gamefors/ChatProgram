@@ -103,12 +103,14 @@ class InputHandler:
 
 			elif str(command[0]).lower() == self.cmdBan.name:
 				client = None
+				banTime = None
 				try:
 					client = command[1]
+					banTime = command[2]
 				except:
 					print("[Client/Error] Syntax: " + self.cmdBan.syntax)
-				if client != None:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711" + client))
+				if client != None and banTime != None:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711" + client + " " + banTime))
 
 			else:
 				print("[Client/Error] Unknown command: " + command[0])

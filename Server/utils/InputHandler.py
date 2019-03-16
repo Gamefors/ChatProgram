@@ -90,10 +90,10 @@ class InputHandler:
 				self.logHelper.printAndWriteServerLog("[Server/Error] No clients connected")
 			else:
 				client = None
-				time = None
+				banTime = None
 				try:
 					client = command[1]
-					time = int(command[2])
+					banTime = int(command[2])
 				except IndexError:
 					if client == None:
 						self.logHelper.printAndWriteServerLog("[Server/Error] Syntax: " + self.cmdBan.syntax)
@@ -101,17 +101,17 @@ class InputHandler:
 					if self.clientManager.ipExists(client):
 						for clientObject in self.clientManager.clientList:
 							if clientObject.ip == client:
-								if time != None:
-									if time == 0:
+								if banTime != None:
+									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
 										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
-										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(time)*60))
-										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got banned for " + str(time) + "minutes")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(time) + "Minutes by the console"))
+										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)
@@ -121,17 +121,17 @@ class InputHandler:
 					elif self.clientManager.usernameExists(client):
 						for clientObject in self.clientManager.clientList:
 							if clientObject.username.lower() == client:
-								if time != None:
-									if time == 0:
+								if banTime != None:
+									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
 										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
-										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(time)*60))
-										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got banned for " + str(time) + "minutes")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(time) + "Minutes by the console"))
+										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)

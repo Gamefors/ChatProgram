@@ -182,8 +182,51 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] Username or ip doesnt exists on the server."))
 
 		elif requestId == "711":#banning clients
-			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Error] not yet implemented")) #TODO: implement banning of clients from clients
+			requestdata = requestdata.split()
+			client = requestdata[0]
+			banTime = requestdata[1]
+			if self.clientManager.usernameExists(client):
+				if client == self.clientObject.username:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
+				else:
+					for clientObjectInList in self.clientManager.clientList:
+						if clientObjectInList.username == client:
+							if banTime == 0:
+								self.fileHelper.addClientToBanList(clientObjectInList.ip)
+								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got permanantly banned by " + clientObject.username)						
+								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got permanantly banned by " + clientObject.username))
+								clientObjectInList.socketObject.close()
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username))
+							else:
+								currentTimeStamp = datetime.datetime.now().timestamp()
+								self.fileHelper.addClientToBanList(clientObjectInList.ip + ":" + str(currentTimeStamp + int(banTime)*60))
+								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got banned for " + str(banTime) + "minutes by " + clientObject.username)						
+								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by " + clientObject.username))
+								clientObjectInList.socketObject.close()
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username + " for " + str(banTime)))
 
+			elif self.clientManager.ipExists(client):
+				if client == self.clientObject.ip:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
+				else:
+					for clientObjectInList in self.clientManager.clientList:
+							if clientObjectInList.ip == client:
+								if banTime == 0:
+									self.fileHelper.addClientToBanList(clientObjectInList.ip)
+									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got permanantly banned by " + clientObject.username)						
+									clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got permanantly banned by " + clientObject.username))
+									clientObjectInList.socketObject.close()
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username))
+								else:
+									currentTimeStamp = datetime.datetime.now().timestamp()
+									self.fileHelper.addClientToBanList(clientObjectInList.ip + ":" + str(currentTimeStamp + int(banTime)*60))
+									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got banned for " + str(banTime) + "minutes by " + clientObject.username)						
+									clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by " + clientObject.username))
+									clientObjectInList.socketObject.close()
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username + " for " + str(banTime)))
+
+			else:
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] Username or ip doesnt exists on the server."))
 
 		else: #any other requestId
 			if len(requestId) == 0:
