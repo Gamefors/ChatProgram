@@ -1,8 +1,8 @@
 *.pyc
-*.bat
 
 config/
 data/
 logs/
 __pycache__/
 .vscode/settings.json
+.Client/startClient(TEMP).bat
