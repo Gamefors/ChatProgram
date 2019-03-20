@@ -40,7 +40,8 @@ class FileHelper:
 			os.makedirs("data/")
 
 	def createDefaultFiles(self):
-		self.createDefaultConfig()
+		if not os.path.isfile("config/config.json"):
+			self.createDefaultConfig()
 		if not os.path.isfile("data/banList.txt"):
 			self.appendToTXTFile("data/" , "banList", "BanList:")
 		

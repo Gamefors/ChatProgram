@@ -66,5 +66,3 @@ class FileHelper:
 			print("[Client/Error] Please restart your client.")	
 			raise SystemExit()
 			
-
-FileHelper()
