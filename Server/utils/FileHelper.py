@@ -44,6 +44,8 @@ class FileHelper:
 			self.createDefaultConfig()
 		if not os.path.isfile("data/banList.txt"):
 			self.appendToTXTFile("data/" , "banList", "BanList:")
+		if not os.path.isfile("data/rankList.txt"):
+			self.appendToTXTFile("data/" , "rankList", "RankList:")
 		
 	def __init__(self):
 		#default booleam
@@ -91,3 +93,30 @@ class FileHelper:
 		except TypeError:
 			print("[Client/Error] Please restart the server.")	
 			raise SystemExit()
+
+	def setStandardRankIfNotExist(self, clientObject):
+		exists = False
+		clientList = self.readTXTFile("data/", "rankList")
+		for clientInList in clientList:
+			s = clientInList.split(":")
+			if s[0] == clientObject.username:
+				exists = True
+		if exists:
+			clientObject.rank = s[1].strip("\n")
+		else:
+			self.appendToTXTFile("data/" , "rankList", clientObject.username + ":user")
+			clientObject.rank = "user"
+	
+	def addClientRank(self, clientObject, desiredRank):
+		self.appendToTXTFile("data/" , "rankList", clientObject.username + ":" + desiredRank)
+		clientObject.rank = desiredRank.strip("\n")
+	
+	def removeClientRank(self, clientObject):
+		clientList = self.readTXTFile("data/", "rankList")
+		fileToWrite = open("data/rankList.txt", "w")
+		for clientInList in clientList:
+			s = clientInList.split(":")
+			if s[0] != clientObject.username:
+				  fileToWrite.write(clientInList)
+		fileToWrite.close()
+		clientObject.rank = "user"

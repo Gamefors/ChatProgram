@@ -26,7 +26,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		self.importScripts()
 
 		if self.appendClient:
-			self.clientObject = Client(self.request, "*NONE*none*NONE+", self.channelManager.channelList[0], 0)
+			self.clientObject = Client(self.request, "*NONE*none*NONE*", self.channelManager.channelList[0], "*NONE*none*NONE*")
 			self.clientObject.channelObject.clientList.append(self.clientObject)
 			if len(self.fileHelper.readTXTFile("data/", "banList")) > 1:
 				for client in self.fileHelper.readTXTFile("data/", "banList"):
@@ -45,12 +45,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						if (currentTimeStamp > float(banTime)):
 							self.fileHelper.removeClientFromBanList(self.clientObject.ip)
 							self.clientManager.addClient(self.clientObject)
-							self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server")
+							self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server")
 							self.appendClient = False
 							self.tryRecv = True
 						else:
 							self.logHelper.printAndWriteServerLog("[Server/Info] " + self.clientObject.ip + ":" + str(self.clientObject.port) + " is temporary banned on the server. Remaining Time: " +  str(int((float(banTime) - currentTimeStamp)/60)) + "Minutes")
-							self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are temporary banned on this server. Remaining Time: " + str(int((float(banTime) - currentTimeStamp)/60)) + "Minutes"))
+							self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are temporary banned on this server. Remaining Time: " + str(int((float(banTime) - currentTimeStamp)/60)) + " Minutes"))
 							self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 							self.clientObject.socketObject.close()
 							self.appendClient = False
@@ -59,12 +59,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						var = None
 					else:
 						self.clientManager.addClient(self.clientObject)
-						self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server.")
+						self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
 						self.appendClient = False
 						self.tryRecv = True
 			else:
 				self.clientManager.addClient(self.clientObject)
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " connected to the server.")
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
 				self.appendClient = False
 				self.tryRecv = True	
 		
@@ -77,7 +77,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 								if clientObjectInList != self.clientObject:
 									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + " Disconnected")
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " Disconnected")
 				self.clientManager.removeClient(self.clientObject)
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
@@ -94,15 +94,18 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001" + clientObject.username + " : " + requestdata))
 
 		elif requestId == "011":#get client informations
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " sent client informations.")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " sent client informations.")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
+			
+			self.fileHelper.setStandardRankIfNotExist(clientObject)
+			
 			for clientObjectInList in self.clientManager.clientList:
 								if clientObjectInList != clientObject:
 									if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " joined your channel."))
 		
 		elif requestId == "611":#sent current clients in given channel
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested the clients from channel " + requestdata+ ".")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata+ ".")
 			for channel in self.channelManager.channelList:
 				if channel.name == requestdata:
 					if len(channel.clientList) < 1:
@@ -115,7 +118,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						break
 		
 		elif requestId == "022":#send channel list  #TODO: send more things like description acceslevel etc. but names work for now
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " requested channel.")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " " + clientObject.username + " requested channel.")
 			channelNames = list()
 			for channelObject in self.channelManager.channelList:
 				channelNames.append(channelObject.name)
@@ -147,69 +150,59 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
 			
 		elif requestId == "031":#changing names
-			clientObject.username = requestdata
-			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : changed names.")
+			if self.clientManager.hasRank(clientObject, "admin"):
+				clientObject.username = requestdata
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : changed names.")
+			else:
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] You don't have access to that command."))
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : had no access to that command. Rank:(" + clientObject.rank.strip("\n") + ")")
 
 		elif requestId == "411":#kicking clients
-			if self.clientManager.usernameExists(requestdata):
-				if requestdata == self.clientObject.username:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
-				else:
-					for clientObjectInList in self.clientManager.clientList:
-							if clientObjectInList.username == requestdata:
-								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
-								clientObjectInList.socketObject.close()
-								time.sleep(0.1)
-								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
-								break
+			if self.clientManager.hasRank(clientObject, "admin"):
+				if self.clientManager.usernameExists(requestdata):
+					if requestdata == self.clientObject.username:
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
+					else:
+						for clientObjectInList in self.clientManager.clientList:
+								if clientObjectInList.username == requestdata:
+									clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
+									clientObjectInList.socketObject.close()
+									time.sleep(0.1)
+									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
+									break
 
-			elif self.clientManager.ipExists(requestdata):
-				if requestdata == self.clientObject.ip:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
+				elif self.clientManager.ipExists(requestdata):
+					if requestdata == self.clientObject.ip:
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You can't kick yourself."))
+					else:
+						for clientObjectInList in self.clientManager.clientList:
+								if clientObjectInList.ip == requestdata:
+									clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
+									clientObjectInList.socketObject.close()
+									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
+									break
+
 				else:
-					for clientObjectInList in self.clientManager.clientList:
-							if clientObjectInList.ip == requestdata:
-								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by: " + self.clientObject.username))
-								clientObjectInList.socketObject.close()
-								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : " + clientObject.username + " kicked : " + requestdata)
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] You sucessfully kicked: " + requestdata))
-								break
-			
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] Username or ip doesnt exists on the server."))
 			else:
-				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411[Client/Info] Username or ip doesnt exists on the server."))
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] You don't have access to that command."))
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : had no access to that command. Rank:(" + clientObject.rank.strip("\n") + ")")
 
+	
 		elif requestId == "711":#banning clients
-			requestdata = requestdata.split()
-			client = requestdata[0]
-			banTime = requestdata[1]
-			if self.clientManager.usernameExists(client):
-				if client == self.clientObject.username:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
-				else:
-					for clientObjectInList in self.clientManager.clientList:
-						if clientObjectInList.username == client:
-							if banTime == 0:
-								self.fileHelper.addClientToBanList(clientObjectInList.ip)
-								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got permanantly banned by " + clientObject.username)						
-								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got permanantly banned by " + clientObject.username))
-								clientObjectInList.socketObject.close()
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username))
-							else:
-								currentTimeStamp = datetime.datetime.now().timestamp()
-								self.fileHelper.addClientToBanList(clientObjectInList.ip + ":" + str(currentTimeStamp + int(banTime)*60))
-								self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got banned for " + str(banTime) + "minutes by " + clientObject.username)						
-								clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by " + clientObject.username))
-								clientObjectInList.socketObject.close()
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username + " for " + str(banTime)))
-
-			elif self.clientManager.ipExists(client):
-				if client == self.clientObject.ip:
-					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
-				else:
-					for clientObjectInList in self.clientManager.clientList:
-							if clientObjectInList.ip == client:
+			if self.clientManager.hasRank(clientObject, "admin"):
+				requestdata = requestdata.split()
+				client = requestdata[0]
+				banTime = requestdata[1]
+				if self.clientManager.usernameExists(client):
+					if client == self.clientObject.username:
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
+					else:
+						for clientObjectInList in self.clientManager.clientList:
+							if clientObjectInList.username == client:
 								if banTime == 0:
 									self.fileHelper.addClientToBanList(clientObjectInList.ip)
 									self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got permanantly banned by " + clientObject.username)						
@@ -224,9 +217,32 @@ class ClientHandler(socketserver.BaseRequestHandler):
 									clientObjectInList.socketObject.close()
 									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username + " for " + str(banTime)))
 
-			else:
-				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] Username or ip doesnt exists on the server."))
+				elif self.clientManager.ipExists(client):
+					if client == self.clientObject.ip:
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You can't ban yourself."))
+					else:
+						for clientObjectInList in self.clientManager.clientList:
+								if clientObjectInList.ip == client:
+									if banTime == 0:
+										self.fileHelper.addClientToBanList(clientObjectInList.ip)
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got permanantly banned by " + clientObject.username)						
+										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got permanantly banned by " + clientObject.username))
+										clientObjectInList.socketObject.close()
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username))
+									else:
+										currentTimeStamp = datetime.datetime.now().timestamp()
+										self.fileHelper.addClientToBanList(clientObjectInList.ip + ":" + str(currentTimeStamp + int(banTime)*60))
+										self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObjectInList.ip + " : " + clientObjectInList.username + " got banned for " + str(banTime) + "minutes by " + clientObject.username)						
+										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("711" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by " + clientObject.username))
+										clientObjectInList.socketObject.close()
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] You sucessfully banned: " + clientObjectInList.username + " for " + str(banTime)))
 
+				else:
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711[Client/Info] Username or ip doesnt exists on the server."))
+			else:
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] You don't have access to that command."))
+				self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " : had no access to that command. Rank:(" + clientObject.rank.strip("\n") + ")")
+		
 		else: #any other requestId
 			if len(requestId) == 0:
 				raise SystemExit()

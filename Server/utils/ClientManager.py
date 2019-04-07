@@ -27,3 +27,8 @@ class ClientManager:
 			if clientObject.username.lower() == username.lower():
 				usernameExists = True
 		return usernameExists
+
+	def hasRank(self, clientObject, rank):
+		if(clientObject.rank == rank):
+			return True
+		return False

@@ -41,7 +41,7 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.printAndWriteServerLog("[Server/Info] Started on ip: " + self.ipV4 + " with port: " + str(self.port))
+		self.logHelper.printAndWriteServerLog("[Server/Info] Started on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:
