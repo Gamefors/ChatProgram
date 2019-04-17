@@ -9,7 +9,7 @@ from utils.LogHelper import LogHelper#pylint: disable=E0611
 
 from objects.Channel import Channel#pylint: disable=E0611
 
-import socketserver, socket, threading
+import socketserver, threading, socket
 
 class Server:
 
