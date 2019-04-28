@@ -4,6 +4,8 @@ class ServerHandler:
 		
 		self.clientObject = clientObject
 
+		self.easyRequestIds = ["001", "401", "411", "811", "023", "031", "411", "711"]
+
 		self.kicked = False
 		self.banned = False
 		self.serverOffline = False
@@ -11,7 +13,7 @@ class ServerHandler:
 		while True:
 			try:
 				request = str(self.clientObject.socketObject.recv(1024), "utf-8")
-				self.handleRequest(request, self.clientObject)
+				self.handleRequest(request)
 			except:
 				if self.kicked:
 					print("[Client/Info] Press enter to quit")
@@ -27,20 +29,16 @@ class ServerHandler:
 					print("[Client/Info] Press enter to quit")
 					raise SystemExit()
 
-	def handleRequest(self, request, clientObject):
+	def handleRequest(self, request):
 		requestId = request[:3]
 		requestdata = request[3:]
-		if requestId == "001":
-			print(requestdata)
-		elif requestId == "401":
+		if requestId in self.easyRequestIds:
 			print(requestdata)
 		elif requestId == "402":
 			print(requestdata)
 			self.kicked = True
 		elif requestId == "403":
 			self.serverOffline = True
-			print(requestdata)
-		elif requestId == "411":
 			print(requestdata)
 		elif requestId == "022":
 			tempList = requestdata.split(",")
@@ -63,20 +61,10 @@ class ServerHandler:
 						print(obj + "(you)")
 					else:
 						print(obj)	
-		elif requestId == "811":
-			print(requestdata)
-		elif requestId == "023":
-			print(requestdata)
-		elif requestId == "031":
-			print(requestdata)
-		elif requestId == "411":
-			print(requestdata)
-		elif requestId == "711":
-			print(requestdata)
 		elif requestId == "405":
 			print(requestdata)
 			self.banned = True			
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:
-			print("[Client/Error] Unknown RequestID: " + requestId + " contained data: " + requestdata)
+			print("[Client/Error] Server sent unknown requestId: " + requestId)
