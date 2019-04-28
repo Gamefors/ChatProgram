@@ -17,7 +17,7 @@
    <string>Discord 2.0</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Icon resource file.qrc">
+   <iconset resource="../../../../../1.0/Icon resource file.qrc">
     <normaloff>:/newPrefix/icons8-computer-chat-64.png</normaloff>:/newPrefix/icons8-computer-chat-64.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -73,7 +73,7 @@
           <rect>
            <x>0</x>
            <y>1</y>
-           <width>151</width>
+           <width>161</width>
            <height>531</height>
           </rect>
          </property>
@@ -102,7 +102,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="Icon resource file.qrc"/>
+  <include location="../../../../../1.0/Icon resource file.qrc"/>
  </resources>
  <connections/>
 </ui>
