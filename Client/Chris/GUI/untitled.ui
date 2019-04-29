@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>605</height>
+    <width>852</width>
+    <height>638</height>
    </rect>
   </property>
   <property name="tabletTracking">
@@ -32,11 +32,31 @@
      <rect>
       <x>159</x>
       <y>519</y>
-      <width>631</width>
-      <height>41</height>
+      <width>691</width>
+      <height>81</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="plainText">
+        <string/>
+       </property>
+       <property name="overwriteMode">
+        <bool>true</bool>
+       </property>
+       <property name="backgroundVisible">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
@@ -55,14 +75,29 @@
       <x>0</x>
       <y>0</y>
       <width>160</width>
-      <height>561</height>
+      <height>601</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::PreventContextMenu</enum>
+       </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
+       </property>
+       <property name="documentMode">
+        <bool>false</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>false</bool>
+       </property>
+       <property name="movable">
+        <bool>true</bool>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -72,21 +107,56 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>1</y>
-           <width>161</width>
-           <height>531</height>
+           <y>0</y>
+           <width>151</width>
+           <height>541</height>
           </rect>
          </property>
         </widget>
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
-         <string>Chatter</string>
+         <string>Member</string>
         </attribute>
+        <widget class="QListView" name="listView">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>1</y>
+           <width>151</width>
+           <height>571</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QMdiArea" name="mdiArea">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>0</y>
+      <width>691</width>
+      <height>519</height>
+     </rect>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>true</bool>
+    </property>
+    <property name="tabsMovable">
+     <bool>true</bool>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::West</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -94,12 +164,44 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>804</width>
+     <width>852</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_Create_Account">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhHiddenText</set>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string> Create Account</string>
+    </property>
+    <property name="separatorsCollapsible">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <addaction name="menu_Create_Account"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionsadasdasd">
+   <property name="text">
+    <string>sadasdasd</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../../../../../1.0/Icon resource file.qrc"/>
