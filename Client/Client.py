@@ -21,8 +21,7 @@ class Client:
 		self.ipV4 = Config.ip
 		self.port = Config.port
 
-	def inizializeClient(self):
-		username = input("Username:")
+	def inizializeClient(self, username):
 		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "Welcome_Channel") 
 		self.connected = False
 
@@ -44,27 +43,45 @@ class Client:
 				self.guiHelper.printOutput("[Client/Info] Attempting to connect to server with ip: " + self.clientObject.ip + ". Attempts: " + str(trys))
 				time.sleep(5)
 
-	def askForInput(self):
-		while self.connected:			
-			message = input()
+	def sendInput(self, message):
+		if self.connected:
 			if str(message).startswith("/"):
-				self.inputHandler.handleInput(str(message[1:]), self.clientObject)
+					self.inputHandler.handleInput(str(message[1:]), self.clientObject)
 			else:
 				try:
 					self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
 				except:
 					self.connected = False
+		else:
+			self.guiHelper.printOutput("not connected")
 
-	def __init__(self):
+##############################################################################################################
+	# def askForInput(self):
+	# 	while self.connected:			
+	# 		message = input()
+	# 		if str(message).startswith("/"):
+	# 			self.inputHandler.handleInput(str(message[1:]), self.clientObject)
+	# 		else:
+	# 			try:
+	# 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
+	# 			except:
+	# 				self.connected = False
+###############################################################################################################
+
+	def __init__(self, username):
 		#Imports
 		self.importScripts()
 		#Config
 		self.setConfig()
 		#Client initializations
-		self.inizializeClient()
+		self.inizializeClient(username)
 		#Client trying to establish a connection
 		self.tryConnect()
+		
+####################################
 		#Client Input
-		self.askForInput()
+		#self.askForInput()
+####################################
 
-Client()
+
+Client("FromPyQt")

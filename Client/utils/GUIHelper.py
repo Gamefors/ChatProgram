@@ -1,13 +1,7 @@
 class GUIHelper:
-    
-    def __init__(self):
-        var = None
-        var = "0"
+	
+	def __init__(self):
+		var = None
 
-    def printOutput(self, msg):
-        print(msg)
-
-    def getUsername(self):
-        username = "get from pyqt"
-
-        return username
+	def printOutput(self, msg):
+		print(msg)
