@@ -17,10 +17,13 @@
    <string>Discord 2.0</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../../../1.0/Icon resource file.qrc">
+   <iconset>
     <normaloff>:/newPrefix/icons8-computer-chat-64.png</normaloff>:/newPrefix/icons8-computer-chat-64.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="acceptDrops">
     <bool>true</bool>
    </property>
@@ -40,7 +43,7 @@
      <item>
       <widget class="QPlainTextEdit" name="plainTextEdit">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="plainText">
         <string/>
@@ -82,10 +85,16 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="contextMenuPolicy">
         <enum>Qt::PreventContextMenu</enum>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="tabShape">
+        <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
         <number>1</number>
@@ -97,9 +106,9 @@
         <bool>false</bool>
        </property>
        <property name="movable">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
-       <widget class="QWidget" name="tab">
+       <widget class="QWidget" name="rooms">
         <attribute name="title">
          <string>Räume</string>
         </attribute>
@@ -108,25 +117,55 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>151</width>
-           <height>541</height>
+           <width>161</width>
+           <height>581</height>
           </rect>
          </property>
+         <item>
+          <property name="text">
+           <string>Room1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Room2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Room3</string>
+          </property>
+         </item>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_2">
+       <widget class="QWidget" name="participants">
         <attribute name="title">
-         <string>Member</string>
+         <string>Users</string>
         </attribute>
-        <widget class="QListView" name="listView">
+        <widget class="QListWidget" name="listWidget_2">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>1</y>
-           <width>151</width>
-           <height>571</height>
+           <y>0</y>
+           <width>161</width>
+           <height>581</height>
           </rect>
          </property>
+         <item>
+          <property name="text">
+           <string>user1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>user2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>user3</string>
+          </property>
+         </item>
         </widget>
        </widget>
       </widget>
@@ -160,6 +199,9 @@
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -173,7 +215,7 @@
      <bool>true</bool>
     </property>
     <property name="cursor">
-     <cursorShape>CrossCursor</cursorShape>
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="tabletTracking">
      <bool>false</bool>
@@ -188,18 +230,42 @@
      <bool>false</bool>
     </property>
     <property name="title">
-     <string> Create Account</string>
+     <string>Status: Offline</string>
     </property>
     <property name="separatorsCollapsible">
      <bool>false</bool>
     </property>
+    <addaction name="actionLogin"/>
+    <addaction name="actionDisconnect"/>
+    <addaction name="actionQuit"/>
    </widget>
    <addaction name="menu_Create_Account"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionsadasdasd">
+  <action name="actionLogin">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>sadasdasd</string>
+    <string>Login</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
    </property>
   </action>
  </widget>
