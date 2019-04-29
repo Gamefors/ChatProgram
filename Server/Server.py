@@ -58,7 +58,10 @@ class Server:
 					self.logHelper.printAndWriteServerLog("[Server/Info] Gracefully stopped server")
 					break
 			if str(command).startswith("/"):
-				self.inputHandler.handleInput(str(command[1:]).lower())
+				try:
+					self.inputHandler.handleInput(str(command[1:]).lower())
+				except IndexError:
+					self.logHelper.printAndWriteServerLog("[Server/Error] type /help for a list of commands.")	
 			else:
 				self.logHelper.printAndWriteServerLog("[Server/Error] Commands always start with (/)")	
 
