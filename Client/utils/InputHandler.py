@@ -26,10 +26,10 @@ class InputHandler:
 		self.commandList.append(command)
 		return command
 
-	def __init__(self):
+	def __init__(self, output):
 		#Imports
 		self.decEncHelper = DecodingEncodingHelper()
-		self.guiHelper = GUIHelper()
+		self.guiHelper = GUIHelper(output)
 		#Create Commands
 		self.initializeCommands()
 	

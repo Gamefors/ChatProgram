@@ -53,9 +53,9 @@ class FileHelper:
 		self.writeJsonFile("config/", "config", config)
 
 
-	def __init__(self):
+	def __init__(self, output):
 		#imports
-		self.guiHelper = GUIHelper()
+		self.guiHelper = GUIHelper(output)
 		#default boolean
 		self.generateNew = False
 		#create default paths

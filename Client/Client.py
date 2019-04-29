@@ -6,15 +6,17 @@ from utils.GUIHelper import GUIHelper#pylint: disable=E0611
 
 from objects.Client import ClientObject#pylint: disable=E0611
 
+from tkinter import Label
+
 import threading, socket, time, sys, os
 
 class Client:
 
 	def importScripts(self):
 		self.decEncHelper = DecodingEncodingHelper()
-		self.inputHandler = InputHandler()
-		self.fileHelper = FileHelper()
-		self.guiHelper = GUIHelper()
+		self.inputHandler = InputHandler(self.output)
+		self.fileHelper = FileHelper(self.output)
+		self.guiHelper = GUIHelper(self.output)
 
 	def setConfig(self):
 		Config = self.fileHelper.getConfig()
@@ -31,7 +33,7 @@ class Client:
 			try:
 				self.clientObject.socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				self.clientObject.socketObject.connect((self.clientObject.ip, self.clientObject.port))
-				threading.Thread(target=ServerHandler,args=[self.clientObject]).start()
+				threading.Thread(target=ServerHandler,args=[self.clientObject,self.output]).start()
 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username))
 				time.sleep(0.1)
 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611Welcome_Channel"))
@@ -68,8 +70,9 @@ class Client:
 	# 				self.connected = False
 ###############################################################################################################
 
-	def __init__(self, username):
+	def __init__(self, username, output):
 		#Imports
+		self.output = output
 		self.importScripts()
 		#Config
 		self.setConfig()
@@ -84,4 +87,4 @@ class Client:
 ####################################
 
 
-Client("FromPyQt")
+#Client("FromPyQt")

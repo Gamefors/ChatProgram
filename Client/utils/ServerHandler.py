@@ -1,9 +1,9 @@
 from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
 class ServerHandler:
 	
-	def __init__(self, clientObject):
+	def __init__(self, clientObject, output):
 		
-		self.guiHelper = GUIHelper()
+		self.guiHelper = GUIHelper(output)
 
 		self.clientObject = clientObject
 
