@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         #print(msg)
 
     def setupUi(self, MainWindow):
-        self.client = Client("jan", self.userOutput)
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(900, 650)
         MainWindow.setTabletTracking(False)
@@ -56,11 +56,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.userOutput = QtWidgets.QPlainTextEdit(self.verticalLayoutWidget_3)
+        self.userOutput = QtWidgets.QTextEdit(self.verticalLayoutWidget_3)
         self.userOutput.setEnabled(True)
         self.userOutput.setReadOnly(True)
-        self.userOutput.setMaximumBlockCount(6)
         self.userOutput.setObjectName("userOutput")
+
+        self.client = Client("jan", self.userOutput)
+
         self.verticalLayout_3.addWidget(self.userOutput)
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setEnabled(True)
@@ -146,7 +148,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Discord 2.0"))
-     #   self.userOutput.setPlainText(_translate("MainWindow", "[Server/Info] test\n""\n"" "))
+      #  self.userOutput.setPlainText(_translate("MainWindow", "[Server/Info] test\n""\n"" "))
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.listWidget.setSortingEnabled(False)
         item = self.listWidget.item(0)

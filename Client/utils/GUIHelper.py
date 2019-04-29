@@ -5,4 +5,4 @@ class GUIHelper:
 
 	def printOutput(self, msg):
 		print(msg)
-		self.output.config(text= msg)
+		self.output.append(msg)

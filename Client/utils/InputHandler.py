@@ -50,7 +50,7 @@ class InputHandler:
 				self.guiHelper.printOutput("[Client/Info] Commands:")
 				self.guiHelper.printOutput("----------------------------------------------------------")
 				for command in self.commandList:
-					print(command.syntax + " : " + command.description)
+					self.guiHelper.printOutput(command.syntax + " : " + command.description)
 				self.guiHelper.printOutput("----------------------------------------------------------")
 
 			elif str(command[0]).lower() == self.cmdListChannel.name:
