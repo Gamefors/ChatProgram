@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>852</width>
-    <height>638</height>
+    <width>1058</width>
+    <height>896</height>
    </rect>
   </property>
   <property name="tabletTracking">
@@ -22,7 +22,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="acceptDrops">
     <bool>true</bool>
@@ -33,29 +33,20 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>159</x>
-      <y>519</y>
+      <x>160</x>
+      <y>580</y>
       <width>691</width>
-      <height>81</height>
+      <height>21</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="plainText">
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="text">
         <string/>
        </property>
-       <property name="overwriteMode">
-        <bool>true</bool>
-       </property>
-       <property name="backgroundVisible">
-        <bool>false</bool>
-       </property>
-       <property name="placeholderText">
-        <string/>
+       <property name="maxLength">
+        <number>64</number>
        </property>
       </widget>
      </item>
@@ -66,8 +57,8 @@
      <rect>
       <x>160</x>
       <y>0</y>
-      <width>631</width>
-      <height>521</height>
+      <width>691</width>
+      <height>581</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3"/>
@@ -85,7 +76,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="contextMenuPolicy">
         <enum>Qt::PreventContextMenu</enum>
@@ -97,7 +88,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <property name="documentMode">
         <bool>false</bool>
@@ -172,31 +163,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QMdiArea" name="mdiArea">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>0</y>
-      <width>691</width>
-      <height>519</height>
-     </rect>
-    </property>
-    <property name="documentMode">
-     <bool>false</bool>
-    </property>
-    <property name="tabsClosable">
-     <bool>true</bool>
-    </property>
-    <property name="tabsMovable">
-     <bool>true</bool>
-    </property>
-    <property name="tabShape">
-     <enum>QTabWidget::Rounded</enum>
-    </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::West</enum>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="enabled">
@@ -206,7 +172,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>852</width>
+     <width>1058</width>
      <height>21</height>
     </rect>
    </property>
