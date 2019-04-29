@@ -2,6 +2,7 @@ from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=
 from utils.ServerHandler import ServerHandler#pylint: disable=E0611
 from utils.InputHandler import InputHandler#pylint: disable=E0611
 from utils.FileHelper import FileHelper#pylint: disable=E0611
+from utils.GUIHelper import GUIHelper#pylint: disable=E0611
 
 from objects.Client import ClientObject#pylint: disable=E0611
 
@@ -13,6 +14,7 @@ class Client:
 		self.decEncHelper = DecodingEncodingHelper()
 		self.inputHandler = InputHandler()
 		self.fileHelper = FileHelper()
+		self.guiHelper = GUIHelper()
 
 	def setConfig(self):
 		Config = self.fileHelper.getConfig()
@@ -35,11 +37,11 @@ class Client:
 				time.sleep(0.1)
 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611Welcome_Channel"))
 				self.connected = True
-				print("[Client/Info] You are now connected to the server.")	
+				self.guiHelper.printOutput("[Client/Info] You are now connected to the server.")	
 			except:
 				trys = trys + 1
 				os.system('cls' if os.name=='nt' else 'clear')
-				print("[Client/Info] Attempting to connect to server with ip: " + self.clientObject.ip + ". Attempts: " + str(trys))
+				self.guiHelper.printOutput("[Client/Info] Attempting to connect to server with ip: " + self.clientObject.ip + ". Attempts: " + str(trys))
 				time.sleep(5)
 
 	def askForInput(self):

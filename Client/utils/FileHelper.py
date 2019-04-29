@@ -1,3 +1,5 @@
+from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
+
 from objects.Config import Config#pylint: disable=E0611, E0401
 
 import os, sys, json
@@ -21,13 +23,13 @@ class FileHelper:
 		try:
 			return json.load(fileToRead)
 		except json.decoder.JSONDecodeError:
-			print("[Client/Error] Config file couldn't be read.")
+			self.guiHelper.printOutput("[Client/Error] Config file couldn't be read.")
 			self.generateNew = True
 			self.createDefaultConfig()
 
 	def createDefaultConfig(self):
 		if self.generateNew:
-			print("[Client/Error] Removin old one and generating the default one.")	
+			self.guiHelper.printOutput("[Client/Error] Removin old one and generating the default one.")	
 			os.remove("config/config.json")
 			config = {
   					"Server Config": [
@@ -52,6 +54,8 @@ class FileHelper:
 
 
 	def __init__(self):
+		#imports
+		self.guiHelper = GUIHelper()
 		#default boolean
 		self.generateNew = False
 		#create default paths
@@ -65,6 +69,6 @@ class FileHelper:
 			serverConfig = config["Server Config"]
 			return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
 		except TypeError:
-			print("[Client/Error] Please restart your client.")	
+			self.guiHelper.printOutput("[Client/Error] Please restart your client.")	
 			raise SystemExit()
 			

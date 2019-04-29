@@ -1,7 +1,10 @@
+from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
 class ServerHandler:
 	
 	def __init__(self, clientObject):
 		
+		self.guiHelper = GUIHelper()
+
 		self.clientObject = clientObject
 
 		self.easyRequestIds = ["001", "401", "411", "811", "023", "031", "411", "711"]
@@ -16,55 +19,55 @@ class ServerHandler:
 				self.handleRequest(request)
 			except:
 				if self.kicked:
-					print("[Client/Info] Press enter to quit")
+					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
 				elif self.banned:
-					print("[Client/Info] Press enter to quit")
+					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
 				elif self.serverOffline:
-					print("[Client/Info] Press enter to quit")
+					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
 				else:
-					print("[Client/ERROR] Server closed connection unexpectedly")
-					print("[Client/Info] Press enter to quit")
+					self.guiHelper.printOutput("[Client/ERROR] Server closed connection unexpectedly")
+					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
 
 	def handleRequest(self, request):
 		requestId = request[:3]
 		requestdata = request[3:]
 		if requestId in self.easyRequestIds:
-			print(requestdata)
+			self.guiHelper.printOutput(requestdata)
 		elif requestId == "402":
-			print(requestdata)
+			self.guiHelper.printOutput(requestdata)
 			self.kicked = True
 		elif requestId == "403":
 			self.serverOffline = True
-			print(requestdata)
+			self.guiHelper.printOutput(requestdata)
 		elif requestId == "022":
 			tempList = requestdata.split(",")
-			print("[Client/Info] Channels: ")
+			self.guiHelper.printOutput("[Client/Info] Channels: ")
 			for obj in tempList:
 				obj = obj.replace("'"," ").strip("[]").strip()
 				if self.clientObject.channel in obj:
-					print(obj + "(you)")
+					self.guiHelper.printOutput(obj + "(you)")
 				else:
-					print(obj)		
+					self.guiHelper.printOutput(obj)		
 		elif requestId == "611":
 			if "exists" in requestdata:
-				print(requestdata)
+				self.guiHelper.printOutput(requestdata)
 			else:
-				print("[Client/Info] clients in this channel: ")
+				self.guiHelper.printOutput("[Client/Info] clients in this channel: ")
 				tempList = requestdata.split(",")
 				for obj in tempList:
 					obj = obj.replace("'"," ").strip("[]").strip()
 					if self.clientObject.username in obj:
-						print(obj + "(you)")
+						self.guiHelper.printOutput(obj + "(you)")
 					else:
-						print(obj)	
+						self.guiHelper.printOutput(obj)	
 		elif requestId == "405":
-			print(requestdata)
+			self.guiHelper.printOutput(requestdata)
 			self.banned = True			
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:
-			print("[Client/Error] Server sent unknown requestId: " + requestId)
+			self.guiHelper.printOutput("[Client/Error] Server sent unknown requestId: " + requestId)

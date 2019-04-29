@@ -1,4 +1,5 @@
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611, E0401
+from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
 
 from objects.Command import Command#pylint: disable=E0611, E0401
 
@@ -28,6 +29,7 @@ class InputHandler:
 	def __init__(self):
 		#Imports
 		self.decEncHelper = DecodingEncodingHelper()
+		self.guiHelper = GUIHelper()
 		#Create Commands
 		self.initializeCommands()
 	
@@ -38,18 +40,18 @@ class InputHandler:
 			var = command[0]#pylint: disable=W0612
 		except IndexError:
 			isCommand = False
-			print("[Client/Error] type /help for a list of commands")
+			self.guiHelper.printOutput("[Client/Error] type /help for a list of commands")
 		if isCommand:
 
 			if str(command[0]).lower() == self.cmdClear.name:
 				os.system('cls' if os.name=='nt' else 'clear')
 
 			elif str(command[0]).lower() == self.cmdHelp.name:
-				print("[Client/Info] Commands:")
-				print("----------------------------------------------------------")
+				self.guiHelper.printOutput("[Client/Info] Commands:")
+				self.guiHelper.printOutput("----------------------------------------------------------")
 				for command in self.commandList:
 					print(command.syntax + " : " + command.description)
-				print("----------------------------------------------------------")
+				self.guiHelper.printOutput("----------------------------------------------------------")
 
 			elif str(command[0]).lower() == self.cmdListChannel.name:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022"))
@@ -59,7 +61,7 @@ class InputHandler:
 				try:
 					newChannelName = command[1]
 				except IndexError:
-					print("[Client/Error] Syntax: " + self.cmdChangeChannel.syntax)
+					self.guiHelper.printOutput("[Client/Error] Syntax: " + self.cmdChangeChannel.syntax)
 				if newChannelName != None:
 					clientObject.channel = newChannelName
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
@@ -71,24 +73,24 @@ class InputHandler:
 				try:
 					newUsername = command[1]
 				except IndexError:
-					print("[Client/Error] Syntax: " + self.cmdSetName.syntax)
+					self.guiHelper.printOutput("[Client/Error] Syntax: " + self.cmdSetName.syntax)
 				if newUsername != None:
 					clientObject.username = newUsername
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
 
 			elif str(command[0]).lower() == self.cmdDisconnect.name:
-				print("[Client/Info] You disconnected from the server.")
+				self.guiHelper.printOutput("[Client/Info] You disconnected from the server.")
 				time.sleep(1.5)
 				clientObject.socketObject.shutdown(1)
 				clientObject.socketObject.close()
-				quit()
+				self.guiHelper.printOutput()
 			
 			elif str(command[0]).lower() == self.cmdListClients.name:
 				channel = None
 				try:
 					channel = command[1]
 				except:
-					print("[Client/Error] Syntax: " + self.cmdListClients.syntax)
+					self.guiHelper.printOutput("[Client/Error] Syntax: " + self.cmdListClients.syntax)
 				if channel != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + channel))
 
@@ -97,7 +99,7 @@ class InputHandler:
 				try:
 					client = command[1]
 				except:
-					print("[Client/Error] Syntax: " + self.cmdKick.syntax)
+					self.guiHelper.printOutput("[Client/Error] Syntax: " + self.cmdKick.syntax)
 				if client != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("411" + client))
 
@@ -108,10 +110,10 @@ class InputHandler:
 					client = command[1]
 					banTime = command[2]
 				except:
-					print("[Client/Error] Syntax: " + self.cmdBan.syntax)
+					self.guiHelper.printOutput("[Client/Error] Syntax: " + self.cmdBan.syntax)
 				if client != None and banTime != None:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("711" + client + " " + banTime))
 
 			else:
-				print("[Client/Error] Unknown command: " + command[0])
-				print("[Client/Error] type /help for a list of commands")
+				self.guiHelper.printOutput("[Client/Error] Unknown command: " + command[0])
+				self.guiHelper.printOutput("[Client/Error] type /help for a list of commands")
