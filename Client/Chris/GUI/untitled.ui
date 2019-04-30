@@ -86,9 +86,7 @@
         <bool>true</bool>
        </property>
        <property name="plainText">
-        <string>[Server/Info] test
-
- </string>
+        <string/>
        </property>
        <property name="maximumBlockCount">
         <number>6</number>
@@ -131,7 +129,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="documentMode">
         <bool>false</bool>
@@ -146,7 +144,7 @@
         <attribute name="title">
          <string>Räume</string>
         </attribute>
-        <widget class="QListWidget" name="listWidget">
+        <widget class="QListWidget" name="roomList">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -179,7 +177,7 @@
         <attribute name="title">
          <string>Users</string>
         </attribute>
-        <widget class="QListWidget" name="listWidget_2">
+        <widget class="QListWidget" name="userList">
          <property name="geometry">
           <rect>
            <x>0</x>

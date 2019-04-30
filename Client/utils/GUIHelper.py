@@ -6,3 +6,9 @@ class GUIHelper:
 	def printOutput(self, msg):
 		print(msg)
 		self.output.append(msg)
+
+	def updateChannel(self):
+		channel = list()
+
+	def updateUser(self):
+		user = list()
