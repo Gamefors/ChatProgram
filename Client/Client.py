@@ -50,7 +50,9 @@ class Client:
 			if str(message).startswith("/"):
 					self.inputHandler.handleInput(str(message[1:]), self.clientObject)
 			else:
+				self.output.append(message)
 				try:
+					
 					self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
 				except:
 					self.connected = False

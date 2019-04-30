@@ -78,20 +78,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QPlainTextEdit" name="userOutput">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-       <property name="plainText">
-        <string/>
-       </property>
-       <property name="maximumBlockCount">
-        <number>6</number>
-       </property>
-      </widget>
+      <widget class="QTextEdit" name="userOutput"/>
      </item>
     </layout>
    </widget>
