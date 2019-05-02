@@ -120,9 +120,15 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		elif requestId == "022":#send channel list  #TODO: send more things like description acceslevel etc. but names work for now
 			self.logHelper.printAndWriteServerLog("[Server/Info] " + clientObject.ip + " " + clientObject.username + " requested channel.")
 			channelNames = list()
+			channelDescriptions = list()
+			channelPasswords = list()
+			channelAccessLevels = list()
 			for channelObject in self.channelManager.channelList:
 				channelNames.append(channelObject.name)
-			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames)))
+				channelDescriptions.append(channelObject.description)
+				channelPasswords.append(channelObject.password)
+				channelAccessLevels.append(channelObject.accessLevel)
+			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("022" + str(channelNames) + ":" + str(channelDescriptions) + ":" + str(channelPasswords) + ":" + str(channelAccessLevels)))
 
 		elif requestId == "023":#changing channels
 			if self.channelManager.channelExists(requestdata):
