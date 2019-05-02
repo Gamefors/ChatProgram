@@ -43,24 +43,40 @@ class ServerHandler:
 		elif requestId == "403":
 			self.serverOffline = True
 			self.guiHelper.printOutput(requestdata)
+		
+		
 		elif requestId == "022":
 			count = 0
+			countAtt = 0
+
 			channelNames = list()
-			cahnnelDescriptions = list()
+			channelDescriptions = list()
 			channelPasswords = list()
 			channelAccessLevels = list()
 			channelAttributes = requestdata.split(":")
 			self.guiHelper.printOutput("[Client/Info] Channels: ")
+
 			for attributeList in channelAttributes:
-				lenght = len(attributeList)
 				attributes = attributeList.split(",")
-				for attribute in attributes:		
+				for attribute in attributes:
 					attribute = attribute.replace("'"," ").strip("[]").strip()
-					print(attribute)
-					#channelNames.append(item)
+					if countAtt == 0:
+						channelNames.append(attribute)
+					elif countAtt == 1:
+						channelDescriptions.append(attribute)
+					elif countAtt == 2:
+						channelPasswords.append(attribute)
+					else:
+						channelAccessLevels.append(attribute)
+				countAtt = countAtt + 1
 			for name in channelNames:
-				print(name + " Desc: " + cahnnelDescriptions[count] + " PW: " + channelPasswords[count] + " AccessLevel: " + channelAccessLevels[count])
+				self.guiHelper.printOutput(name + " desc: " + channelDescriptions[count] + " pw: " + channelPasswords[count] + " accessLevel: " + channelAccessLevels[count])
 				count = count + 1
+		
+		
+		
+		
+		
 		elif requestId == "611":
 			if "exists" in requestdata:
 				self.guiHelper.printOutput(requestdata)
