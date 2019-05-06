@@ -34,7 +34,7 @@ class InputHandler:
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 		self.cmdCreateChannel = self.createCommand("createChannel", "/createChannel <name> <description> <password> <accessLevel>", "<NAME/DESCRIPTION/PASSWORD/ACCESSLEVEL>", "Creates a temporary Channel.")
 		self.cmdRemoveChannel = self.createCommand("removeChannel", "removeChannel <name>", "<NAME>", "Removes the give Channel.")
-
+		
 	def __init__(self):
 		#Imports
 		self.importScripts()
