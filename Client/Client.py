@@ -84,7 +84,7 @@ class Client:
 		self.tryConnect()
 		
 		#Client Input
-		self.askForInput()
+		#self.askForInput()
 
 
 
