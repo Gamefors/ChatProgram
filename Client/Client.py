@@ -59,18 +59,18 @@ class Client:
 		else:
 			self.guiHelper.printOutput("not connected")
 
+#############################################################################################################
+	def askForInput(self):
+		while self.connected:			
+			message = input()
+			if str(message).startswith("/"):
+				self.inputHandler.handleInput(str(message[1:]), self.clientObject)
+			else:
+				try:
+					self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
+				except:
+					self.connected = False
 ##############################################################################################################
-	# def askForInput(self):
-	# 	while self.connected:			
-	# 		message = input()
-	# 		if str(message).startswith("/"):
-	# 			self.inputHandler.handleInput(str(message[1:]), self.clientObject)
-	# 		else:
-	# 			try:
-	# 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("001" + message))
-	# 			except:
-	# 				self.connected = False
-###############################################################################################################
 
 	def __init__(self, username, output):
 		#Imports
@@ -83,10 +83,9 @@ class Client:
 		#Client trying to establish a connection
 		self.tryConnect()
 		
-####################################
 		#Client Input
-		#self.askForInput()
-####################################
+		self.askForInput()
+
 
 
 #Client("FromPyQt")
