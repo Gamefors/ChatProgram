@@ -32,6 +32,7 @@ class InputHandler:
 		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the given IP from the server.")
 		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <time>", "Bans the specified client for the given amount of time in minutes.")
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
+		self.cmdCreateChannel = self.createCommand("createChannel", "/createChannel <name> <description> <password> <accessLevel>", "<NAME/DESCRIPTION/PASSWORD/ACCESSLEVEL>", "Creates a temporary Channel.")
 
 	def __init__(self):
 		#Imports
@@ -95,7 +96,7 @@ class InputHandler:
 					client = command[1]
 					banTime = int(command[2])
 				except IndexError:
-					if client == None:
+					if client or banTime == None:
 						self.logHelper.printAndWriteServerLog("[Server/Error] Syntax: " + self.cmdBan.syntax)
 				if client != None:
 					if self.clientManager.ipExists(client):
@@ -153,6 +154,24 @@ class InputHandler:
 					for client in channel.clientList:
 						self.logHelper.printAndWriteServerLog("  -" + client.ip + " : " + client.username)
 			self.logHelper.printAndWriteServerLog("----------------------------------------------------------")
+
+		elif command[0] == self.cmdCreateChannel.name:#TODO: add things to remove user error when acces level isnst int and description contains spaces 
+			name = None
+			description = None
+			password = None
+			accessLevel = None
+			try:
+				name = command[1]
+				description = command[2]
+				password = command[3]
+				accessLevel = int(command[4])
+				self.channelManager.addChannel(Channel(name, description, password, accessLevel, list()))
+				self.logHelper.printAndWriteServerLog("[Server/Info] Channel " + name + " created.")
+			except:
+				if name or description or password or accessLevel == None:
+					self.logHelper.printAndWriteServerLog("[Server/Error] Syntax: " + self.cmdCreateChannel.syntax)
+			
+
 
 		else:
 			self.logHelper.printAndWriteServerLog("[Server/Error] Unknown command: " + command[0])
