@@ -10,7 +10,7 @@ class FileHelper:
 
 	def createDefaultConfig(self):
 		if self.generateNew:
-			print("[Client/Error] Removin old one and generating the default one.")	
+			print("[FileHelper/Error] Removin old config and generating the default one.")	
 			os.remove("config/config.json")
 			config = {
   					"Server Config": [
@@ -81,7 +81,7 @@ class FileHelper:
 		try:
 			return json.load(fileToRead)
 		except json.decoder.JSONDecodeError:
-			print("[Client/Error] Config file couldn't be read.")
+			print("[FileHelper/Error] Config file couldn't be read.")
 			self.generateNew = True
 			self.createDefaultConfig()
 
@@ -91,7 +91,7 @@ class FileHelper:
 			serverConfig = config["Server Config"]
 			return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
 		except TypeError:
-			print("[Client/Error] Please restart the server.")	
+			print("[FileHelper/Error] Please restart the server.")	
 			raise SystemExit()
 
 	def setStandardRankIfNotExist(self, clientObject):
