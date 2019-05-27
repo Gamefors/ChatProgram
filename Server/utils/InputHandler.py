@@ -33,7 +33,7 @@ class InputHandler:
 		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <time>", "Bans the specified client for the given amount of time in minutes.")
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 		self.cmdCreateChannel = self.createCommand("createChannel", "/createChannel <name> <description> <password> <accessLevel>", "<NAME/DESCRIPTION/PASSWORD/ACCESSLEVEL>", "Creates a temporary Channel.")
-		self.cmdRemoveChannel = self.createCommand("removeChannel", "removeChannel <name>", "<NAME>", "Removes the give Channel.")
+		self.cmdRemoveChannel = self.createCommand("removeChannel", "/removeChannel <name>", "<NAME>", "Removes the give Channel.")
 		
 	def __init__(self):
 		#Imports

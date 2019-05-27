@@ -10,23 +10,50 @@ class LogHelper:
 		if not os.path.exists("logs/channels/"):
 			os.makedirs("logs/channels/")
 
-	def printAndWriteServerLog(self, msg):
-		print(msg)
-		self.writeServerLog(msg)
+	def printAndWriteServerLog(self, logType, msg):
+		currTime = datetime.datetime.now().strftime("%H:%M:%S")
+		if logType.lower() == "info":
+			logMsg = "[" + currTime + " " + logType.upper() + "]: " + msg
+			print(logMsg)
+			self.writeServerLog(logMsg)
+		elif logType.lower() == "error":#
+			logMsg = "[" + currTime + " " + logType.upper() + "]: " + msg
+			print(logMsg)
+			self.writeServerLog(logMsg)
+		else:
+			logMsg = "[" + currTime + " Error]: Log was not written logtype is unrecognized."
+			print(logMsg)
 		
-	def printAndWriteChannelLog(self, channel, msg):
-		print(msg)
-		self.writeChannelLog(channel ,msg)
+	def printAndWriteChannelLog(self, logType, channel, msg):
+
+		currTime = datetime.datetime.now().strftime("%H:%M:%S")
+		if logType.lower() == "info":
+			logMsg = "[" + currTime + " " + logType.upper() + " (" + channel + ") ]: " + msg
+			print(logMsg)
+			self.writeServerLog(logMsg)
+		elif logType.lower() == "error":#
+			logMsg = "[" + currTime + " " + logType.upper() + "]: " + msg
+			print(logMsg)
+			self.writeServerLog(logMsg)
+		else:
+			logMsg = "[" + currTime + " Error]: Log was not written logtype is unrecognized."
+			print(logMsg)
+
+		currTime = datetime.datetime.now().strftime("%H:%M:%S")
+		currTime = "[" + currTime + "]"
+		logMsg = currTime + " " + msg
+		print(logMsg)
+		self.writeChannelLog(channel ,logMsg)
 
 	def writeServerLog(self, log):
 		logFile = open("logs/" + datetime.datetime.now().strftime("%Y-%m-%d")  + ".txt","a") 
-		logFile.write("[" + datetime.datetime.now().strftime("%H:%M:%S") + "]" + ":" + log + "\n")
+		logFile.write(log + "\n")
 		logFile.close() 
 		
 	def writeChannelLog(self, channel, msg):
 			if not os.path.exists("logs/channels/" + channel):
 				os.makedirs("logs/channels/" + channel)
 			logFile = open("logs/channels/" + channel + "/" + datetime.datetime.now().strftime("%Y-%m-%d") + ".txt","a")
-			logToWrite = "[" + datetime.datetime.now().strftime("%H:%M:%S") + "]" + ":" + msg + "\n"
+			logToWrite = msg + "\n"
 			logFile.write(logToWrite)
 			logFile.close()

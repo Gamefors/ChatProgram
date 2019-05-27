@@ -35,7 +35,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					except IndexError:
 						var = None#pylint: disable=W0612
 					if self.clientObject.ip + "\n" == client:
-						self.logHelper.printAndWriteServerLog("[Server/Info] " + self.clientObject.ip + ":" + str(self.clientObject.port) + " is permanantly banned on the server")
+						self.logHelper.printAndWriteServerLog("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " is permanantly banned on the server")
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are permanantly banned on this server"))
 						self.clientObject.socketObject.close()
 						self.appendClient = False
@@ -64,7 +64,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						self.tryRecv = True
 			else:
 				self.clientManager.addClient(self.clientObject)
-				self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
+				self.logHelper.printAndWriteServerLog("info" ,str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
 				self.appendClient = False
 				self.tryRecv = True	
 		
@@ -105,7 +105,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " joined your channel."))
 		
 		elif requestId == "611":#sent current clients in given channel
-			self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata+ ".")
+			self.logHelper.printAndWriteServerLog("[Server/Info] " + str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata + ".")
 			for channel in self.channelManager.channelList:
 				if channel.name == requestdata:
 					if len(channel.clientList) < 1:
