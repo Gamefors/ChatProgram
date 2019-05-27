@@ -25,25 +25,18 @@ class LogHelper:
 			print(logMsg)
 		
 	def printAndWriteChannelLog(self, logType, channel, msg):
-
 		currTime = datetime.datetime.now().strftime("%H:%M:%S")
 		if logType.lower() == "info":
 			logMsg = "[" + currTime + " " + logType.upper() + " (" + channel + ") ]: " + msg
 			print(logMsg)
-			self.writeServerLog(logMsg)
-		elif logType.lower() == "error":#
+			self.writeChannelLog(channel, logMsg)
+		elif logType.lower() == "error":
 			logMsg = "[" + currTime + " " + logType.upper() + "]: " + msg
 			print(logMsg)
-			self.writeServerLog(logMsg)
+			self.writeChannelLog(channel, logMsg)
 		else:
 			logMsg = "[" + currTime + " Error]: Log was not written logtype is unrecognized."
 			print(logMsg)
-
-		currTime = datetime.datetime.now().strftime("%H:%M:%S")
-		currTime = "[" + currTime + "]"
-		logMsg = currTime + " " + msg
-		print(logMsg)
-		self.writeChannelLog(channel ,logMsg)
 
 	def writeServerLog(self, log):
 		logFile = open("logs/" + datetime.datetime.now().strftime("%Y-%m-%d")  + ".txt","a") 

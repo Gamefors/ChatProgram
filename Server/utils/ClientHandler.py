@@ -87,7 +87,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		requestdata = request[3:]
 
 		if requestId == "001":#chatting
-			self.logHelper.printAndWriteChannelLog("info", clientObject.channelObject.name, "[" + clientObject.channelObject.name + "] " + clientObject.ip + " " + clientObject.username + " : " + requestdata)	
+			self.logHelper.printAndWriteChannelLog("info", clientObject.channelObject.name, clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " : " + requestdata)	
 			for clientObjectFromList in self.clientManager.clientList:
 				if clientObjectFromList.channelObject.name == clientObject.channelObject.name:
 					if clientObjectFromList != clientObject:					
