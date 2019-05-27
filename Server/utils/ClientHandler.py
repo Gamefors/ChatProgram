@@ -146,9 +146,9 @@ class ClientHandler(socketserver.BaseRequestHandler):
 								if self.channelManager.channelContains(clientObject, requestdata):
 									if clientObjectInList != clientObject:
 										if clientObjectInList.channelObject.name == clientObject.channelObject.name:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " joined your channel."))
+											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined your channel."))
 										elif clientObjectInList.channelObject.name == oldChannel:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " left your channel."))
+											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " left your channel."))
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed channel."))
 							self.logHelper.printAndWriteServerLog("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed channel to : " + requestdata + ".")
 			else:
