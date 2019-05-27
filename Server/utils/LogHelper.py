@@ -9,8 +9,8 @@ class LogHelper:
 			logFile.write(log + "\n")
 			logFile.close() 
 		else:
-			logMsg = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
-		print(logMsg)
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
+		print(log)
 	def printAndWriteChannelLog(self, logType, channel, log):
 		if not os.path.exists("logs/channels/" + channel):
 				os.makedirs("logs/channels/" + channel)
@@ -20,5 +20,5 @@ class LogHelper:
 			logFile.write(log + "\n")
 			logFile.close()
 		else:
-			logMsg = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
-		print(logMsg)
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
+		print(log)
