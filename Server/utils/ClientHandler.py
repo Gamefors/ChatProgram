@@ -3,30 +3,20 @@ from utils.ChannelManager import ChannelManager#pylint: disable=E0611,E0401
 from utils.ClientManager import ClientManager#pylint: disable=E0611,E0401
 from utils.FileHelper import FileHelper#pylint: disable=E0611,E0401
 from utils.LogHelper import LogHelper#pylint: disable=E0611,E0401
-
 from objects.Client import Client#pylint: disable=E0611,E0401
-
 import socketserver, datetime, time
-
 class ClientHandler(socketserver.BaseRequestHandler):
-	
 	appendClient = True
 	tryRecv = False
-	
-	def importScripts(self):
+	def handle(self):#overwrite
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
-	
-	#overwrite handle method	
-	def handle(self):
-		#imports
-		self.importScripts()
 
 		if self.appendClient:
-			self.clientObject = Client(self.request, "*NONE*none*NONE*", self.channelManager.channelList[0], "*NONE*none*NONE*")
+			self.clientObject = Client(self.request, "*NOT_ASSIGNED*", self.channelManager.channelList[0], "*NOT_ASSIGNED*")
 			self.clientObject.channelObject.clientList.append(self.clientObject)
 			if len(self.fileHelper.readTXTFile("data/", "banList")) > 1:
 				for client in self.fileHelper.readTXTFile("data/", "banList"):
@@ -77,7 +67,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 								if clientObjectInList != self.clientObject:
 									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
 										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
-				self.logHelper.printAndWriteServerLog("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " Disconnected")
+				self.logHelper.printAndWriteServerLog("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " Disconnected")
 				self.clientManager.removeClient(self.clientObject)
 				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
@@ -96,20 +86,18 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		elif requestId == "011":#get client informations
 			self.logHelper.printAndWriteServerLog("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " sent client informations.")
 			self.clientManager.updateClientUsername(clientObject, requestdata)
-			
 			self.fileHelper.setStandardRankIfNotExist(clientObject)
-			
 			for clientObjectInList in self.clientManager.clientList:
-								if clientObjectInList != clientObject:
-									if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
-										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + clientObject.username + " joined your channel."))
+				if clientObjectInList != clientObject:
+					if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
+						clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
 		
 		elif requestId == "611":#sent current clients in given channel
 			self.logHelper.printAndWriteServerLog("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata + ".")
 			for channel in self.channelManager.channelList:
 				if channel.name == requestdata:
 					if len(channel.clientList) < 1:
-						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611No clients are connected in this channel."))
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611This Channel is empty."))
 					else:
 						clientsInChannel = list()
 						for client in channel.clientList:
@@ -149,7 +137,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
 										elif clientObjectInList.channelObject.name == oldChannel:
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " left."))
-							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata "."))
+							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata + "."))
 							self.logHelper.printAndWriteServerLog("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed to " + requestdata + ".")
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
