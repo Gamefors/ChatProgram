@@ -97,7 +97,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			for channel in self.channelManager.channelList:
 				if channel.name == requestdata:
 					if len(channel.clientList) < 1:
-						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611This Channel is empty."))
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611Empty"))
 					else:
 						clientsInChannel = list()
 						for client in channel.clientList:
