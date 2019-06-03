@@ -28,9 +28,9 @@ class Server:
 
 	def inizializeChannel(self):
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
-		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
-		self.channel2 = Channel("Channel_2", "channel 2", "No", 0, list())
-		self.channel3 = Channel("Channel_3", "channel 3", "No", 0, list())
+		self.channel1 = Channel("Channel_1", "Description of channel 1", "No", 0, list())
+		self.channel2 = Channel("Channel_2", "Description of channel 1", "No", 0, list())
+		self.channel3 = Channel("Channel_3", "Description of channel 1", "No", 0, list())
 		self.channelManager.addChannel(self.welcomeChannel)
 		self.channelManager.addChannel(self.channel1)
 		self.channelManager.addChannel(self.channel2)
