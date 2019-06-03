@@ -105,7 +105,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
 						break
 		
-		elif requestId == "022":
+		elif requestId == "022":#channel request
 			self.logHelper.log("info", clientObject.ip + " " + clientObject.username + " requested channel.")
 			channelNames = list()
 			channelDescriptions = list()
@@ -142,7 +142,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
 				self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
-			
+
 		elif requestId == "031":#changing names
 			if self.clientManager.hasRank(clientObject, "admin"):
 				clientObject.username = requestdata
@@ -185,7 +185,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] You don't have access to that command."))
 				self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " had no access to that command. Rank:(" + clientObject.rank.strip("\n") + ")")
 
-	
 		elif requestId == "711":#banning clients
 			if self.clientManager.hasRank(clientObject, "admin"):
 				requestdata = requestdata.split()
