@@ -49,47 +49,47 @@ class InputHandler:
 
 		elif command[0] == self.cmdListClients.name:
 			if len(self.clientManager.clientList) < 1:
-				self.logHelper.printAndWriteServerLog("error", "No clients connected")
+				self.logHelper.log("error", "No clients connected")
 			else:
-				self.logHelper.printAndWriteServerLog("error", "Connected clients:")
+				self.logHelper.log("error", "Connected clients:")
 				for clientObject in self.clientManager.clientList:
-					self.logHelper.printAndWriteServerLog("info", clientObject.ip + " with name " + clientObject.username + " in " + clientObject.channelObject.name)
+					self.logHelper.log("info", clientObject.ip + " with name " + clientObject.username + " in " + clientObject.channelObject.name)
 		
 		elif command[0] == self.cmdHelp.name:
-			self.logHelper.printAndWriteServerLog("info", "Commands:")
-			self.logHelper.printAndWriteServerLog("info", "----------------------------------------------------------")
+			self.logHelper.log("info", "Commands:")
+			self.logHelper.log("info", "----------------------------------------------------------")
 			for command in self.commandList:
-				self.logHelper.printAndWriteServerLog("info", command.syntax + " : " + command.description)
-			self.logHelper.printAndWriteServerLog("info", "----------------------------------------------------------")
+				self.logHelper.log("info", command.syntax + " : " + command.description)
+			self.logHelper.log("info", "----------------------------------------------------------")
 		
 		elif command[0] == self.cmdKick.name:
 			if len(self.clientManager.clientList) < 1:
-				self.logHelper.printAndWriteServerLog("error", "No clients connected")
+				self.logHelper.log("error", "No clients connected")
 			else:
 				client = None
 				try:
 					client = command[1]
 				except IndexError:
-					self.logHelper.printAndWriteServerLog("error", "Syntax: " + self.cmdKick.syntax)
+					self.logHelper.log("error", "Syntax: " + self.cmdKick.syntax)
 				if client != None:
 					if self.clientManager.ipExists(client):
 						for clientObject in self.clientManager.clientList:
 							if clientObject.ip == client:
-								self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
+								self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
 								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
 								clientObject.socketObject.close()
 					elif self.clientManager.usernameExists(client):
 						for clientObject in self.clientManager.clientList:
 							if clientObject.username.lower() == client:
-								self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
+								self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
 								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
 								clientObject.socketObject.close()
 					else:
-						self.logHelper.printAndWriteServerLog("error", "Your given Ip/Name doesn't exist.")
+						self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
 						
 		elif command[0] == self.cmdBan.name:
 			if len(self.clientManager.clientList) < 1:
-				self.logHelper.printAndWriteServerLog("error", "No clients connected")
+				self.logHelper.log("error", "No clients connected")
 			else:
 				client = None
 				banTime = None
@@ -98,7 +98,7 @@ class InputHandler:
 					banTime = int(command[2])
 				except IndexError:
 					if client or banTime == None:
-						self.logHelper.printAndWriteServerLog("error", "Syntax: " + self.cmdBan.syntax)
+						self.logHelper.log("error", "Syntax: " + self.cmdBan.syntax)
 				if client != None:
 					if self.clientManager.ipExists(client):
 						for clientObject in self.clientManager.clientList:
@@ -106,18 +106,18 @@ class InputHandler:
 								if banTime != None:
 									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
-										self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
 										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
-										self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
+										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)
-									self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+									self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 									clientObject.socketObject.close()
 					elif self.clientManager.usernameExists(client):
@@ -126,35 +126,35 @@ class InputHandler:
 								if banTime != None:
 									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
-										self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
 										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
-										self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
+										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
 										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)
-									self.logHelper.printAndWriteServerLog("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
+									self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
 									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
 									clientObject.socketObject.close()
 					else:
 						print("[Server/Error] Your given Ip/Name doesn't exist.")
 						
 		elif command[0] == self.cmdListChannel.name:
-			self.logHelper.printAndWriteServerLog("info", "Channels:")
-			self.logHelper.printAndWriteServerLog("info", "----------------------------------------------------------")
+			self.logHelper.log("info", "Channels:")
+			self.logHelper.log("info", "----------------------------------------------------------")
 			for channel in self.channelManager.channelList:
-				self.logHelper.printAndWriteServerLog("info", "-" + channel.name + " : Description:" + channel.description)
-				self.logHelper.printAndWriteServerLog("info", " Clients:")
+				self.logHelper.log("info", "-" + channel.name + " : Description:" + channel.description)
+				self.logHelper.log("info", " Clients:")
 				if len(channel.clientList) < 1:
-					self.logHelper.printAndWriteServerLog("info", " -channel is empty")
+					self.logHelper.log("info", " -channel is empty")
 				else:
 					for client in channel.clientList:
-						self.logHelper.printAndWriteServerLog("info", " -" + client.ip + " : " + client.username)
-			self.logHelper.printAndWriteServerLog("info", "----------------------------------------------------------")
+						self.logHelper.log("info", " -" + client.ip + " : " + client.username)
+			self.logHelper.log("info", "----------------------------------------------------------")
 
 		elif command[0] == self.cmdCreateChannel.name:#TODO: add things to remove user error when acces level isnst int and description contains spaces 
 			name = None
@@ -167,10 +167,10 @@ class InputHandler:
 				password = command[3]
 				accessLevel = int(command[4])
 				self.channelManager.addChannel(Channel(name, description, password, accessLevel, list()))
-				self.logHelper.printAndWriteServerLog("info", "Channel " + name + " created.")
+				self.logHelper.log("info", "Channel " + name + " created.")
 			except:
 				if name or description or password or accessLevel == None:
-					self.logHelper.printAndWriteServerLog("error", "Syntax: " + self.cmdCreateChannel.syntax)
+					self.logHelper.log("error", "Syntax: " + self.cmdCreateChannel.syntax)
 			
 		elif command[0] == self.cmdRemoveChannel.name:
 			name = None
@@ -179,11 +179,11 @@ class InputHandler:
 				for channel in self.channelManager.channelList:
 					if channel.name == name:
 						self.channelManager.removeChannel(channel)
-				self.logHelper.printAndWriteServerLog("info", "Channel " + name + " was removed.")
+				self.logHelper.log("info", "Channel " + name + " was removed.")
 			except:
 				if name == None:
-					self.logHelper.printAndWriteServerLog("error", "Syntax: " + self.cmdRemoveChannel.syntax)
+					self.logHelper.log("error", "Syntax: " + self.cmdRemoveChannel.syntax)
 
 		else:
-			self.logHelper.printAndWriteServerLog("error", "Unknown command: " + command[0])
-			self.logHelper.printAndWriteServerLog("error", "type /help for a list of commands")
+			self.logHelper.log("error", "Unknown command: " + command[0])
+			self.logHelper.log("error", "type /help for a list of commands")

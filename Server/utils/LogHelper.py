@@ -1,6 +1,6 @@
 import os, datetime
 class LogHelper:
-	def printAndWriteServerLog(self, logType, log):
+	def log(self, logType, log):
 		if not os.path.exists("logs/"):
 				os.makedirs("logs/")
 		if logType.lower() in ("info", "error"):
@@ -11,7 +11,7 @@ class LogHelper:
 		else:
 			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
 		print(log)
-	def printAndWriteChannelLog(self, logType, channel, log):
+	def channelLog(self, logType, channel, log):
 		if not os.path.exists("logs/channels/" + channel):
 				os.makedirs("logs/channels/" + channel)
 		if logType.lower() in ("info", "error"):

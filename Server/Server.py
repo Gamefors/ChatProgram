@@ -41,29 +41,29 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.printAndWriteServerLog("info" ,"Started on ip: " + self.ipV4 + " port: " + str(self.port))
+		self.logHelper.log("info" ,"Started on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:
 			try:
 				command = input()
 			except KeyboardInterrupt:
-				self.logHelper.printAndWriteServerLog("info", "Gracefully stopping server...")
+				self.logHelper.log("info", "Gracefully stopping server...")
 				if len(self.clientManager.clientList) < 1:
-					self.logHelper.printAndWriteServerLog("info", "Gracefully stopped server")
+					self.logHelper.log("info", "Gracefully stopped server")
 					break
 				else:
 					for clientObject in self.clientManager.clientList:
 						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("403[Client/INfo]Server shut down"))
-					self.logHelper.printAndWriteServerLog("info", "Gracefully stopped server")
+					self.logHelper.log("info", "Gracefully stopped server")
 					break
 			if str(command).startswith("/"):
 				try:
 					self.inputHandler.handleInput(str(command[1:]).lower())
 				except IndexError:
-					self.logHelper.printAndWriteServerLog("info", "type /help for a list of commands.")	
+					self.logHelper.log("info", "type /help for a list of commands.")	
 			else:
-				self.logHelper.printAndWriteServerLog("info", "Commands always start with (/)")	
+				self.logHelper.log("info", "Commands always start with (/)")	
 
 	def __init__(self):
 		#Imports
