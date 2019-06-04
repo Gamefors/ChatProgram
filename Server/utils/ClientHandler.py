@@ -77,11 +77,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		requestdata = request[3:]
 
 		if requestId == "001":#chatting
-			self.logHelper.channelLog("info", clientObject.channelObject.name, clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " : " + requestdata)	
+			self.logHelper.channelLog("info", clientObject.channelObject.name, clientObject.ip + ":" + str(clientObject.port) + " [" + clientObject.rank + "]" + clientObject.username + " : " + requestdata)	
 			for clientObjectFromList in self.clientManager.clientList:
 				if clientObjectFromList.channelObject.name == clientObject.channelObject.name:
-					if clientObjectFromList != clientObject:					
-						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001" + clientObject.username + " : " + requestdata))
+					if clientObjectFromList != clientObject:
+						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001" + "[" + clientObject.rank + "]" + clientObject.username + " : " + requestdata))
 
 		elif requestId == "011":#get client informations
 			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " sent client informations.")
