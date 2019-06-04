@@ -105,6 +105,10 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
 						break
 		
+		elif requestId == "541":#sent client rank
+			self.logHelper.log("info", clientObject.ip + " " + clientObject.username + " requested rank.")
+			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("541" + str(self.clientObject.rank)))
+
 		elif requestId == "022":#channel request
 			self.logHelper.log("info", clientObject.ip + " " + clientObject.username + " requested channel.")
 			channelNames = list()
