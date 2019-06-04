@@ -30,7 +30,8 @@ class InputHandler:
 		self.cmdClear = self.createCommand("Clear", "/clear", "NONE", "Clears your interpreter console.")	
 		self.cmdHelp = self.createCommand("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the given IP from the server.")
-		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <time>", "Bans the specified client for the given amount of time in minutes.")
+		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <TIME>", "Bans the specified client for the given amount of time in minutes.")
+		self.cmdChangeRank = self.createCommand("changeRank", "/changeRank <name/ip> <rank>", "<NAME/IP> <RANK>", "Changes the rank of the given client.")
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 		self.cmdCreateChannel = self.createCommand("createChannel", "/createChannel <name> <description> <password> <accessLevel>", "<NAME/DESCRIPTION/PASSWORD/ACCESSLEVEL>", "Creates a temporary Channel.")
 		self.cmdRemoveChannel = self.createCommand("removeChannel", "/removeChannel <name>", "<NAME>", "Removes the give Channel.")
@@ -184,6 +185,36 @@ class InputHandler:
 				if name == None:
 					self.logHelper.log("error", "Syntax: " + self.cmdRemoveChannel.syntax)
 
+		elif command[0] == self.cmdChangeRank.name:#TODO: add things to remove user error for rank and check if rank isnt even a rank
+			if len(self.clientManager.clientList) < 1:
+				self.logHelper.log("error", "No clients connected")
+			else:
+				client = None
+				rank = None
+				try:
+					client = command[1]
+					rank = command[2]
+				except IndexError:
+					self.logHelper.log("error", "Syntax: " + self.cmdChangeRank.syntax)
+				if client != None:
+					if rank != None:
+						if self.clientManager.ipExists(client):
+							for clientObject in self.clientManager.clientList:
+								if clientObject.ip == client:
+									prevRank = clientObject.rank
+									self.fileHelper.removeClientRank(clientObject)
+									self.fileHelper.addClientRank(clientObject, rank)
+									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + clientObject.username + "'s rank from " + prevRank + " to " + rank)						
+								
+						elif self.clientManager.usernameExists(client):
+							for clientObject in self.clientManager.clientList:
+								if clientObject.username.lower() == client:
+									prevRank = clientObject.rank
+									self.fileHelper.removeClientRank(clientObject)
+									self.fileHelper.addClientRank(clientObject, rank)
+									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + clientObject.username + "'s rank from " + prevRank + " to " + rank)						
+						else:
+							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
 		else:
 			self.logHelper.log("error", "Unknown command: " + command[0])
 			self.logHelper.log("error", "type /help for a list of commands")

@@ -145,7 +145,9 @@ class ClientHandler(socketserver.BaseRequestHandler):
 
 		elif requestId == "031":#changing names
 			if self.clientManager.hasRank(clientObject, "admin"):
+				self.fileHelper.removeClientRank(clientObject)
 				clientObject.username = requestdata
+				self.fileHelper.addClientRank(clientObject, "admin")
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] you succesfully changed your name."))
 				self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed name.")
 			else:
