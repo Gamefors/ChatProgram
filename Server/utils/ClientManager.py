@@ -32,3 +32,10 @@ class ClientManager:
 		if(clientObject.rank == rank):
 			return True
 		return False
+
+	def getAdmins(self):
+		admins = list()
+		for client in self.clientList:
+			if client.rank == "admin":
+				admins.append(client)
+		return admins

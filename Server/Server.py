@@ -9,7 +9,7 @@ from utils.LogHelper import LogHelper#pylint: disable=E0611
 
 from objects.Channel import Channel#pylint: disable=E0611
 
-import socketserver, threading, socket
+import socketserver, threading, socket, time
 
 class Server:
 
@@ -17,7 +17,7 @@ class Server:
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
-		self.inputHandler = InputHandler()
+		self.inputHandler = InputHandler(self.upTime)
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
@@ -66,6 +66,7 @@ class Server:
 				self.logHelper.log("info", "Commands always start with (/)")	
 
 	def __init__(self):
+		self.upTime = time.time()
 		#Imports
 		self.importScripts()
 		#Config

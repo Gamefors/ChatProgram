@@ -7,7 +7,7 @@ from utils.LogHelper import LogHelper#pylint: disable=E0611, E0401
 from objects.Channel import Channel#pylint: disable=E0611, E0401
 from objects.Command import Command#pylint: disable=E0611, E0401
 
-import os, datetime
+import os, datetime, time, sys
 
 class InputHandler:
 	
@@ -31,12 +31,14 @@ class InputHandler:
 		self.cmdHelp = self.createCommand("Help", "/help", "NONE", "Shows a list of available commands.")
 		self.cmdKick = self.createCommand("Kick", "/kick <name/ip>", "<NAME/IP>", "Kicks the given IP from the server.")
 		self.cmdBan = self.createCommand("Ban", "/ban <name/ip> <time>", "<NAME/IP> <TIME>", "Bans the specified client for the given amount of time in minutes.")
+		self.cmdMonitorMode = self.createCommand("monitorMode", "/monitorMode", "NONE", "Switches to monitor mode.")
 		self.cmdChangeRank = self.createCommand("changeRank", "/changeRank <name/ip> <rank>", "<NAME/IP> <RANK>", "Changes the rank of the given client.")
 		self.cmdListChannel = self.createCommand("listChannel", "/listChannel", "NONE", "Lists all channels with their belonging clients.")
 		self.cmdCreateChannel = self.createCommand("createChannel", "/createChannel <name> <description> <password> <accessLevel>", "<NAME/DESCRIPTION/PASSWORD/ACCESSLEVEL>", "Creates a temporary Channel.")
 		self.cmdRemoveChannel = self.createCommand("removeChannel", "/removeChannel <name>", "<NAME>", "Removes the give Channel.")
 		
-	def __init__(self):
+	def __init__(self, upTime):
+		self.upTime = upTime
 		#Imports
 		self.importScripts()
 		#Create Commands
@@ -215,6 +217,34 @@ class InputHandler:
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + clientObject.username + "'s rank from " + prevRank + " to " + rank)						
 						else:
 							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
+	
+		elif command[0] == self.cmdMonitorMode.name:
+			monitor = True
+			config = self.fileHelper.getConfig()
+			ip = config.ip + ":" + str(config.port)
+			if len(ip) != 20:
+				ip = " "*(20 - len(ip)) + ip
+			while monitor:
+				clearCount = 0
+				connectedClients = str(len(self.clientManager.clientList))
+				connectedAdmins = str(len(self.clientManager.getAdmins()))
+				if len(connectedClients) != 3:
+					connectedClients = "0"*(3 - len(connectedClients)) + connectedClients
+				if len(connectedAdmins) != 3:
+					connectedAdmins = "0"*(3 - len(connectedAdmins)) + connectedAdmins
+				os.system('cls' if os.name=='nt' else 'clear')
+				try:																
+					print("##############Monitoring##############\n#Server Ip/Port: " + ip + "#\n#Uptime:                     " + time.strftime('%H:%M:%S', time.gmtime(int(time.time() - self.upTime))) + "#\n#Connected Clients:               " + connectedClients + "#\n#Connected Admins:                " + connectedAdmins + "#\n##############Monitoring##############")
+					while clearCount != 5:	
+						sys.stdout.write("\x1b[1A")
+						sys.stdout.write("\x1b[2K")
+						clearCount = clearCount + 1
+					time.sleep(0.5)
+				except KeyboardInterrupt:
+					monitor = False
+					os.system('cls' if os.name=='nt' else 'clear')
+					self.logHelper.log("info", "Exited monitor mode.")	
+		
 		else:
 			self.logHelper.log("error", "Unknown command: " + command[0])
 			self.logHelper.log("error", "type /help for a list of commands")
