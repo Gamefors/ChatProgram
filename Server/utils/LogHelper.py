@@ -1,32 +1,24 @@
 import os, datetime
-
 class LogHelper:
-
-	def __init__(self):
-		#create default paths
-		self.createDefaultPaths()
-
-	def createDefaultPaths(self):
-		if not os.path.exists("logs/channels/"):
-			os.makedirs("logs/channels/")
-
-	def printAndWriteServerLog(self, msg):
-		print(msg)
-		self.writeServerLog(msg)
-		
-	def printAndWriteChannelLog(self, channel, msg):
-		print(msg)
-		self.writeChannelLog(channel ,msg)
-
-	def writeServerLog(self, log):
-		logFile = open("logs/" + datetime.datetime.now().strftime("%Y-%m-%d")  + ".txt","a") 
-		logFile.write("[" + datetime.datetime.now().strftime("%H:%M:%S") + "]" + ":" + log + "\n")
-		logFile.close() 
-		
-	def writeChannelLog(self, channel, msg):
-			if not os.path.exists("logs/channels/" + channel):
+	def log(self, logType, log):
+		if not os.path.exists("logs/"):
+				os.makedirs("logs/")
+		if logType.lower() in ("info", "error"):
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " " + logType.upper() + "]: " + log
+			logFile = open("logs/" + datetime.datetime.now().strftime("%Y-%m-%d") + ".txt","a") 
+			logFile.write(log + "\n")
+			logFile.close() 
+		else:
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
+		print(log)
+	def channelLog(self, logType, channel, log):
+		if not os.path.exists("logs/channels/" + channel):
 				os.makedirs("logs/channels/" + channel)
+		if logType.lower() in ("info", "error"):
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " " + logType.upper() + "(" + channel + ")]: " + log
 			logFile = open("logs/channels/" + channel + "/" + datetime.datetime.now().strftime("%Y-%m-%d") + ".txt","a")
-			logToWrite = "[" + datetime.datetime.now().strftime("%H:%M:%S") + "]" + ":" + msg + "\n"
-			logFile.write(logToWrite)
+			logFile.write(log + "\n")
 			logFile.close()
+		else:
+			log = "[" + datetime.datetime.now().strftime("%H:%M:%S") + " Error]: Log was not written logtype is unrecognized."
+		print(log)

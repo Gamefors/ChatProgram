@@ -9,7 +9,7 @@ from utils.LogHelper import LogHelper#pylint: disable=E0611
 
 from objects.Channel import Channel#pylint: disable=E0611
 
-import socketserver, threading, socket
+import socketserver, threading, socket, time
 
 class Server:
 
@@ -17,7 +17,7 @@ class Server:
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
-		self.inputHandler = InputHandler()
+		self.inputHandler = InputHandler(self.upTime)
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
@@ -28,9 +28,9 @@ class Server:
 
 	def inizializeChannel(self):
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())
-		self.channel1 = Channel("Channel_1", "channel 1", "No", 0, list())
-		self.channel2 = Channel("Channel_2", "channel 2", "No", 0, list())
-		self.channel3 = Channel("Channel_3", "channel 3", "No", 0, list())
+		self.channel1 = Channel("Channel_1", "Description of channel 1", "No", 0, list())
+		self.channel2 = Channel("Channel_2", "Description of channel 1", "No", 0, list())
+		self.channel3 = Channel("Channel_3", "Description of channel 1", "No", 0, list())
 		self.channelManager.addChannel(self.welcomeChannel)
 		self.channelManager.addChannel(self.channel1)
 		self.channelManager.addChannel(self.channel2)
@@ -41,31 +41,32 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.printAndWriteServerLog("[Server/Info] Started on ip: " + self.ipV4 + " port: " + str(self.port))
+		self.logHelper.log("info" ,"Started on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:
 			try:
 				command = input()
 			except KeyboardInterrupt:
-				self.logHelper.printAndWriteServerLog("[Server/Info] Gracefully stopping server...")
+				self.logHelper.log("info", "Gracefully stopping server...")
 				if len(self.clientManager.clientList) < 1:
-					self.logHelper.printAndWriteServerLog("[Server/Info] Gracefully stopped server")
+					self.logHelper.log("info", "Gracefully stopped server")
 					break
 				else:
 					for clientObject in self.clientManager.clientList:
-						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("403" + "[Client/Info] Server shut down"))
-					self.logHelper.printAndWriteServerLog("[Server/Info] Gracefully stopped server")
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("403[Client/INfo]Server shut down"))
+					self.logHelper.log("info", "Gracefully stopped server")
 					break
 			if str(command).startswith("/"):
 				try:
 					self.inputHandler.handleInput(str(command[1:]).lower())
 				except IndexError:
-					self.logHelper.printAndWriteServerLog("[Server/Error] type /help for a list of commands.")	
+					self.logHelper.log("info", "type /help for a list of commands.")	
 			else:
-				self.logHelper.printAndWriteServerLog("[Server/Error] Commands always start with (/)")	
+				self.logHelper.log("info", "Commands always start with (/)")	
 
 	def __init__(self):
+		self.upTime = time.time()
 		#Imports
 		self.importScripts()
 		#Config
