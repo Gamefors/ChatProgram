@@ -23,9 +23,10 @@ class Client:
 		self.ipV4 = Config.ip
 		self.port = Config.port
 
-	def inizializeClient(self, username):
+	def inizializeClient(self, username, password):
 		self.clientObject = ClientObject(username, None, self.ipV4, self.port, "Welcome_Channel") 
 		self.connected = False
+		self.password = password
 
 	def tryConnect(self):
 		trys = 0
@@ -34,7 +35,7 @@ class Client:
 				self.clientObject.socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 				self.clientObject.socketObject.connect((self.clientObject.ip, self.clientObject.port))
 				threading.Thread(target=ServerHandler,args=[self.clientObject,self.output]).start()
-				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username))
+				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username + ":" + self.password))
 				time.sleep(0.1)
 				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611Welcome_Channel"))
 				self.connected = True
@@ -72,14 +73,14 @@ class Client:
 					self.connected = False
 ##############################################################################################################
 
-	def __init__(self, username, output):
+	def __init__(self, username, password, output):
 		#Imports
 		self.output = output
 		self.importScripts()
 		#Config
 		self.setConfig()
 		#Client initializations
-		self.inizializeClient(username)
+		self.inizializeClient(username, password)
 		#Client trying to establish a connection
 		self.tryConnect()
 		

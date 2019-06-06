@@ -1,4 +1,5 @@
-from objects.Config import Config#pylint: disable=E0611, E0401
+from objects.ServerConfig import ServerConfig#pylint: disable=E0611, E0401
+from objects.MysqlServerConfig import MysqlServerConfig#pylint: disable=E0611, E0401
 
 import os, sys, json
 
@@ -11,11 +12,14 @@ class FileHelper:
 		config = {
   				"Server Config": [
     				{"ip": "localhost"},
-						{"port": 5000}
+					{"port": 5000}
 					],
-				#"Other Config": [
-				#	{"None": "None"}
-				#]
+				"Mysql Server Config": [
+					{"ip": "localhost"},
+					{"username": "username"},
+					{"password": "password"},
+					{"database": "database"}
+				]
 				}
 		configFile = open("config/config.json", "w")
 		json.dump(config, configFile, indent=4)
@@ -52,7 +56,7 @@ class FileHelper:
 				  fileToWrite.write(clientInList)
 		fileToWrite.close()		
 
-	def getConfig(self):
+	def getServerConfig(self):
 		fileToRead = open("config/config.json", "r")
 		try:
 			config = json.load(fileToRead)
@@ -64,9 +68,23 @@ class FileHelper:
 		except:
 			print("[INFO] Please restart the server.")	
 			raise SystemExit()
-		return Config(serverConfig[0]["ip"], serverConfig[1]["port"])
-		
-	def setStandardRankIfNotExist(self, clientObject):
+		return ServerConfig(serverConfig[0]["ip"], serverConfig[1]["port"])
+
+	def getMysqlServerConfig(self):
+		fileToRead = open("config/config.json", "r")
+		try:
+			config = json.load(fileToRead)
+		except json.decoder.JSONDecodeError:
+			print("[ERROR] Config file couldn't be read.")
+			self.createDefaultConfig()
+		try:
+			mysqlServerConfig = config["Mysql Server Config"]
+		except:
+			print("[INFO] Please restart the server.")	
+			raise SystemExit()
+		return MysqlServerConfig(mysqlServerConfig[0]["ip"], mysqlServerConfig[1]["username"], mysqlServerConfig[2]["password"], mysqlServerConfig[3]["database"])
+
+	def setStandardRankIfNotExist(self, clientObject):#FIXME: will get deprecated due to mysql implementation
 		exists = False
 		clientList = self.readTXTFile("data/", "rankList")
 		for clientInList in clientList:
@@ -78,11 +96,11 @@ class FileHelper:
 			self.appendToTXTFile("rankList", clientObject.username + ":user")
 			clientObject.rank = "user"
 	
-	def addClientRank(self, clientObject, rank):
+	def addClientRank(self, clientObject, rank):#FIXME: will get deprecated due to mysql implementation
 		self.appendToTXTFile("rankList", clientObject.username + ":" + rank)
 		clientObject.rank = rank.strip("\n")
 	
-	def removeClientRank(self, clientObject):
+	def removeClientRank(self, clientObject):#FIXME: will get deprecated due to mysql implementation
 		clientList = self.readTXTFile("data/", "rankList")
 		fileToWrite = open("data/rankList.txt", "w")
 		for clientInList in clientList:

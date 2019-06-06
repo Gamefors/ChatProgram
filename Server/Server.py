@@ -4,6 +4,7 @@ from utils.ClientManager import ClientManager#pylint: disable=E0611
 from utils.ClientHandler import ClientHandler#pylint: disable=E0611
 from utils.ServerThread import ServerThread#pylint: disable=E0611
 from utils.InputHandler import InputHandler#pylint: disable=E0611
+from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611
 from utils.FileHelper import FileHelper#pylint: disable=E0611
 from utils.LogHelper import LogHelper#pylint: disable=E0611
 
@@ -20,11 +21,12 @@ class Server:
 		self.inputHandler = InputHandler(self.upTime)
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
+		self.mysqlHelper = MysqlHelper()
 
 	def setConfig(self):
-		Config = self.fileHelper.getConfig()
-		self.port = Config.port
-		self.ipV4 = Config.ip
+		config = self.fileHelper.getServerConfig()
+		self.port = config.port
+		self.ipV4 = config.ip
 
 	def inizializeChannel(self):
 		self.welcomeChannel = Channel("Welcome_Channel", "welcome to the server", "No", 0, list())

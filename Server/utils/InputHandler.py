@@ -4,6 +4,8 @@ from utils.ClientManager import ClientManager#pylint: disable=E0611, E0401
 from utils.FileHelper import FileHelper#pylint: disable=E0611, E0401
 from utils.LogHelper import LogHelper#pylint: disable=E0611, E0401
 
+from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611, E0401
+
 from objects.Channel import Channel#pylint: disable=E0611, E0401
 from objects.Command import Command#pylint: disable=E0611, E0401
 
@@ -19,6 +21,8 @@ class InputHandler:
 		self.clientManager = ClientManager()
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
+
+		self.mysqlHelper = MysqlHelper()
 
 	def createCommand(self, name, syntax, arguments, description):
 		command = Command(name, syntax, arguments, description)
@@ -204,16 +208,20 @@ class InputHandler:
 							for clientObject in self.clientManager.clientList:
 								if clientObject.ip == client:
 									prevRank = clientObject.rank
-									self.fileHelper.removeClientRank(clientObject)
-									self.fileHelper.addClientRank(clientObject, rank)
+									#self.fileHelper.removeClientRank(clientObject)#FIXME: will get deprecated due to mysql implementation
+									#self.fileHelper.addClientRank(clientObject, rank)#FIXME: will get deprecated due to mysql implementation
+									clientObject.rank = rank
+									self.mysqlHelper.updateAccountRank(clientObject)
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 								
 						elif self.clientManager.usernameExists(client):
 							for clientObject in self.clientManager.clientList:
 								if clientObject.username.lower() == client:
 									prevRank = clientObject.rank
-									self.fileHelper.removeClientRank(clientObject)
-									self.fileHelper.addClientRank(clientObject, rank)
+									#self.fileHelper.removeClientRank(clientObject)#FIXME: will get deprecated due to mysql implementation
+									#self.fileHelper.addClientRank(clientObject, rank)#FIXME: will get deprecated due to mysql implementation
+									clientObject.rank = rank
+									self.mysqlHelper.updateAccountRank(clientObject)
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 						else:
 							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")

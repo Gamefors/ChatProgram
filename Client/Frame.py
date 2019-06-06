@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         self.userOutput.setPlainText("")
         self.userOutput.setObjectName("userOutput")
 
-        self.client = Client("jan", self.userOutput)
+        self.client = Client("jan", "1232", self.userOutput)
 
         self.verticalLayout_3.addWidget(self.userOutput)
         self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)

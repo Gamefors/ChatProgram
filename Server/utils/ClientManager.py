@@ -13,7 +13,10 @@ class ClientManager:
 
 	def updateClientChannelObject(self, clientObject, newChannelObject):
 		clientObject.channelObject = newChannelObject
-			
+
+	def updateClientRank(self, clientObject, newRank):
+		clientObject.rank = newRank		
+	
 	def ipExists(self, ip):
 		ipExists = False
 		for clientObject in self.clientList:
