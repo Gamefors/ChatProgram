@@ -61,7 +61,7 @@ class Client:
 
 #############################################################################################################
 	def askForInput(self):
-		while self.connected:			
+		while self.connected:	
 			message = input()
 			if str(message).startswith("/"):
 				self.inputHandler.handleInput(str(message[1:]), self.clientObject)

@@ -38,11 +38,11 @@ class ServerHandler:
 		if requestId in self.easyRequestIds:
 			self.guiHelper.printOutput(requestdata)
 		elif requestId == "402":
-			self.guiHelper.printOutput(requestdata)
+			print("[Client/Info] You got kicked by the console.")
 			self.kicked = True
 		elif requestId == "403":
+			print("[Client/Info]Server shut down.")
 			self.serverOffline = True
-			self.guiHelper.printOutput(requestdata)
 		elif requestId == "022":
 			count = 0
 			countAtt = 0

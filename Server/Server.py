@@ -54,7 +54,7 @@ class Server:
 					break
 				else:
 					for clientObject in self.clientManager.clientList:
-						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("403[Client/INfo]Server shut down"))
+						clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("403"))
 					self.logHelper.log("info", "Gracefully stopped server")
 					break
 			if str(command).startswith("/"):

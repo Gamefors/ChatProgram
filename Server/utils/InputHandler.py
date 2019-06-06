@@ -79,13 +79,13 @@ class InputHandler:
 						for clientObject in self.clientManager.clientList:
 							if clientObject.ip == client:
 								self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402"))
 								clientObject.socketObject.close()
 					elif self.clientManager.usernameExists(client):
 						for clientObject in self.clientManager.clientList:
 							if clientObject.username.lower() == client:
 								self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got kicked")						
-								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402[Client/Info] You got kicked by the console"))
+								clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("402"))
 								clientObject.socketObject.close()
 					else:
 						self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
