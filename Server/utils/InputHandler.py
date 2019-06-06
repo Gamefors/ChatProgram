@@ -206,7 +206,7 @@ class InputHandler:
 									prevRank = clientObject.rank
 									self.fileHelper.removeClientRank(clientObject)
 									self.fileHelper.addClientRank(clientObject, rank)
-									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + clientObject.username + "'s rank from " + prevRank + " to " + rank)						
+									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 								
 						elif self.clientManager.usernameExists(client):
 							for clientObject in self.clientManager.clientList:
@@ -214,7 +214,7 @@ class InputHandler:
 									prevRank = clientObject.rank
 									self.fileHelper.removeClientRank(clientObject)
 									self.fileHelper.addClientRank(clientObject, rank)
-									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + clientObject.username + "'s rank from " + prevRank + " to " + rank)						
+									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 						else:
 							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
 	
