@@ -73,9 +73,8 @@ class FileHelper:
 			s = clientInList.split(":")
 			if s[0] == clientObject.username:
 				exists = True
-		if exists:
-			clientObject.rank = s[1].strip("\n")
-		else:
+				clientObject.rank = s[1].strip("\n")
+		if exists == False:
 			self.appendToTXTFile("rankList", clientObject.username + ":user")
 			clientObject.rank = "user"
 	

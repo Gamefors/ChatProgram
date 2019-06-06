@@ -81,7 +81,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			for clientObjectFromList in self.clientManager.clientList:
 				if clientObjectFromList.channelObject.name == clientObject.channelObject.name:
 					if clientObjectFromList != clientObject:
-						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001" + "[" + clientObject.rank + "]" + clientObject.username + " : " + requestdata))
+						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001[" + clientObject.rank + "]" + clientObject.username + " : " + requestdata))
 
 		elif requestId == "011":#get client informations
 			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " sent client informations.")
@@ -90,7 +90,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			for clientObjectInList in self.clientManager.clientList:
 				if clientObjectInList != clientObject:
 					if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
-						clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
+						clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
 		
 		elif requestId == "611":#sent current clients in given channel
 			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata + ".")
@@ -140,7 +140,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 										if clientObjectInList.channelObject.name == clientObject.channelObject.name:
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
 										elif clientObjectInList.channelObject.name == oldChannel:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " left."))
+											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " left."))
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata + "."))
 							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed to " + requestdata + ".")
 			else:
