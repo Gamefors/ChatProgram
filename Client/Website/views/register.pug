@@ -1,0 +1,14 @@
+html
+	head
+		link(rel="stylesheet" type="text/css" href="/public/css/register.css")
+		script(src="/public/js/main.js")
+	body
+		div(class="login-page")
+			div(class="form")
+				form(class="register-form")
+					input#username(type="text" placeholder="name")
+					input#password(type="password" placeholder="password")
+					input#email(type="text" placeholder="email address")
+					button(onclick = "register()") Register
+					p(class="message") Already registered?
+						a(href="login") Sign In

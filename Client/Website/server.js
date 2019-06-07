@@ -1,7 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const app = express();
+const express = require("express");
+const bodyParser = require("body-parser");
+const mysql = require("mysql");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -10,7 +9,8 @@ const connection = mysql.createConnection({
   database: "chat"
 });
 
-app.set('view engine', 'pug');
+const app = express();
+app.set("view engine", "pug");
 app.use("/public", express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,22 +19,50 @@ app.get('/', (req, res) => {
     res.render('index');
   });
 
-app.post("/",function(req,res){
-  let username, password;
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.post("/register",function(req,res){
   let data = req.body;
   data = JSON.stringify(data);
   data = data.split(":");
-  username = data[0];
-  password = data[1];
+  let username = data[0];
+  let password = data[1];
+  let email = data[2];
   username = username.slice(2);
-  password = password.substring(0, password.length-1);
+  password = password
+  email = email.substring(0, password.length-1);
   connection.connect(function(err) {
     if (err) throw err;
     console.log("Succesfully connected to DB.");
     var sql = "INSERT INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
     connection.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("Succesfully inserted Username: " + username + " and Password: " + password + " into DB.");
+      console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
+    });
+  });
+});
+
+app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check if pw right,for all send alert
+  let data = req.body;
+  data = JSON.stringify(data);
+  data = data.split(":");
+  let username = data[0];
+  let password = data[1];
+  username = username.slice(2);
+  password = password.substring(0, password.length-1);
+  connection.connect(function(err) {
+    if (err) throw err;
+    console.log("Succesfully connected to DB.");
+    var sql = "SEL INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
+    connection.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Succesfully checked if credentials are right.");
     });
   });
 });
