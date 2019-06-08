@@ -84,6 +84,7 @@ class Client:
 		#Client trying to establish a connection
 		self.tryConnect()
 		#test
+		#dsds
 		#Client Input
 		#self.askForInput()
 
