@@ -87,6 +87,4 @@ class Client:
 		#Client Input
 		#self.askForInput()
 
-
-
 #Client("FromPyQt")
