@@ -84,7 +84,6 @@ class Client:
 		#Client trying to establish a connection
 		self.tryConnect()
 		
-		#Client Input
 		#self.askForInput()
 
 #Client("FromPyQt")
