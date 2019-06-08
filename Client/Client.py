@@ -83,7 +83,8 @@ class Client:
 		self.inizializeClient(username, password)
 		#Client trying to establish a connection
 		self.tryConnect()
-		
+		#test
+		#Client Input
 		#self.askForInput()
 
 #Client("FromPyQt")
