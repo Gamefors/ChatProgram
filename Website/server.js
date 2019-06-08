@@ -2,12 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
+const mysqlConfig = {//TODO: add config file where these thing are being read from .json
   host: "192.168.0.117",
   user: "chatprogram",
   password: "safepw",
   database: "chat"
-});
+};
+
+const connection = mysql.createConnection(mysqlConfig);
 
 const app = express();
 app.set("view engine", "pug");
@@ -41,16 +43,18 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   username = username.slice(2);
   password = password
   email = email.substring(0, email.length-1);//TODO: does not get whole email string fix this
-
-  connection.connect(function(err) {
-    if (err) throw err;
-      console.log("Succesfully connected to DB.");
-      var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
-      connection.query(sql, function (err, result) {
-    if (err) throw err;
-      console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
-    });
-  });
+  let registerStatement = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
+  connection.query(registerStatement);
+  
+ // connection.connect(function(err) {
+   // if (err) throw err;
+  //    console.log("Succesfully connected to DB.");
+  //    var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
+  //    connection.query(sql, function (err, result) {
+  //  if (err) throw err;
+   //   console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
+  //  });
+ // });
 });
 
 app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check if pw right,for all send alert
