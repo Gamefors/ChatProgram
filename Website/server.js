@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
+const config = mysql.createConnection({
   host: "192.168.0.117",
   user: "chatprogram",
   password: "safepw",
@@ -42,11 +42,11 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   password = password
   email = email.substring(0, email.length-1);//TODO: does not get whole email string fix this
 
-  connection.connect(function(err) {
+  config.connect(function(err) {
     if (err) throw err;
       console.log("Succesfully connected to DB.");
       var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
-      connection.query(sql, function (err, result) {
+      config.query(sql, function (err, result) {
     if (err) throw err;
       console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
     });
