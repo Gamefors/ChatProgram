@@ -83,7 +83,7 @@ class Client:
 		self.inizializeClient(username, password)
 		#Client trying to establish a connection
 		self.tryConnect()
-		#test
+		
 		#dsds
 		#Client Input
 		#self.askForInput()
