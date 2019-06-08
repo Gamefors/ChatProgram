@@ -45,7 +45,8 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   email = email.substring(0, email.length-1);//TODO: does not get whole email string fix this
   let registerStatement = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
   connection.query(registerStatement);
-  
+  console.log("Inserted Username: " + username + ", Password: " + password + " and Email: " email + " into accounts Table.");
+  console.log("New Account Registered");
  // connection.connect(function(err) {
    // if (err) throw err;
   //    console.log("Succesfully connected to DB.");
