@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
 const mysqlConfig = {//TODO: add config file where these thing are being read from .json
-  host: "localhost",
+  host: "192.168.0.117",
   user: "chatprogram",
   password: "safepw",
   database: "chat"
