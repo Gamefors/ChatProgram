@@ -40,11 +40,12 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   let email = data[2];
   username = username.slice(2);
   password = password
-  email = email.substring(0, password.length-1);
+  email = email.substring(0, email.length-1);//TODO: does not get whole email string fix this
+
   connection.connect(function(err) {
     if (err) throw err;
       console.log("Succesfully connected to DB.");
-      var sql = "INSERT INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
+      var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
       connection.query(sql, function (err, result) {
     if (err) throw err;
       console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
