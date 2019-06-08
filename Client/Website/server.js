@@ -15,19 +15,23 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.render('index');
+app.get("/", (req, res) => {
+    res.render("index");
   });
 
-app.get('/register', (req, res) => {
-    res.render('register');
+app.get("/register", (req, res) => {
+    res.render("register");
 });
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get("/login", (req, res) => {
+  res.render("login");
 });
 
-app.post("/register",function(req,res){
+app.get("/adminPanel", (req, res) => {
+  res.render("adminPanel");
+});
+
+app.post("/register",function(req,res){//FIXME:TODO: chech if account already exist etc. only with username now later with emial to and send someting back so user know he registered right or wrong
   let data = req.body;
   data = JSON.stringify(data);
   data = data.split(":");
@@ -39,32 +43,33 @@ app.post("/register",function(req,res){
   email = email.substring(0, password.length-1);
   connection.connect(function(err) {
     if (err) throw err;
-    console.log("Succesfully connected to DB.");
-    var sql = "INSERT INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
-    connection.query(sql, function (err, result) {
-      if (err) throw err;
+      console.log("Succesfully connected to DB.");
+      var sql = "INSERT INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
+      connection.query(sql, function (err, result) {
+    if (err) throw err;
       console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
     });
   });
 });
 
 app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check if pw right,for all send alert
-  let data = req.body;
-  data = JSON.stringify(data);
-  data = data.split(":");
-  let username = data[0];
-  let password = data[1];
-  username = username.slice(2);
-  password = password.substring(0, password.length-1);
-  connection.connect(function(err) {
-    if (err) throw err;
-    console.log("Succesfully connected to DB.");
-    var sql = "SEL INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
-    connection.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("Succesfully checked if credentials are right.");
-    });
-  });
+  console.log("requested login not implemented");
+ // let data = req.body;
+//  data = JSON.stringify(data);
+//  data = data.split(":");
+//  let username = data[0];
+  //let password = data[1];
+ // username = username.slice(2);
+//  password = password.substring(0, password.length-1);
+//  connection.connect(function(err) {
+  //  if (err) throw err;
+ //   console.log("Succesfully connected to DB.");
+  //  var sql = "SEL INTO accounts (username, password) VALUES ('" + username + "', '" + password + "')";
+  //  connection.query(sql, function (err, result) {
+  //    if (err) throw err;
+ //     console.log("Succesfully checked if credentials are right.");
+ //   });
+ // });
 });
 
 const server = app.listen(7000, () => {
