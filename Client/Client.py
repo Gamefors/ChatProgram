@@ -12,20 +12,19 @@ from PyQt5 import QtWidgets, uic
 
 import threading, socket, time, sys, os
 
-CustomDialogUi, _ = uic.loadUiType("Ui/windows/main/CustomDialog.ui")
+class CustomDialog(QtWidgets.QDialog):
+    
+    def __init__(self):
+        super(CustomDialog, self).__init__()
+        self.customDialogWindow = uic.loadUi("Ui/windows/main/CustomDialog.ui", self)
 
-class CustomDialog(QtWidgets.QDialog, CustomDialogUi):
-	def __init__(self):
-		super(CustomDialog, self).__init__()
-		self.setupUi(self)
-
-	def getData(self):
-		if self.exec_() == QtWidgets.QDialog.Accepted:
-			username = self.username.text()
-			password = self.password.text()
-			return username + ":" + password
-		else:
-			return ":"
+    def getData(self):
+        if self.customDialogWindow.exec_() == QtWidgets.QDialog.Accepted:
+            username = self.customDialogWindow.username.text()
+            password = self.customDialogWindow.password.text()
+            return username + ":" + password
+        else:
+            return ":"
 
 class Client:
 
@@ -46,7 +45,7 @@ class Client:
 		self.password = password
 
 	def button(self):
-		if self.connected:
+		if self.mainWindow.statusButton.text() != "Offline":
 			self.sendInput("/disconnect")
 			self.mainWindow.statusButton.setText("Offline")
 			self.mainWindow.output.clear()
@@ -54,7 +53,7 @@ class Client:
 			self.connected = False
 		else:
 			data = CustomDialog().getData()
-			if data == ":":#TODO: if password empty give notification
+			if data == ":":
 				self.mainWindow.close()
 			else:
 				data = data.split(":")
