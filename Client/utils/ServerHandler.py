@@ -9,7 +9,7 @@ class ServerHandler:
 
 		self.clientObject = clientObject
 
-		self.easyRequestIds = ["001", "401", "411", "031", "411", "711"]
+		self.easyRequestIds = ["001", "023", "401", "411", "031", "411", "711"]
 
 		self.channelTreeList = list()
 
