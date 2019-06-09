@@ -35,6 +35,7 @@ class ClientManager:
 
 	def hasRank(self, clientObject, rank):
 		clientObject.rank = MysqlHelper().getAccountRank(clientObject)
+		#clientObject.sendall(self.decEncHelper.stringToBytes("904" + rank))TODO:
 		if(clientObject.rank == rank):
 			return True
 		return False

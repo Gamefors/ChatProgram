@@ -109,6 +109,10 @@ class ServerHandler:
 				mainWindow.channelTree.expandAll()
 				count = count + 1
 		
+		elif requestId == "904":
+			var = None
+			#rank = requestdata
+			
 		elif requestId == "902":
 			print("couldt log in")
 			raise SystemExit()

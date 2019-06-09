@@ -218,6 +218,7 @@ class InputHandler:
 									prevRank = clientObject.rank
 									clientObject.rank = rank
 									self.mysqlHelper.updateAccountRank(clientObject)
+									#clientObject.sendall(self.decEncHelper.stringToBytes("904" + rank))TODO:
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 						else:
 							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
