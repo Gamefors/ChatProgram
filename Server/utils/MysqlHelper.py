@@ -34,7 +34,8 @@ class MysqlHelper:
 
 	def __init__(self):
 		self.fileHelper = FileHelper()
-		config = self.fileHelper.getMysqlServerConfig()
+		config = self.fileHelper.getConfig("Mysql Server Config")
+		print(config)
 		try:
 			self.connection = mysql.connector.connect(user = config.username , password = config.password, host = config.ip, database = config.database)
 		except:

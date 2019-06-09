@@ -25,7 +25,7 @@ class Server:
 		self.mysqlHelper = MysqlHelper()
 
 	def setConfig(self):
-		config = self.fileHelper.getServerConfig()
+		config = self.fileHelper.getConfig("Server Config")
 		self.port = config.port
 		self.ipV4 = config.ip
 
@@ -44,7 +44,7 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.log("info" ,"Started server (version: " + self.fileHelper.getVersion() + ") on ip: " + self.ipV4 + " port: " + str(self.port))
+		self.logHelper.log("info" ,"Started server (version: " + self.fileHelper.getConfig("Version") + ") on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:
