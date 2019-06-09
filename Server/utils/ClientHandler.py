@@ -115,7 +115,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						clientsInChannel = list()
 						for client in channel.clientList:
 							clientsInChannel.append(client.username)
-						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + requestdata  + ";" + str(clientsInChannel)))
 						break
 		
 		elif requestId == "541":#sent client rank
