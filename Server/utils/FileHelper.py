@@ -10,6 +10,10 @@ class FileHelper:
 		fileToWrite.write(data + "\n")
 		fileToWrite.close()
 
+	def readTXTFile(self, path, fileName):
+		fileToRead = open(path + fileName + ".txt", "r")
+		return fileToRead.readlines()
+
 	def __init__(self):
 		if not os.path.exists("data/"):
 			os.makedirs("data/")
