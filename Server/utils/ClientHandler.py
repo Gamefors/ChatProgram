@@ -154,7 +154,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
 										elif clientObjectInList.channelObject.name == oldChannel:
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " left."))
-							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata + "."))
+							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + oldChannel + ":" + requestdata))
 							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed to " + requestdata + ".")
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
