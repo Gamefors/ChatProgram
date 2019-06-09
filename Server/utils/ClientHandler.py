@@ -154,15 +154,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.channelManager.removeChannelMember(clientObject.channelObject, clientObject)
 							clientObject.channelObject = channelObject
 							self.channelManager.addChannelMember(channelObject, clientObject)
-							for clientObjectInList in self.clientManager.clientList:
-								if self.channelManager.channelContains(clientObject, requestdata):
-									if clientObjectInList != clientObject:
-										if clientObjectInList.channelObject.name == clientObject.channelObject.name:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
-										elif clientObjectInList.channelObject.name == oldChannel:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " left."))
 							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata + "."))
-							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed to " + requestdata + ".")
+							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed from " + oldChannel + " to " + requestdata + ".")
+							for clientInList in self.clientManager.clientList:
+								clientInList.socketObject.sendall(self.decEncHelper.stringToBytes("811"))
+
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
 				self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
