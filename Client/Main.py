@@ -18,7 +18,7 @@ class CustomDialog(QtWidgets.QDialog):
         else:
             return ":"
             
-class Main(QtWidgets.QMainWindow):#TODO: low prio use Qthread to intialite CLient
+class Main(QtWidgets.QMainWindow):#TODO: low prio use Qthread to intialize CLient
     
     def __init__(self):
         super(Main, self).__init__()
