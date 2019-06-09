@@ -10,6 +10,10 @@ class CustomDialog(QtWidgets.QDialog, CustomDialogUi):
     def __init__(self):
         super(CustomDialog, self).__init__()
         self.setupUi(self)
+        self.RegisterHyperlink().clicked.connect(self.isClicked)
+    
+    def isClicked(self):
+        print('It works')
 
     def getData(self):
         if self.exec_() == QtWidgets.QDialog.Accepted:
