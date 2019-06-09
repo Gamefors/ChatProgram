@@ -67,6 +67,8 @@ class InputHandler:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + newChannelName))
 					time.sleep(0.1)
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + newChannelName))
+					time.sleep(0.1)
+					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("901"))
 
 			elif str(command[0]).lower() == self.cmdSetName.name:
 				newUsername = None
@@ -79,11 +81,8 @@ class InputHandler:
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031" + newUsername))
 
 			elif str(command[0]).lower() == self.cmdDisconnect.name:
-				self.guiHelper.printOutput("[Client/Info] You disconnected from the server.")
-				time.sleep(1.5)
 				clientObject.socketObject.shutdown(1)
 				clientObject.socketObject.close()
-				self.guiHelper.printOutput()
 			
 			elif str(command[0]).lower() == self.cmdListClients.name:
 				channel = None

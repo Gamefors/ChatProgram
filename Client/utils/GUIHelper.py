@@ -4,7 +4,6 @@ class GUIHelper:
 		self.output = output
 
 	def printOutput(self, msg):
-		print(msg)
 		self.output.append(msg)
 
 	def updateChannel(self):

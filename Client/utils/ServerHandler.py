@@ -1,13 +1,17 @@
 from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
+from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611, E0401
+from PyQt5.QtWidgets import QTreeWidgetItem#pylint: disable=E0611, E0401
 class ServerHandler:
 	
-	def __init__(self, clientObject, output):
+	def __init__(self, clientObject, mainWindow):
 		
-		self.guiHelper = GUIHelper(output)
+		self.guiHelper = GUIHelper(mainWindow.output)
 
 		self.clientObject = clientObject
 
-		self.easyRequestIds = ["001", "401", "411", "811", "023", "031", "411", "711"]
+		self.easyRequestIds = ["001", "401", "411", "031", "411", "711"]
+
+		self.channelTreeList = list()
 
 		self.kicked = False
 		self.banned = False
@@ -16,7 +20,7 @@ class ServerHandler:
 		while True:
 			try:
 				request = str(self.clientObject.socketObject.recv(1024), "utf-8")
-				self.handleRequest(request)
+				self.handleRequest(request, mainWindow)
 			except:
 				if self.kicked:
 					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
@@ -27,12 +31,8 @@ class ServerHandler:
 				elif self.serverOffline:
 					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
-				else:
-					self.guiHelper.printOutput("[Client/ERROR] Server closed connection unexpectedly")
-					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
-					raise SystemExit()
 
-	def handleRequest(self, request):
+	def handleRequest(self, request, mainWindow):
 		requestId = request[:3]
 		requestdata = request[3:]
 		if requestId in self.easyRequestIds:
@@ -69,20 +69,50 @@ class ServerHandler:
 				self.guiHelper.printOutput(name + " desc: " + channelDescriptions[count] + " pw: " + channelPasswords[count] + " accessLevel: " + channelAccessLevels[count])
 				count = count + 1
 		elif requestId == "611":
-			if "exists" in requestdata:
-				self.guiHelper.printOutput(requestdata)
-			else:
-				self.guiHelper.printOutput("[Client/Info] clients in this channel: ")
-				tempList = requestdata.split(",")
-				for obj in tempList:
-					obj = obj.replace("'"," ").strip("[]").strip()
-					if self.clientObject.username in obj:
-						self.guiHelper.printOutput(obj + "(you)")
-					else:
-						self.guiHelper.printOutput(obj)	
+			print("deleted")
 		elif requestId == "405":
 			self.guiHelper.printOutput(requestdata)
-			self.banned = True			
+			self.banned = True
+		elif requestId == "811":
+			self.clientObject.socketObject.sendall(DecodingEncodingHelper().stringToBytes("901"))
+		elif requestId == "903":
+			mainWindow.statusButton.setText("Online Connected as: " + self.clientObject.username)
+			self.clientObject.socketObject.sendall(DecodingEncodingHelper().stringToBytes("901"))
+		elif requestId == "901":
+			count = 0
+			mainWindow.channelTree.clear()
+			requestdata = requestdata.strip("[]")
+			requestdata = requestdata.split(";")
+			for channel in requestdata:
+				if count == 0:
+					channel = channel.strip('"')
+					channel = channel.replace(" '", "")
+					channel = channel.strip("'")
+				else:
+					channel = channel.strip('"')
+					channel = channel.replace(" '", "")
+					channel = channel.strip("'")
+					channel = channel[1:]
+					channel = channel.strip()
+					channel = channel.strip('"')
+				channel = channel.split(":")
+				channelName = channel[0]
+				member = channel[1]
+				member = member.strip("[]")
+				member = member.split(",")
+				channelItem = QTreeWidgetItem([channelName])
+				for mem in member:
+					mem = mem.strip("'")
+					clientItem = QTreeWidgetItem(["-" + mem])
+					channelItem.addChild(clientItem)
+				mainWindow.channelTree.addTopLevelItem(channelItem)
+				mainWindow.channelTree.expandAll()
+				count = count + 1
+		
+		elif requestId == "902":
+			print("couldt log in")
+			raise SystemExit()
+
 		elif len(requestId) == 0:
 			raise SystemExit()
 		else:
