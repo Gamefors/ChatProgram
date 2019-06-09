@@ -8,6 +8,11 @@ class CustomDialog(QtWidgets.QDialog):
     
     def __init__(self):
         super(CustomDialog, self).__init__()
+        self.setupUi(self)
+        self.RegisterHyperlink().clicked.connect(self.isClicked)
+    
+    def isClicked(self):
+        print('It works')
         self.customDialogWindow = uic.loadUi("Ui/windows/main/CustomDialog.ui", self)
 
     def getData(self):
