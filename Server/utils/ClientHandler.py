@@ -97,13 +97,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.clientObject.channelObject = self.channelManager.channelList[0]
 				self.clientObject.channelObject.clientList.append(self.clientObject)
 				self.clientManager.updateClientRank(clientObject, self.mysqlHelper.getAccountRank(clientObject))
-				#self.fileHelper.setStandardRankIfNotExist(clientObject)#FIXME: will get deprecated due to mysql implementation
 				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
 				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + " succesfully.")
-				for clientObjectInList in self.clientManager.clientList:#TODO: move into when log in is correct
+				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
@@ -155,15 +154,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.channelManager.removeChannelMember(clientObject.channelObject, clientObject)
 							clientObject.channelObject = channelObject
 							self.channelManager.addChannelMember(channelObject, clientObject)
-							for clientObjectInList in self.clientManager.clientList:
-								if self.channelManager.channelContains(clientObject, requestdata):
-									if clientObjectInList != clientObject:
-										if clientObjectInList.channelObject.name == clientObject.channelObject.name:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811" + clientObject.username + " joined."))
-										elif clientObjectInList.channelObject.name == oldChannel:
-											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " left."))
-							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023" + oldChannel + ":" + requestdata))
-							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed to " + requestdata + ".")
+							clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] You succesfully changed to "+ requestdata + "."))
+							self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " changed from " + oldChannel + " to " + requestdata + ".")
+							for clientInList in self.clientManager.clientList:
+								clientInList.socketObject.sendall(self.decEncHelper.stringToBytes("811"))
+
 			else:
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
 				self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")

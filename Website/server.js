@@ -47,15 +47,6 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   connection.query(registerStatement);
   console.log("Inserted Username: " + username + ", Password: " + password + " and Email: " + email + " into accounts Table.");
   console.log("New Account Registered");
- // connection.connect(function(err) {
-   // if (err) throw err;
-  //    console.log("Succesfully connected to DB.");
-  //    var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
-  //    connection.query(sql, function (err, result) {
-  //  if (err) throw err;
-   //   console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
-  //  });
- // });
 });
 
 app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check if pw right,for all send alert
@@ -64,6 +55,5 @@ app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check
 });
 
 const server = app.listen(7000, () => {
-    console.log("Express running → PORT ${server.address().port}");
+    console.log("Started express node.js server (version: 1.0.0) on ip: " + server.address().address + " port: " + server.address().port);
   });
-
