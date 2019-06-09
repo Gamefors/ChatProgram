@@ -16,7 +16,7 @@ class CustomDialog(QtWidgets.QDialog):
     
     def __init__(self):
         super(CustomDialog, self).__init__()
-        self.customDialogWindow = uic.loadUi("Ui/windows/main/CustomDialog.ui", self)
+        self.customDialogWindow = uic.loadUi("resources/CustomDialog.ui", self)
 
     def getData(self):
         if self.customDialogWindow.exec_() == QtWidgets.QDialog.Accepted:
