@@ -1,28 +1,25 @@
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611,E0401
 from utils.ChannelManager import ChannelManager#pylint: disable=E0611,E0401
 from utils.ClientManager import ClientManager#pylint: disable=E0611,E0401
+from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611,E0401
 from utils.FileHelper import FileHelper#pylint: disable=E0611,E0401
 from utils.LogHelper import LogHelper#pylint: disable=E0611,E0401
-
-from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611,E0401
-
 from objects.Client import Client#pylint: disable=E0611,E0401
 import socketserver, datetime, time
 class ClientHandler(socketserver.BaseRequestHandler):
 	appendClient = True
 	tryRecv = False
+	loggedIn = False
 	def handle(self):#overwrite TODO: find a way to import script only once not once per handle call
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
+		self.mysqlHelper = MysqlHelper()
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
-		self.mysqlHelper = MysqlHelper()
-
 		if self.appendClient:
-			self.clientObject = Client(self.request, "*NOT_ASSIGNED*", self.channelManager.channelList[0], "*NOT_ASSIGNED*")
-			self.clientObject.channelObject.clientList.append(self.clientObject)
+			self.clientObject = Client(self.request, "*NOT_ASSIGNED*", "*NOT_ASSIGNED*", "*NOT_ASSIGNED*")
 			if len(self.fileHelper.readTXTFile("data/", "banList")) > 1:
 				for client in self.fileHelper.readTXTFile("data/", "banList"):
 					try:
@@ -70,12 +67,14 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			except:
 				for clientObjectInList in self.clientManager.clientList:
 								if clientObjectInList != self.clientObject:
-									if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
-										clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
+									if self.loggedIn:
+										if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
+											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
 				self.logHelper.log("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " Disconnected")
 				self.mysqlHelper.logoutAccount(self.clientObject)
 				self.clientManager.removeClient(self.clientObject)
-				self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
+				if self.loggedIn:
+					self.channelManager.removeChannelMember(self.clientObject.channelObject ,self.clientObject)
 	
 	def handleRequest(self, request, clientObject):
 		
@@ -89,21 +88,30 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					if clientObjectFromList != clientObject:
 						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001[" + clientObject.rank + "]" + clientObject.username + " : " + requestdata))
 
-		elif requestId == "011":#get client informations
+		elif requestId == "011":#try logging in
 			requestdata = requestdata.split(":")
-			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " sent client informations.")
+			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " tried logging in.")
 			self.clientManager.updateClientUsername(clientObject, requestdata[0])
 			if self.mysqlHelper.tryLogin(clientObject, requestdata[1]):
+				self.loggedIn = True
+				self.clientObject.channelObject = self.channelManager.channelList[0]
+				self.clientObject.channelObject.clientList.append(self.clientObject)
 				self.clientManager.updateClientRank(clientObject, self.mysqlHelper.getAccountRank(clientObject))
 				#self.fileHelper.setStandardRankIfNotExist(clientObject)#FIXME: will get deprecated due to mysql implementation
 				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
-				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + "succesfully.")
+				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + " succesfully.")
+				for clientObjectInList in self.clientManager.clientList:#TODO: move into when log in is correct
+					if clientObjectInList != clientObject:
+						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
+							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
+				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("903"))
 			else:
 				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " couldn't log in.")
-				#FIXME:TODO: gui/program should quit let chris handle it
+				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("902"))
+				self.clientObject.socketObject.close()
 
 		elif requestId == "611":#sent current clients in given channel
 			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " " + clientObject.username + " requested the clients from channel " + requestdata + ".")
@@ -115,7 +123,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						clientsInChannel = list()
 						for client in channel.clientList:
 							clientsInChannel.append(client.username)
-						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + str(clientsInChannel)))
+						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("611" + requestdata + ";" + str(clientsInChannel)))
 						break
 		
 		elif requestId == "541":#sent client rank
@@ -255,6 +263,18 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("031[Client/Info] You don't have access to that command."))
 				self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " had no access to that command. Rank:(" + clientObject.rank.strip("\n") + ")")
 		
+		elif requestId == "901":#GUI get all channel with clients
+			channelList = list()
+			for channel in self.channelManager.channelList:
+				memberList = list()
+				for client in channel.clientList:
+					if client.username == clientObject.username:
+						memberList.append(client.username + "(you)")
+					else:
+						memberList.append(client.username)
+				channelList.append(channel.name + ":" + str(memberList) + ";")
+			clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("901" + str(channelList)))
+
 		else: #any other requestId
 			if len(requestId) == 0:
 				raise SystemExit()
