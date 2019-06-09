@@ -1,3 +1,5 @@
+from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611,E0401
+
 class ClientManager:
 	
 	clientList = list()
@@ -32,6 +34,7 @@ class ClientManager:
 		return usernameExists
 
 	def hasRank(self, clientObject, rank):
+		clientObject.rank = MysqlHelper().getAccountRank(clientObject)
 		if(clientObject.rank == rank):
 			return True
 		return False

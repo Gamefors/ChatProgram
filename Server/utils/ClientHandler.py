@@ -97,13 +97,12 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				self.clientObject.channelObject = self.channelManager.channelList[0]
 				self.clientObject.channelObject.clientList.append(self.clientObject)
 				self.clientManager.updateClientRank(clientObject, self.mysqlHelper.getAccountRank(clientObject))
-				#self.fileHelper.setStandardRankIfNotExist(clientObject)#FIXME: will get deprecated due to mysql implementation
 				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
 				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + " succesfully.")
-				for clientObjectInList in self.clientManager.clientList:#TODO: move into when log in is correct
+				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
