@@ -1,3 +1,4 @@
+#Version 1.0.0
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611
 from utils.ChannelManager import ChannelManager#pylint: disable=E0611
 from utils.ClientManager import ClientManager#pylint: disable=E0611
@@ -43,7 +44,7 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.log("info" ,"Started on ip: " + self.ipV4 + " port: " + str(self.port))
+		self.logHelper.log("info" ,"Started server (version: " + self.fileHelper.getVersion() + ") on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:

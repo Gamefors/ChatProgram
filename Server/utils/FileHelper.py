@@ -19,7 +19,10 @@ class FileHelper:
 					{"username": "username"},
 					{"password": "password"},
 					{"database": "database"}
-				]
+					],
+				"Version": [
+					{"version": "1.0.0"},
+					]
 				}
 		configFile = open("config/config.json", "w")
 		json.dump(config, configFile, indent=4)
@@ -84,6 +87,20 @@ class FileHelper:
 			raise SystemExit()
 		return MysqlServerConfig(mysqlServerConfig[0]["ip"], mysqlServerConfig[1]["username"], mysqlServerConfig[2]["password"], mysqlServerConfig[3]["database"])
 
+	def getVersion(self):
+		fileToRead = open("config/config.json", "r")
+		try:
+			config = json.load(fileToRead)
+		except json.decoder.JSONDecodeError:
+			print("[ERROR] Config file couldn't be read.")
+			self.createDefaultConfig()
+		try:
+			version = config["Version"]
+		except:
+			print("[INFO] Please restart the server.")	
+			raise SystemExit()
+		return version[0]["version"]
+		
 	def setStandardRankIfNotExist(self, clientObject):#FIXME: will get deprecated due to mysql implementation
 		exists = False
 		clientList = self.readTXTFile("data/", "rankList")
