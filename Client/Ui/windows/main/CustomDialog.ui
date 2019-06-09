@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Login</class>
+ <widget class="QDialog" name="Login">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -74,36 +74,45 @@
     </item>
    </layout>
   </widget>
-  <widget class="QCommandLinkButton" name="RegisterHyperlink">
+  <widget class="QLabel" name="DefaultUserPicture">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>180</y>
-     <width>185</width>
-     <height>41</height>
+     <x>20</x>
+     <y>50</y>
+     <width>191</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="text">
-    <string>CommandLinkButton</string>
+    <string/>
    </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>icons8-computer-chat-64.png</normaloff>icons8-computer-chat-64.png</iconset>
+   <property name="pixmap">
+    <pixmap>default-user-profile.jpg</pixmap>
    </property>
-   <property name="autoDefault">
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>190</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Not registered? &lt;a href=&quot;http://localhost:7000/register&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Create an account&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="openExternalLinks">
     <bool>true</bool>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="FrameIcon/Icon resource file.qrc"/>
-  <include location="DefaultUserPic.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>Login</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -119,7 +128,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>Login</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
