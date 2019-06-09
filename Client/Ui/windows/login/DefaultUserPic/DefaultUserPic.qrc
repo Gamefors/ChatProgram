@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="DefaultUserPic">
+    <file>default-user-profile.jpg</file>
+  </qresource>
+</RCC>
