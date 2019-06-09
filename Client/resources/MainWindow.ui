@@ -47,7 +47,7 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>739</width>
+        <width>0</width>
         <height>391</height>
        </size>
       </property>
@@ -67,9 +67,12 @@
          <height>391</height>
         </size>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
         <property name="spacing">
          <number>0</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
          <widget class="QPushButton" name="statusButton">
