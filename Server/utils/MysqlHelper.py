@@ -38,7 +38,7 @@ class MysqlHelper:
 		try:
 			self.connection = mysql.connector.connect(user = config.username , password = config.password, host = config.ip, database = config.database)
 		except:
-			print("Couldn't connect to Mysql Database.")#TODO: find a way to handle with this
+			print("Couldn't establish connection to mysql database(" + config.database + ") with ip: " + config.ip)#TODO: find a way to handle with this
 	
 	def ExecuteCommand(self,command):
 		return MysqlStatement(command ,self.connection).execute().escape().fetchall().result
