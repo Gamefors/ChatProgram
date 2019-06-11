@@ -5,6 +5,15 @@ function sendData(data, type) {
   xhttp.send(data);
 }
 
+function listen() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          alert("sdsd")
+     }
+  };
+}
+
 function register(){
   username = document.getElementById("username").value;
   password = document.getElementById("password").value;
