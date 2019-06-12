@@ -69,7 +69,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>218</width>
             <height>51</height>
            </size>
           </property>
@@ -78,6 +78,9 @@
             <width>74</width>
             <height>70</height>
            </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>IBeamCursor</cursorShape>
           </property>
           <property name="text">
            <string/>
@@ -92,26 +95,19 @@
             <height>70</height>
            </size>
           </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>false</bool>
+          </property>
           <property name="autoDefault">
            <bool>false</bool>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="textEdit">
-          <property name="minimumSize">
-           <size>
-            <width>163</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1</width>
-            <height>70</height>
-           </size>
-          </property>
-          <property name="readOnly">
+          <property name="flat">
            <bool>true</bool>
           </property>
          </widget>
