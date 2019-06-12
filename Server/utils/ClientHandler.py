@@ -163,7 +163,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
 				self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
 
-		elif requestId == "031":#changing names
+		elif requestId == "031":#changing namesFIXME: doesnt work with rank not tested witohut
 			if self.clientManager.hasRank(clientObject, "admin"):
 				self.fileHelper.removeClientRank(clientObject)
 				clientObject.username = requestdata
