@@ -71,5 +71,5 @@ app.post("/login",function(req,res){
 });
 
 const server = app.listen(7000, () => {
-    console.log("Started express node.js server (version: 1.0.0) on ip: " + server.address().address + " port: " + server.address().port);
+  console.log("Started express node.js server (version: 1.0.0) on port: " + server.address().port);
   });
