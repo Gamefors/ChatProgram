@@ -25,7 +25,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					try:
 						banTime = client.split(":")[1]
 					except IndexError:
-						var = None#pylint: disable=W0612
+						pass
 					if self.clientObject.ip + "\n" == client:
 						self.logHelper.log("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " is permanantly banned on the server")
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are permanantly banned on this server"))
@@ -48,7 +48,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.appendClient = False
 							break
 					elif "BanList:\n" == client:
-						var = None
+						pass
 					else:
 						self.clientManager.addClient(self.clientObject)
 						self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
