@@ -25,7 +25,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 					try:
 						banTime = client.split(":")[1]
 					except IndexError:
-						var = None#pylint: disable=W0612
+						pass
 					if self.clientObject.ip + "\n" == client:
 						self.logHelper.log("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " is permanantly banned on the server")
 						self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405[Client/Info] You are permanantly banned on this server"))
@@ -38,6 +38,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.fileHelper.removeClientFromBanList(self.clientObject.ip)
 							self.clientManager.addClient(self.clientObject)
 							self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server")
+							print(self.mysqlHelper.getAccountRank(self.clientObject))
+							if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
+								
+								self.clientObject.rank = "user"
+								self.mysqlHelper.updateAccountRank(self.clientObject)
 							self.appendClient = False
 							self.tryRecv = True
 						else:
@@ -48,7 +53,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.appendClient = False
 							break
 					elif "BanList:\n" == client:
-						var = None
+						pass
 					else:
 						self.clientManager.addClient(self.clientObject)
 						self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server.")
@@ -102,6 +107,9 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
 				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + " succesfully.")
+				if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
+					self.clientObject.rank = "user"
+					self.mysqlHelper.updateAccountRank(self.clientObject)
 				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
@@ -146,7 +154,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 			if self.channelManager.channelExists(requestdata):
 				if self.channelManager.channelContains(self.clientObject, requestdata):
 					clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] you are already in this channel."))
-					self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel which he is already part of.")					
+					self.logHelper.log("info", clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " tried to join a channel which he is already part of.")					
 				else:
 					for channelObject in self.channelManager.channelList:
 						if channelObject.name == requestdata:
@@ -163,7 +171,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 				clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("023[Client/Info] This Channel doesn't exists."))
 				self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " tried to join a channel that doesn't exists.")
 
-		elif requestId == "031":#changing names
+		elif requestId == "031":#changing namesFIXME: doesnt work with rank not tested witohut
 			if self.clientManager.hasRank(clientObject, "admin"):
 				self.fileHelper.removeClientRank(clientObject)
 				clientObject.username = requestdata
