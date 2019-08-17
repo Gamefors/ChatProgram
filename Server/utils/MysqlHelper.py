@@ -41,7 +41,9 @@ class MysqlHelper:
 			print("Couldn't establish connection to mysql database(" + config.database + ") with ip: " + config.ip)#TODO: find a way to handle with this
 	
 	def ExecuteCommand(self,command):
-		return MysqlStatement(command ,self.connection).execute().escape().fetchall().result
+		result = MysqlStatement(command ,self.connection).execute().escape().fetchall().result
+		print(result)
+		return result
 
 	def ExecuteCommandWithoutFetchAndResult(self, command):
 		return MysqlStatement(command ,self.connection).execute().escape().commit()
