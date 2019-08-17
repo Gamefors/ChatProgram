@@ -42,7 +42,6 @@ class MysqlHelper:
 	
 	def ExecuteCommand(self,command):
 		result = MysqlStatement(command ,self.connection).execute().escape().fetchall().result
-		print(result)
 		return result
 
 	def ExecuteCommandWithoutFetchAndResult(self, command):
