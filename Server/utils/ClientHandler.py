@@ -38,6 +38,11 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.fileHelper.removeClientFromBanList(self.clientObject.ip)
 							self.clientManager.addClient(self.clientObject)
 							self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server")
+							print(self.mysqlHelper.getAccountRank(self.clientObject))
+							if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
+								
+								self.clientObject.rank = "user"
+								self.mysqlHelper.updateAccountRank(self.clientObject)
 							self.appendClient = False
 							self.tryRecv = True
 						else:
@@ -102,6 +107,9 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
 							clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[" + clientObject.rank + "]" + clientObject.username + " joined."))
 				self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " logged in as " + clientObject.username + " succesfully.")
+				if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
+					self.clientObject.rank = "user"
+					self.mysqlHelper.updateAccountRank(self.clientObject)
 				for clientObjectInList in self.clientManager.clientList:
 					if clientObjectInList != clientObject:
 						if self.channelManager.channelContains(clientObjectInList, "Welcome_Channel"):
