@@ -4,38 +4,37 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 
 import sys
 
-CustomDialogUi, _ = uic.loadUiType("Ui/windows/main/CustomDialog.ui")
-
-class CustomDialog(QtWidgets.QDialog, CustomDialogUi):
+class CustomDialog(QtWidgets.QDialog):
+    
     def __init__(self):
         super(CustomDialog, self).__init__()
-        self.setupUi(self)
+        self.customDialogWindow = uic.loadUi("resources/CustomDialog.ui", self)
 
     def getData(self):
-        if self.exec_() == QtWidgets.QDialog.Accepted:
-            username = self.username.text()
-            password = self.password.text()
+        if self.customDialogWindow.exec_() == QtWidgets.QDialog.Accepted:
+            username = self.customDialogWindow.username.text()
+            password = self.customDialogWindow.password.text()
             return username + ":" + password
         else:
             return ":"
             
-class Main(QtWidgets.QMainWindow):#TODO: use qthread to intialite CLient
+class Main(QtWidgets.QMainWindow):#TODO: low prio use Qthread to intialize CLient
     
-    def enter(self):
-        input = self.mainWindow.input.text()
-        self.mainWindow.input.clear()
-        self.client.sendInput(input)
-
     def __init__(self):
         super(Main, self).__init__()
-        self.mainWindow = uic.loadUi("Ui/windows/main/MainWindow.ui", self)
+        self.mainWindow = uic.loadUi("resources/MainWindow.ui", self)
         self.mainWindow.input.returnPressed.connect(self.enter)
         data = CustomDialog().getData()
-        if data == ":":#TODO: if password empty give notification
+        if data == ":":
             quit()
         else:
             data = data.split(":")
             self.client = Client(data[0], data[1], self.mainWindow)
+
+    def enter(self):
+        input = self.mainWindow.input.text()
+        self.client.sendInput(input)
+        self.mainWindow.input.clear()
 
 app = QtWidgets.QApplication(sys.argv)
 window = Main()

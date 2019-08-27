@@ -114,18 +114,18 @@ class InputHandler:
 									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
 										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
 										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
 										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got banned for " + str(banTime) + " minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)
 									self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
-									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got permanantly banned by the console"))
 									clientObject.socketObject.close()
 					elif self.clientManager.usernameExists(client):
 						for clientObject in self.clientManager.clientList:
@@ -134,18 +134,18 @@ class InputHandler:
 									if banTime == 0:
 										self.fileHelper.addClientToBanList(clientObject.ip)
 										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got permanantly banned by the console"))
 										clientObject.socketObject.close()
 									else:
 										currentTimeStamp = datetime.datetime.now().timestamp()
 										self.fileHelper.addClientToBanList(clientObject.ip + ":" + str(currentTimeStamp + int(banTime)*60))
 										self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got banned for " + str(banTime) + "minutes")						
-										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got banned for " + str(banTime) + "Minutes by the console"))
+										clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got banned for " + str(banTime) + " minutes by the console"))
 										clientObject.socketObject.close()
 								else:
 									self.fileHelper.addClientToBanList(clientObject.ip)
 									self.logHelper.log("info", clientObject.ip + " : " + clientObject.username + " got permanantly banned")						
-									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "[Client/Info] You got permanantly banned by the console"))
+									clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("405" + "You got permanantly banned by the console"))
 									clientObject.socketObject.close()
 					else:
 						print("[Server/Error] Your given Ip/Name doesn't exist.")
@@ -208,8 +208,6 @@ class InputHandler:
 							for clientObject in self.clientManager.clientList:
 								if clientObject.ip == client:
 									prevRank = clientObject.rank
-									#self.fileHelper.removeClientRank(clientObject)#FIXME: will get deprecated due to mysql implementation
-									#self.fileHelper.addClientRank(clientObject, rank)#FIXME: will get deprecated due to mysql implementation
 									clientObject.rank = rank
 									self.mysqlHelper.updateAccountRank(clientObject)
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
@@ -218,17 +216,16 @@ class InputHandler:
 							for clientObject in self.clientManager.clientList:
 								if clientObject.username.lower() == client:
 									prevRank = clientObject.rank
-									#self.fileHelper.removeClientRank(clientObject)#FIXME: will get deprecated due to mysql implementation
-									#self.fileHelper.addClientRank(clientObject, rank)#FIXME: will get deprecated due to mysql implementation
 									clientObject.rank = rank
 									self.mysqlHelper.updateAccountRank(clientObject)
+									#clientObject.sendall(self.decEncHelper.stringToBytes("904" + rank))TODO:
 									self.logHelper.log("info", "Changed " + clientObject.ip + ":" + str(clientObject.port) + " " + clientObject.username + " 's rank from " + prevRank + " to " + rank)						
 						else:
 							self.logHelper.log("error", "Your given Ip/Name doesn't exist.")
 	
 		elif command[0] == self.cmdMonitorMode.name:
 			monitor = True
-			config = self.fileHelper.getConfig()
+			config = self.fileHelper.getConfig("Server Config")
 			ip = config.ip + ":" + str(config.port)
 			if len(ip) != 20:
 				ip = " "*(20 - len(ip)) + ip

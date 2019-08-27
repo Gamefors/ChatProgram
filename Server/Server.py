@@ -1,10 +1,10 @@
+#Version 1.0.0
 from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611
 from utils.ChannelManager import ChannelManager#pylint: disable=E0611
 from utils.ClientManager import ClientManager#pylint: disable=E0611
 from utils.ClientHandler import ClientHandler#pylint: disable=E0611
 from utils.ServerThread import ServerThread#pylint: disable=E0611
 from utils.InputHandler import InputHandler#pylint: disable=E0611
-from utils.MysqlHelper import MysqlHelper#pylint: disable=E0611
 from utils.FileHelper import FileHelper#pylint: disable=E0611
 from utils.LogHelper import LogHelper#pylint: disable=E0611
 
@@ -21,10 +21,9 @@ class Server:
 		self.inputHandler = InputHandler(self.upTime)
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
-		self.mysqlHelper = MysqlHelper()
 
 	def setConfig(self):
-		config = self.fileHelper.getServerConfig()
+		config = self.fileHelper.getConfig("Server Config")
 		self.port = config.port
 		self.ipV4 = config.ip
 
@@ -43,7 +42,7 @@ class Server:
 		serverThread = threading.Thread(target=self.server.serve_forever)
 		serverThread.daemon = True
 		serverThread.start()
-		self.logHelper.log("info" ,"Started on ip: " + self.ipV4 + " port: " + str(self.port))
+		self.logHelper.log("info" ,"Started server (version: " + self.fileHelper.getConfig("Version") + ") on ip: " + self.ipV4 + " port: " + str(self.port))
 
 	def askForInput(self):
 		while True:

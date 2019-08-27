@@ -2,12 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
+const mysqlConfig = {//TODO: add config file where these thing are being read from .json
   host: "192.168.0.117",
   user: "chatprogram",
   password: "safepw",
   database: "chat"
-});
+};
+
+const connection = mysql.createConnection(mysqlConfig);
 
 const app = express();
 app.set("view engine", "pug");
@@ -31,7 +33,7 @@ app.get("/adminPanel", (req, res) => {
   res.render("adminPanel");
 });
 
-app.post("/register",function(req,res){//FIXME:TODO: chech if account already exist etc. only with username now later with emial to and send someting back so user know he registered right or wrong
+app.post("/register",function(req,res){//FIXME:TODO: chech if account already exist etc. with username  to and send someting back so user know he registered right or wrong
   let data = req.body;
   data = JSON.stringify(data);
   data = data.split(":");
@@ -40,25 +42,34 @@ app.post("/register",function(req,res){//FIXME:TODO: chech if account already ex
   let email = data[2];
   username = username.slice(2);
   password = password
-  email = email.substring(0, email.length-1);//TODO: does not get whole email string fix this
-
-  connection.connect(function(err) {
-    if (err) throw err;
-      console.log("Succesfully connected to DB.");
-      var sql = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
-      connection.query(sql, function (err, result) {
-    if (err) throw err;
-      console.log("Succesfully inserted Username: " + username + ", Password: " + password + " and E-Mail: "+ email + " into DB.");
-    });
-  });
+  email = email.substring(0, email.length-1);
+  let registerStatement = "INSERT INTO accounts (username, password, email) VALUES ('" + username + "', '" + password + "'," + "'" + email + "')";
+  connection.query(registerStatement);
+  console.log("New Account Registered");
 });
 
-app.post("/login",function(req,res){//FIXME: 1 check if acoount exits then check if pw right,for all send alert
-  console.log("requested login not implemented");
-  //TODO: make mysql request if pw is corect an dshi
+app.post("/login",function(req,res){
+  let data = req.body;
+  data = JSON.stringify(data);
+  data = data.split(":");
+  let username = data[0];
+  let password = data[1];
+  username = username.slice(2);
+  password = password.substring(0, password.length-1);
+  console.log(username + " tried to log in.")
+  let loginStatement = "SELECT * FROM accounts WHERE username = '" + username + "' AND password = '" + password + "'";
+  connection.query(loginStatement, function(err, result, fields){
+    if (err) throw err;
+    let sResult = JSON.stringify(result)
+    if (sResult.length > 2){
+      res.status(200).json({"succesfull":"succesfull"})//TODO: make this work
+      console.log(username + " succesfully logged in.")
+    }else{
+      console.log(username + " couldn't log in.")
+    }
+  });
 });
 
 const server = app.listen(7000, () => {
-    console.log(`Express running → PORT ${server.address().port}`);
+  console.log("Started express node.js server (version: 1.0.0) on port: " + server.address().port);
   });
-
