@@ -1,5 +1,5 @@
-from objects.ServerConfig import ServerConfig#pylint: disable=E0611, E0401
-from objects.MysqlServerConfig import MysqlServerConfig#pylint: disable=E0611, E0401
+from objects.ServerConfig import ServerConfig
+from objects.MysqlServerConfig import MysqlServerConfig
 
 import os, sys, json
 

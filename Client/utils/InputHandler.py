@@ -1,7 +1,7 @@
-from utils.DecodingEncodingHelper import DecodingEncodingHelper#pylint: disable=E0611, E0401
-from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
+from utils.DecodingEncodingHelper import DecodingEncodingHelper, E0401
+from utils.GUIHelper import GUIHelper, E0401
 
-from objects.Command import Command#pylint: disable=E0611, E0401
+from objects.Command import Command, E0401
 
 import os,time
 
@@ -37,7 +37,7 @@ class InputHandler:
 		isCommand = True
 		command = command.split()
 		try:
-			var = command[0]#pylint: disable=W0612
+			var = command[0]
 		except IndexError:
 			isCommand = False
 			self.guiHelper.printOutput("[Client/Error] type /help for a list of commands")

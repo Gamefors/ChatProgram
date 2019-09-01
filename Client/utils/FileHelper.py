@@ -1,6 +1,6 @@
-from utils.GUIHelper import GUIHelper#pylint: disable=E0611, E0401
+from utils.GUIHelper import GUIHelper, E0401
 
-from objects.Config import Config#pylint: disable=E0611, E0401
+from objects.Config import Config, E0401
 
 import os, sys, json
 
