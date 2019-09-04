@@ -1,6 +1,6 @@
-from utils.GUIHelper import GUIHelper, E0401
+from utils.GUIHelper import GUIHelper
 
-from objects.Config import Config, E0401
+from objects.Config import Config
 
 import os, sys, json
 
