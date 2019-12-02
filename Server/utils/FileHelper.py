@@ -1,7 +1,7 @@
 from objects.ServerConfig import ServerConfig
 from objects.MysqlServerConfig import MysqlServerConfig
 
-import os, sys, json
+import os, sys, json, datetime
 
 class FileHelper:
 
@@ -17,18 +17,21 @@ class FileHelper:
 	def __init__(self):
 		if not os.path.exists("data/"):
 			os.makedirs("data/")
+			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: Server directories were created.")
 		if not os.path.isfile("config/config.json"):
 			self.createDefaultConfig()
 		if not os.path.isfile("data/banList.txt"):
 			self.appendToTXTFile("banList", "BanList:")
+			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: BanList.txt was created.")
 		if not os.path.isfile("data/rankList.txt"):
 			self.appendToTXTFile("rankList", "RankList:")
+			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: RankList.txt was created.")
 
 #region Config
 	def createDefaultConfig(self):
 		if not os.path.exists("config/"):
 			os.makedirs("config/")
-		print("[INFO] Config.json was regenerated.")
+		print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: Config.json was generated.")
 		config = {
   				"Server Config": [
     				{"ip": "localhost"},
@@ -67,7 +70,7 @@ class FileHelper:
 		elif type == "Mysql Server Config":
 			return MysqlServerConfig(config[0]["ip"], config[1]["username"], config[2]["password"], config[3]["database"])
 		else:
-			print("[ERROR] Type is unrecognized config couldn't be loaded.")
+			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " ERROR]: Type is unrecognized config couldn't be loaded.")
 #endregion
 
 #region BanList

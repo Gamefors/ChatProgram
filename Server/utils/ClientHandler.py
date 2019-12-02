@@ -14,7 +14,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 		self.decEncHelper = DecodingEncodingHelper()
 		self.channelManager = ChannelManager()
 		self.clientManager = ClientManager()
-		self.mysqlHelper = MysqlHelper()
+		
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
@@ -38,6 +38,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.fileHelper.removeClientFromBanList(self.clientObject.ip)
 							self.clientManager.addClient(self.clientObject)
 							self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server")
+							self.mysqlHelper = MysqlHelper()
 							print(self.mysqlHelper.getAccountRank(self.clientObject))
 							if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
 								
@@ -76,6 +77,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 										if self.channelManager.channelContains(clientObjectInList, self.clientObject.channelObject.name):
 											clientObjectInList.socketObject.sendall(self.decEncHelper.stringToBytes("811[Client/Info] " + self.clientObject.username + " quit."))
 				self.logHelper.log("info", self.clientObject.ip + ":" + str(self.clientObject.port) + " Disconnected")
+				self.mysqlHelper = MysqlHelper()
 				self.mysqlHelper.logoutAccount(self.clientObject)
 				self.clientManager.removeClient(self.clientObject)
 				if self.loggedIn:
@@ -94,6 +96,7 @@ class ClientHandler(socketserver.BaseRequestHandler):
 						clientObjectFromList.socketObject.sendall(self.decEncHelper.stringToBytes("001[" + clientObject.rank + "]" + clientObject.username + " : " + requestdata))
 
 		elif requestId == "011":#try logging in
+			self.mysqlHelper = MysqlHelper()
 			requestdata = requestdata.split(":")
 			self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " tried logging in.")
 			self.clientManager.updateClientUsername(clientObject, requestdata[0])
