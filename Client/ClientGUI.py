@@ -5,13 +5,13 @@ from Client import Client
 
 class ClientGUILogin(QtWidgets.QMainWindow):
 
-	def loginShow(self):
-		self.show()
-
 	def login(self):
 		username = self.mainWindow.loginUsername.text()
 		password = self.mainWindow.loginPassword.text()
 		return (username, password)
+	
+	def loginShow(self):
+		self.show()
 
 	def __init__(self):
 		super(ClientGUILogin, self).__init__()
@@ -33,16 +33,17 @@ class ClientGUIMain(QtWidgets.QMainWindow):
 	def mainHide(self):
 		self.hide()
 
-
+	def enter(self):
+		input = self.mainWindow.input.text()
+		self.client.sendInput(input)
+		self.mainWindow.input.clear()
 
 	def __init__(self, loginWindow):
 		super(ClientGUIMain, self).__init__()
 		self.mainWindow = uic.loadUi("ui/MainWindow.ui", self)
 		self.loginWindow = loginWindow
 		self.loginWindow.mainWindow.loginButton.clicked.connect(lambda: self.login())
-
-
-	
+		self.mainWindow.input.returnPressed.connect(self.enter)
 
 app = QtWidgets.QApplication(sys.argv)
 loginWindow = ClientGUILogin()

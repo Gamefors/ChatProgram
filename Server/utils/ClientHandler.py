@@ -39,7 +39,6 @@ class ClientHandler(socketserver.BaseRequestHandler):
 							self.clientManager.addClient(self.clientObject)
 							self.logHelper.log("info", str(self.clientObject.ip) + ":" + str(self.clientObject.port) + " connected to the server")
 							self.mysqlHelper = MysqlHelper(False)
-							print(self.mysqlHelper.getAccountRank(self.clientObject))
 							if len(self.mysqlHelper.getAccountRank(self.clientObject)) < 3:
 								
 								self.clientObject.rank = "user"
