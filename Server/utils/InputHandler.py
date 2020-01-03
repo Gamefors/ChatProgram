@@ -22,7 +22,7 @@ class InputHandler:
 		self.fileHelper = FileHelper()
 		self.logHelper = LogHelper()
 
-		self.mysqlHelper = MysqlHelper()
+		self.mysqlHelper = MysqlHelper(True)
 
 	def createCommand(self, name, syntax, arguments, description):
 		command = Command(name, syntax, arguments, description)

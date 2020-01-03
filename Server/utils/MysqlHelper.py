@@ -39,7 +39,7 @@ class MysqlStatement:
 
 class MysqlHelper:
 
-	def __init__(self):
+	def __init__(self, announce):
 		self.mysqlMode = 0 # 0 = Mysql; 1 = MysqlLite
 
 
@@ -50,8 +50,9 @@ class MysqlHelper:
 			self.connection = mysql.connector.connect(user = config.username , password = config.password, host = config.ip, database = config.database)
 		except:
 			self.mysqlMode = 1
-			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " ERROR]: Couldn't establish connection to mysql database(" + config.database + ") with ip: " + config.ip)
-			print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: Falling back to MysqlLite.")
+			if(announce):
+				print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " ERROR]: Couldn't establish connection to mysql database(" + config.database + ") with ip: " + config.ip)
+				print("[" + datetime.datetime.now().strftime("%H:%M:%S") + " INFO]: Falling back to MysqlLite.")
 			
 			#sqllite
 
@@ -117,31 +118,35 @@ class MysqlHelper:
 						self.ExecuteCommandWithoutFetchAndResult("UPDATE accounts SET loggedIn = 1 WHERE username = '" + clientObject.username + "'")
 						result = True
 			return result
+		
 		else:
+
 			checkLoggedIn = "select loggedIn,(case when loggedIn = 0 then 'loggedOut' when loggedIn = 1 then 'loggedIn' end) as loggedIn_status FROM accounts WHERE username = '" + clientObject.username + "'"
 			result = self.executeCommandOnLite(self.conn, checkLoggedIn)
 			try:
 				for row in result:
 					if row[0] == 1:
-						
 						result = True
 					else:
 						result = False
 			except:
 				result = False
 			if result == False:
-				checkPW = "SELECT * FROM accounts WHERE username = '"+ clientObject.username + "' and password = '" + password + "'"
-				result = self.executeCommandOnLite(self.conn, checkPW)
+				checkPW = "SELECT * FROM accounts WHERE username = '" + clientObject.username + "' and password = '" + password + "'"
+				result1 = self.executeCommandOnLite(self.conn, checkPW)
+				result5 = False
 				try:
-					for row in result:
-						print(row[1])
-						result = True
+					for row in result1:
+						if(row[1] == clientObject.username):
+							result5 = True
+						else:
+							result5 = False
 				except:
-					result = False
-				if result:
+					result5 = False
+				if result5:
 					updateStatus = "UPDATE accounts SET loggedIn = 1 WHERE username = '" + clientObject.username + "'"
 					self.executeCommandOnLite(self.conn, updateStatus)
-				return result
+				return result5
 
 	def logoutAccount(self, clientObject):
 		if self.mysqlMode  == 0:

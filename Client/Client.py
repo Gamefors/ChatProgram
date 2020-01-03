@@ -12,20 +12,6 @@ from PyQt5 import QtWidgets, uic
 
 import threading, socket, time, sys, os
 
-class CustomDialog(QtWidgets.QDialog):
-    
-    def __init__(self):
-        super(CustomDialog, self).__init__()
-        self.customDialogWindow = uic.loadUi("resources/CustomDialog.ui", self)
-
-    def getData(self):
-        if self.customDialogWindow.exec_() == QtWidgets.QDialog.Accepted:
-            username = self.customDialogWindow.username.text()
-            password = self.customDialogWindow.password.text()
-            return username + ":" + password
-        else:
-            return ":"
-
 class Client:
 
 	def importScripts(self):
@@ -44,36 +30,15 @@ class Client:
 		self.connected = False
 		self.password = password
 
-	def button(self):
-		if self.mainWindow.statusButton.text() != "Offline":
-			self.sendInput("/disconnect")
-			self.mainWindow.statusButton.setText("Offline")
-			self.mainWindow.output.clear()
-			self.mainWindow.channelTree.clear()
-			self.connected = False
-		else:
-			data = CustomDialog().getData()
-			if data == ":":
-				self.mainWindow.close()
-			else:
-				data = data.split(":")
-				self.inizializeClient(data[0], data[1])
-				self.tryConnect()
-
 	def tryConnect(self):
-		trys = 0
-		while not self.connected:
-			try:
-				self.clientObject.socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				self.clientObject.socketObject.connect((self.clientObject.ip, self.clientObject.port))
-				threading.Thread(target=ServerHandler,args=[self.clientObject,self.mainWindow]).start()
-				self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username + ":" + self.password))
-				self.connected = True
-			except:
-				trys = trys + 1
-				os.system('cls' if os.name=='nt' else 'clear')
-				self.guiHelper.printOutput("[Client/Info] Attempting to connect to server with ip: " + self.clientObject.ip + ". Attempts: " + str(trys))
-				time.sleep(5)
+		try:
+			self.clientObject.socketObject = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			self.clientObject.socketObject.connect((self.clientObject.ip, self.clientObject.port))
+			threading.Thread(target=ServerHandler,args=[self.clientObject,self.windows]).start()
+			self.clientObject.socketObject.sendall(self.decEncHelper.stringToBytes("011" + self.clientObject.username + ":" + self.password))
+			self.connected = True
+		except:
+			self.connected = False
 
 	def sendInput(self, message):
 		if self.connected:
@@ -89,11 +54,10 @@ class Client:
 		else:
 			self.guiHelper.printOutput("not connected")
 
-	def __init__(self, username, password, mainWindow):
+	def __init__(self, username, password, windows):
 		#Imports
-		self.mainWindow = mainWindow
-		self.mainWindow.statusButton.clicked.connect(self.button)
-		self.output = mainWindow.output
+		self.windows = windows
+		self.output = self.windows[0].output
 		self.importScripts()
 		#Config
 		self.setConfig()

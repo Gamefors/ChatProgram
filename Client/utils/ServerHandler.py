@@ -3,8 +3,9 @@ from utils.DecodingEncodingHelper import DecodingEncodingHelper
 from PyQt5.QtWidgets import QTreeWidgetItem
 class ServerHandler:
 	
-	def __init__(self, clientObject, mainWindow):
-		
+	def __init__(self, clientObject, windows):
+		mainWindow = windows[0]
+		loginWindow = windows[1]
 		self.guiHelper = GUIHelper(mainWindow.output)
 
 		self.clientObject = clientObject
@@ -20,7 +21,7 @@ class ServerHandler:
 		while True:
 			try:
 				request = str(self.clientObject.socketObject.recv(1024), "utf-8")
-				self.handleRequest(request, mainWindow)
+				self.handleRequest(request, mainWindow, loginWindow)
 			except:
 				if self.kicked:
 					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
@@ -32,7 +33,7 @@ class ServerHandler:
 					self.guiHelper.printOutput("[Client/Info] Press enter to quit")
 					raise SystemExit()
 
-	def handleRequest(self, request, mainWindow):
+	def handleRequest(self, request, mainWindow, loginWindow):
 		requestId = request[:3]
 		requestdata = request[3:]
 		if requestId in self.easyRequestIds:
@@ -114,8 +115,12 @@ class ServerHandler:
 			#rank = requestdata
 			
 		elif requestId == "902":
-			print("couldt log in")
-			raise SystemExit()
+			mainWindow.mainHide()
+			loginWindow.loginShow()
+			loginWindow.loginUsername.setText("")
+			loginWindow.loginPassword.setText("")
+			loginWindow.info.setText("Wrong password username combination.")
+			
 
 		elif len(requestId) == 0:
 			raise SystemExit()
