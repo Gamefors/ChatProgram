@@ -1,0 +1,52 @@
+﻿<Window x:Class="Chatprogram_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chatprogram_GUI"
+        mc:Ignorable="d"
+        Title="Client" Height="559" Width="425" Background="#17181C">
+    <StackPanel>
+        <Grid x:Name="StatusMenuGrid" Height="19">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox IsEnabled="False" BorderBrush="#17181C" Background="#17181C" Foreground="Yellow" IsReadOnly="True" x:Name="ConnectionStatus" Visibility="Visible"></TextBox>
+            <Menu Background="#17181C" Grid.Column="1">
+                <MenuItem Foreground="White" Background="Red" x:Name="Status" Header="_Offline" Padding="4,0,0,0" Width="100">
+                    <MenuItem Foreground="Black" x:Name="Login" Header="_Log in" Click="MenuItem_Click"/>
+                    <MenuItem IsEnabled="False" Foreground="Black" x:Name="Disconnect" Header="_Disconnect" Click="MenuItem_Click"/>
+                    <MenuItem Foreground="Black" x:Name="Quit" Header="_Quit" Click="MenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <Grid>
+            <Grid x:Name="LoginGrid" Visibility="Hidden" Margin="0,150,0,0" Height="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Username:" Foreground="White"></Label>
+                    <TextBox x:Name="UsernameEntry" Grid.Column="1" Height="20" Margin="0,0,0,170"></TextBox>
+                    <Button x:Name="ConfirmButton" Content="Login" Grid.Column="1" Margin="145,30,5,150" Click="ConfirmButton_Click" ></Button>
+                </Grid>
+            </Grid>
+            <Grid x:Name="ChattingGrid" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBox Grid.Column="0" x:Name="ClientOutput" BorderThickness="0" Height="480" Background="#17181C" Foreground="White" IsReadOnly="True"/>
+                    <TextBox Grid.Column="0" x:Name="ClientInput" KeyDown="OnKeyDownHandler"></TextBox>
+                </StackPanel>
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="50" Margin="0,235,0,10" VerticalAlignment="Top" Width="5" Background="DarkGray"/>
+                <TreeView x:Name="ChannelTreeView" BorderBrush="#17181C" Margin="5,0,0,0" Grid.Column="1" Background="#17181C">
+                </TreeView>
+            </Grid>
+        </Grid>
+        
+    </StackPanel>
+</Window>
