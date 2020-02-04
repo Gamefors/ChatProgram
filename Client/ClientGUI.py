@@ -28,7 +28,7 @@ class ClientGUIMain(QtWidgets.QMainWindow):
 		else:
 			self.loginWindow.loginUsername.setText("")
 			self.loginWindow.loginPassword.setText("")
-			QtWidgets.QMessageBox.about(self.oginWindow, "Error", "Could not establish connection to server.")
+			QtWidgets.QMessageBox.about(self.loginWindow, "Error", "Could not establish connection to server.")
 
 	def mainHide(self):
 		self.hide()
