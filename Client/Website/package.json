@@ -6,7 +6,7 @@
     "express": "^4.17.1",
     "mysql": "^2.17.1",
     "nodemon": "^1.19.1",
-    "pug": "^2.0.3"
+    "pug": "^3.0.1"
   },
   "scripts": {
     "start": "npx nodemon server.js"
